@@ -41,6 +41,7 @@
 
   function renderTags() {
     var wrap = $('pt-tags'); wrap.innerHTML = '';
+    wrap.style.gridTemplateColumns = s.mode === 4 ? 'repeat(2, minmax(0, 1fr))' : '';
     slots().forEach(function (slot) {
       var team = Math.floor(slot / 2);
       var name = s.mode === 1 ? T.score_btn || 'Score button' : s.mode === 2 ? names[team] : players[slot];
@@ -112,6 +113,6 @@
     var btns = document.querySelectorAll('.pt-mode');
     for (var i = 0; i < btns.length; i++) btns[i].addEventListener('click', function () { setMode(+this.getAttribute('data-mode')); });
     $('pt-reset').addEventListener('click', function () { setMode(s.mode); });
-    setMode(2);
+    setMode(4);
   });
 })();
