@@ -41,13 +41,13 @@ EN_JS = {
 T = {}
 
 T['es'] = {
- 'meta_title': 'PadelTag - un pádel diferente',
+ 'meta_title': 'PadelTag - El pádel ya no será el mismo',
  'meta_desc': 'PadelTag es un botón que te enganchas a la camiseta. Ganas un punto - lo pulsas. El móvil cuenta y canta el marcador en voz alta.',
  'og_desc': 'Engánchalo. Pulsa para puntuar. El móvil cuenta y canta el marcador.',
  'nav_try': 'Pruébalo', 'nav_modes': 'Cómo se juega', 'nav_get': 'Comprar',
  'badge': 'Un botón inteligente para pádel',
- 'h1_a': 'Un pádel ', 'h1_b': 'diferente.',
- 'hero_p': 'Tú solo juegas. Pulsas - punto, y el móvil canta el marcador. Y los puntos y el historial de cada jugador, en directo.',
+ 'h1_a': 'El pádel ya no será ', 'h1_b': 'el mismo.',
+ 'hero_p': 'Un botón cuenta por ti todo lo que pasa en tu juego. Análisis completo: desde los puntos hasta con quién juegas mejor en pareja, en qué pista, qué día y a qué hora.',
  'cta_get': 'Quiero PadelTag', 'cta_try': 'Pruébalo ahora',
  'alt_tag': 'Botón PadelTag',
  'sticker1': '1 clic = punto', 'sticker2': '2 clics = deshacer',
@@ -113,13 +113,13 @@ T['es'] = {
 }
 
 T['fr'] = {
- 'meta_title': 'PadelTag - un tout autre padel',
+ 'meta_title': 'PadelTag - Le padel ne sera plus jamais le même',
  'meta_desc': 'PadelTag est un bouton qui se clipse sur ton t-shirt. Tu gagnes le point - tu cliques. Ton téléphone compte et annonce le score à voix haute.',
  'og_desc': 'Clipse-le. Clique pour marquer. Ton téléphone compte et annonce le score.',
  'nav_try': 'Essayer', 'nav_modes': 'Comment jouer', 'nav_get': 'Acheter',
  'badge': 'Un bouton intelligent pour le padel',
- 'h1_a': 'Un tout autre ', 'h1_b': 'padel.',
- 'hero_p': 'Tu restes dans le jeu. Un clic - un point, ton téléphone annonce le score. Et les points et l’historique de chaque joueur, en direct.',
+ 'h1_a': 'Le padel ne sera plus jamais ', 'h1_b': 'le même.',
+ 'hero_p': 'Un bouton compte pour toi tout ce qui se passe dans ton jeu. Analyse complète : des points jusqu’au partenaire avec qui tu joues le mieux, sur quel terrain, quel jour et à quelle heure.',
  'cta_get': 'Je veux PadelTag', 'cta_try': 'Tester maintenant',
  'alt_tag': 'Bouton PadelTag',
  'sticker1': '1 clic = point', 'sticker2': '2 clics = annuler',
@@ -185,13 +185,13 @@ T['fr'] = {
 }
 
 T['de'] = {
- 'meta_title': 'PadelTag - ein ganz neues Padel',
+ 'meta_title': 'PadelTag - Padel wird nie mehr wie früher',
  'meta_desc': 'PadelTag ist ein Knopf, den du an dein Shirt clipst. Punkt gewonnen - klicken. Dein Handy zählt und sagt den Spielstand laut an.',
  'og_desc': 'Anclipsen. Klicken. Dein Handy zählt und sagt den Stand an.',
  'nav_try': 'Ausprobieren', 'nav_modes': 'So geht’s', 'nav_get': 'Kaufen',
  'badge': 'Ein smarter Knopf für Padel',
- 'h1_a': 'Ein ganz neues ', 'h1_b': 'Padel.',
- 'hero_p': 'Du bleibst im Spiel. Klick - Punkt, dein Handy sagt den Spielstand an. Und Punkte und Verlauf jedes Spielers - live.',
+ 'h1_a': 'Padel wird nie mehr ', 'h1_b': 'wie früher.',
+ 'hero_p': 'Ein Knopf zählt alles, was in deinem Spiel passiert. Komplette Analyse: von den Punkten bis dazu, mit wem du am besten spielst, auf welchem Court, an welchem Tag und zu welcher Uhrzeit.',
  'cta_get': 'PadelTag holen', 'cta_try': 'Jetzt testen',
  'alt_tag': 'PadelTag Knopf',
  'sticker1': '1 Klick = Punkt', 'sticker2': '2 Klicks = zurück',
@@ -257,13 +257,13 @@ T['de'] = {
 }
 
 T['it'] = {
- 'meta_title': 'PadelTag - un padel tutto nuovo',
+ 'meta_title': 'PadelTag - Il padel non sarà più lo stesso',
  'meta_desc': 'PadelTag è un bottone che agganci alla maglia. Vinci il punto - lo premi. Il telefono conta e dice il punteggio ad alta voce.',
  'og_desc': 'Aggancialo. Premi per segnare. Il telefono conta e chiama il punteggio.',
  'nav_try': 'Provalo', 'nav_modes': 'Come si gioca', 'nav_get': 'Acquista',
  'badge': 'Un bottone smart per il padel',
- 'h1_a': 'Un padel ', 'h1_b': 'tutto nuovo.',
- 'hero_p': 'Tu pensi solo a giocare. Un clic - un punto, il telefono annuncia il punteggio. E punti e storico di ogni giocatore, in diretta.',
+ 'h1_a': 'Il padel non sarà più ', 'h1_b': 'lo stesso.',
+ 'hero_p': 'Un pulsante conta per te tutto quello che succede nel tuo gioco. Analisi completa: dai punti a con chi giochi meglio in coppia, su quale campo, in che giorno e a che ora.',
  'cta_get': 'Prendi PadelTag', 'cta_try': 'Provalo ora',
  'alt_tag': 'Bottone PadelTag',
  'sticker1': '1 clic = punto', 'sticker2': '2 clic = annulla',
@@ -329,13 +329,13 @@ T['it'] = {
 }
 
 T['pt'] = {
- 'meta_title': 'PadelTag - um padel diferente',
+ 'meta_title': 'PadelTag - O padel nunca mais será o mesmo',
  'meta_desc': 'PadelTag é um botão que prendes à camisola. Ganhaste o ponto - carregas. O telemóvel conta e diz o resultado em voz alta.',
  'og_desc': 'Prende. Carrega para marcar. O telemóvel conta e diz o resultado.',
  'nav_try': 'Experimenta', 'nav_modes': 'Como jogar', 'nav_get': 'Comprar',
  'badge': 'Um botão inteligente para padel',
- 'h1_a': 'Um padel ', 'h1_b': 'diferente.',
- 'hero_p': 'Só pensas no jogo. Um clique - um ponto, o telemóvel anuncia o resultado. E os pontos e o histórico de cada jogador, em tempo real.',
+ 'h1_a': 'O padel nunca mais será ', 'h1_b': 'o mesmo.',
+ 'hero_p': 'Um botão conta por ti tudo o que acontece no teu jogo. Análise completa: dos pontos a com quem jogas melhor em dupla, em que campo, em que dia e a que horas.',
  'cta_get': 'Quero o PadelTag', 'cta_try': 'Experimentar agora',
  'alt_tag': 'Botão PadelTag',
  'sticker1': '1 clique = ponto', 'sticker2': '2 cliques = anular',
@@ -401,13 +401,13 @@ T['pt'] = {
 }
 
 T['nl'] = {
- 'meta_title': 'PadelTag - een heel nieuw padel',
+ 'meta_title': 'PadelTag - Padel wordt nooit meer hetzelfde',
  'meta_desc': 'PadelTag is een knop die je op je shirt klikt. Punt gewonnen - klik. Je telefoon telt en zegt de score hardop.',
  'og_desc': 'Vastklikken. Klik om te scoren. Je telefoon telt en roept de score.',
  'nav_try': 'Probeer het', 'nav_modes': 'Hoe het werkt', 'nav_get': 'Kopen',
  'badge': 'Een slimme knop voor padel',
- 'h1_a': 'Een heel nieuw ', 'h1_b': 'padel.',
- 'hero_p': 'Jij blijft in de wedstrijd. Klik - punt, je telefoon roept de stand om. En de punten en geschiedenis van elke speler - live.',
+ 'h1_a': 'Padel wordt nooit meer ', 'h1_b': 'hetzelfde.',
+ 'hero_p': 'Eén knop telt alles wat er in je spel gebeurt. Complete analyse: van punten tot met wie je het best samen speelt, op welke baan, op welke dag en hoe laat.',
  'cta_get': 'PadelTag halen', 'cta_try': 'Nu testen',
  'alt_tag': 'PadelTag-knop',
  'sticker1': '1 klik = punt', 'sticker2': '2 klikken = terug',
@@ -473,13 +473,13 @@ T['nl'] = {
 }
 
 T['sv'] = {
- 'meta_title': 'PadelTag - helt ny padel',
+ 'meta_title': 'PadelTag - Padel blir aldrig som förr',
  'meta_desc': 'PadelTag är en knapp du fäster på tröjan. Vinner du bollen - klicka. Mobilen räknar och säger ställningen högt.',
  'og_desc': 'Fäst den. Klicka för poäng. Mobilen räknar och ropar ut ställningen.',
  'nav_try': 'Testa', 'nav_modes': 'Så funkar det', 'nav_get': 'Köp',
  'badge': 'En smart knapp för padel',
- 'h1_a': 'Helt ny ', 'h1_b': 'padel.',
- 'hero_p': 'Du är helt inne i spelet. Klick - poäng, telefonen säger ställningen. Och varje spelares poäng och historik - live.',
+ 'h1_a': 'Padel blir aldrig ', 'h1_b': 'som förr.',
+ 'hero_p': 'En knapp räknar allt som händer i ditt spel. Full analys: från poäng till vem du spelar bäst med, på vilken bana, vilken dag och vilken tid.',
  'cta_get': 'Skaffa PadelTag', 'cta_try': 'Testa nu',
  'alt_tag': 'PadelTag-knapp',
  'sticker1': '1 klick = poäng', 'sticker2': '2 klick = ångra',
@@ -545,13 +545,13 @@ T['sv'] = {
 }
 
 T['da'] = {
- 'meta_title': 'PadelTag - helt ny padel',
+ 'meta_title': 'PadelTag - Padel bliver aldrig det samme',
  'meta_desc': 'PadelTag er en knap, du sætter på trøjen. Vinder du bolden - klik. Telefonen tæller og siger stillingen højt.',
  'og_desc': 'Sæt den på. Klik for point. Telefonen tæller og råber stillingen.',
  'nav_try': 'Prøv den', 'nav_modes': 'Sådan spiller du', 'nav_get': 'Køb',
  'badge': 'En smart knap til padel',
- 'h1_a': 'Helt ny ', 'h1_b': 'padel.',
- 'hero_p': 'Du er helt inde i spillet. Klik - point, telefonen siger stillingen. Og hver spillers point og historik - live.',
+ 'h1_a': 'Padel bliver aldrig ', 'h1_b': 'det samme.',
+ 'hero_p': 'Én knap tæller alt, der sker i dit spil. Fuld analyse: fra point til hvem du spiller bedst med, på hvilken bane, hvilken dag og hvilket tidspunkt.',
  'cta_get': 'Få PadelTag', 'cta_try': 'Test nu',
  'alt_tag': 'PadelTag-knap',
  'sticker1': '1 klik = point', 'sticker2': '2 klik = fortryd',
@@ -617,13 +617,13 @@ T['da'] = {
 }
 
 T['ru'] = {
- 'meta_title': 'PadelTag - совсем другой падел',
+ 'meta_title': 'PadelTag - Падел уже не будет прежним',
  'meta_desc': 'PadelTag - кнопка, которая крепится на футболку. Выиграл очко - нажал. Телефон считает и вслух называет счёт.',
  'og_desc': 'Прицепил. Нажал - очко. Телефон считает и называет счёт.',
  'nav_try': 'Попробовать', 'nav_modes': 'Как играть', 'nav_get': 'Купить',
  'badge': 'Умная кнопка для падела',
- 'h1_a': 'Совсем другой ', 'h1_b': 'падел.',
- 'hero_p': 'Ты весь в игре. Нажал - очко, телефон сам называет счёт. А очки и история каждого игрока - сразу, в реальном времени.',
+ 'h1_a': 'Падел уже не будет ', 'h1_b': 'прежним.',
+ 'hero_p': 'Одна кнопка считает за тебя всё, что происходит в игре. Полная аналитика: от очков до того, с кем ты лучше в паре, на каком корте, в какой день и в какое время.',
  'cta_get': 'Купить PadelTag', 'cta_try': 'Протестировать',
  'alt_tag': 'Кнопка PadelTag',
  'sticker1': '1 нажатие = очко', 'sticker2': '2 нажатия = отмена',
@@ -689,13 +689,13 @@ T['ru'] = {
 }
 
 T['ar'] = {
- 'meta_title': 'PadelTag - بادل مختلف تمامًا',
+ 'meta_title': 'PadelTag - البادل لن يعود كما كان',
  'meta_desc': 'PadelTag زر تثبّته على قميصك. ربحت النقطة - اضغط. هاتفك يعدّ ويعلن النتيجة بصوت عالٍ.',
  'og_desc': 'ثبّته. اضغط لتسجّل. هاتفك يعدّ ويعلن النتيجة.',
  'nav_try': 'جرّبه', 'nav_modes': 'طريقة اللعب', 'nav_get': 'اشترِ',
  'badge': 'زر ذكي للبادل',
- 'h1_a': 'بادل ', 'h1_b': 'مختلف تمامًا.',
- 'hero_p': 'أنت منغمس في اللعب فقط. ضغطة - نقطة، والهاتف يعلن النتيجة. ونقاط وسجل كل لاعب - مباشرةً.',
+ 'h1_a': 'البادل لن يعود ', 'h1_b': 'كما كان.',
+ 'hero_p': 'زر واحد يحسب عنك كل ما يحدث في لعبك. تحليل كامل: من النقاط إلى أفضل شريك لك، وعلى أي ملعب، وفي أي يوم وأي ساعة.',
  'cta_get': 'احصل على PadelTag', 'cta_try': 'جرّبه الآن',
  'alt_tag': 'زر PadelTag',
  'sticker1': 'ضغطة = نقطة', 'sticker2': 'ضغطتان = تراجع',
