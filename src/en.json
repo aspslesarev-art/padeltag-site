@@ -81,9 +81,12 @@
  "p2_t": "2 PadelTags · one per team",
  "p2_btn": "Get 2 tags",
  "p4_t": "4-pack · the whole court",
- "p4_gift": "+ 2 months of PadelTag Pro free",
+ "p4_gift": "+ 4 months of PadelTag Pro free",
  "p4_d": "A tag for every player. See who scored the most.",
  "p4_btn": "Get the 4-pack",
  "fine": "Free app for iPhone. PadelTag Pro after the gift: [PRO PRICE] / month.",
- "footer_made": "Made by"
+ "footer_made": "Made by",
+ "p1_gift": "+ 1 month of PadelTag Pro free",
+ "p2_gift": "+ 2 months of PadelTag Pro free",
+ "p1_t": "1 PadelTag"
 }
