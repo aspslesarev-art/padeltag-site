@@ -18,6 +18,40 @@
 
   function say(t) { $('pt-said').textContent = t; }
 
+  // Звук: щелчок кнопки сразу и голос счёта из приложения (записи Андрея) на языке страницы.
+  // Web Audio: включается первым нажатием и потом играет и после паузы на двойное нажатие (iPhone тоже).
+  var LANG = document.documentElement.lang || 'en';
+  var CLIPS = ['game', 'golden', 'undo'];
+  ['0', '15', '30', '40'].forEach(function (a) { ['0', '15', '30', '40'].forEach(function (b) {
+    if (a !== b || (a !== '0' && a !== '40')) CLIPS.push('p_' + a + '_' + b);
+  }); });
+  var ctx = null, buf = {}, voice = null;
+  function audio() {
+    if (ctx) { if (ctx.state === 'suspended') ctx.resume(); return ctx; }
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return null;
+    ctx = new AC();
+    CLIPS.forEach(function (k) {
+      fetch('/voice/' + LANG + '/' + k + '.m4a').then(function (r) { if (!r.ok) throw r.status; return r.arrayBuffer(); })
+        .then(function (data) { return new Promise(function (ok, bad) { ctx.decodeAudioData(data, ok, bad); }); })
+        .then(function (b) { buf[k] = b; })
+        .catch(function (e) { console.warn('PadelTag voice', k, e); });
+    });
+    return ctx;
+  }
+  function tick() {
+    var c = audio(); if (!c) return;
+    var t = c.currentTime, o = c.createOscillator(), g = c.createGain();
+    o.type = 'triangle'; o.frequency.setValueAtTime(1900, t); o.frequency.exponentialRampToValueAtTime(900, t + 0.05);
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.25, t + 0.004); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.07);
+    o.connect(g); g.connect(c.destination); o.start(t); o.stop(t + 0.08);
+  }
+  function speak(k) {
+    if (!ctx || !buf[k]) return;
+    if (voice) { try { voice.stop(); } catch (e) {} }
+    voice = ctx.createBufferSource(); voice.buffer = buf[k]; voice.connect(ctx.destination); voice.start();
+  }
+
   function renderScore() {
     for (var t = 0; t < 2; t++) {
       $('pt-score-' + t).textContent = label(s.pts[t]);
@@ -59,6 +93,7 @@
         b.classList.add('down');
         setTimeout(function () { b.classList.remove('down'); }, 160);
         if (!touched) { touched = true; var h = document.querySelectorAll('.pt-card.hint'); for (var i = 0; i < h.length; i++) h[i].classList.remove('hint'); }
+        tick();
         press(slot);
       });
       wrap.appendChild(b);
@@ -92,10 +127,12 @@
     s.hist.push({ pts: s.pts.slice(), pp: s.pp.slice() });
     s.pts[team] += 1;
     if (player !== null) s.pp[player] += 1;
-    if (s.pts[team] >= 4) { s.pts = [0, 0]; say(q(T.game || 'Game!')); }
+    if (s.pts[team] >= 4) { s.pts = [0, 0]; say(q(T.game || 'Game!')); speak('game'); }
     else {
-      var a = label(s.pts[0]), b = label(s.pts[1]);
-      say(a === '40' && b === '40' ? q(T.golden || 'Golden point') : q(cap(word(a)) + (T.sep || ', ') + word(b)));
+      // Как в приложении: первым называется счёт того, кто взял очко.
+      var a = label(s.pts[team]), b = label(s.pts[1 - team]);
+      if (a === '40' && b === '40') { say(q(T.golden || 'Golden point')); speak('golden'); }
+      else { say(q(cap(word(a)) + (T.sep || ', ') + word(b))); speak('p_' + a + '_' + b); }
     }
     renderScore(); flash(team);
   }
@@ -104,7 +141,7 @@
     if (!s.hist.length) { say(T.nothing || 'Nothing to undo'); return; }
     var last = s.hist.pop();
     s.pts = last.pts; s.pp = last.pp;
-    say(q(T.leg_undo || 'Undo')); renderScore();
+    say(q(T.leg_undo || 'Undo')); speak('undo'); renderScore();
   }
 
   // Высоту кнопок и подсказок держим по самому большому режиму — при переключении экран не прыгает.
@@ -131,6 +168,11 @@
     for (var i = 0; i < btns.length; i++) btns[i].addEventListener('click', function () { setMode(+this.getAttribute('data-mode')); });
     $('pt-reset').addEventListener('click', function () { setMode(s.mode); });
     setMode(4);
+    // Голос подгружаем, как только блок показался на экране, — к первому нажатию он уже готов.
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { audio(); io.disconnect(); } }, { rootMargin: '300px' });
+      io.observe($('try'));
+    }
     lockHeights();
     var rt, lastW = innerWidth;
     addEventListener('resize', function () {
