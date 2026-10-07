@@ -75,6 +75,31 @@ img{max-width:100%}
 .pt-store[aria-disabled="true"]{cursor:default}.pt-store[aria-disabled="true"]:hover{transform:none}
 .pt-soon{position:absolute;top:-10px;right:-8px;background:#D4F03C;color:#15201A;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;opacity:1}
 @media (max-width:640px){.pt-qr{display:none!important}#app>div{padding:32px 24px!important}}
+/* Для кого: три карточки, строки «без / с PadelTag» стоят на одной высоте во всех трёх. */
+.pt-aud{border-radius:36px;padding:28px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.pt-aud-pic{height:180px;border-radius:26px;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.pt-aud-pill{width:56px;height:56px;border-radius:50%;background:#FFFFFF;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:21px;letter-spacing:-0.02em}
+.pt-aud-bar{width:14px;border-radius:4px;background:#E3E9D6;display:block}
+.pt-aud-court{background:#FFFFFF;color:#15201A;border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.pt-aud-court span{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#4D5A52}
+.pt-aud-court i{width:8px;height:8px;border-radius:50%;background:#FF8C6B;display:inline-block;animation:ptlive 1.6s ease-in-out infinite}
+.pt-aud-court b{direction:ltr;unicode-bidi:isolate;font-weight:800;font-size:17px;white-space:nowrap;letter-spacing:-0.01em}
+@keyframes ptlive{50%{opacity:.25}}
+.pt-aud-who{align-self:flex-start;justify-self:start;background:#FFFFFF;border-radius:999px;padding:6px 14px;font-size:15px;font-weight:600}
+.pt-aud-club .pt-aud-who{background:rgb(255 255 255 / .14);color:#FFFFFF}
+.pt-aud-t{margin:0;font-weight:800;font-size:26px;line-height:1.2;letter-spacing:-0.01em}
+.pt-aud-rows{display:flex;flex-direction:column;gap:16px;margin-top:auto;padding-top:16px;border-top:1px solid #E3E9D6}
+.pt-aud-club .pt-aud-rows{border-top-color:rgb(255 255 255 / .2)}
+.pt-aud-k{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#4D5A52;margin-bottom:4px}
+.pt-aud-k i{width:10px;height:10px;border-radius:50%;background:#D4F03C;box-shadow:0 0 0 2px #15201A inset;display:inline-block}
+.pt-aud-was{font-size:17px;color:#4D5A52}
+.pt-aud-now{font-size:17px;font-weight:500}
+.pt-aud-club .pt-aud-k,.pt-aud-club .pt-aud-was{color:#D5E0F5}
+.pt-aud-club .pt-aud-k i{box-shadow:none}
+.pt-aud-soon{background:#D4F03C;color:#15201A;font-size:15px;font-weight:700;padding:6px 14px;border-radius:999px}
+@supports (grid-template-rows: subgrid){.pt-aud{display:grid;grid-template-rows:subgrid;grid-row:span 4;gap:16px}.pt-aud-rows{margin-top:0}}
+@media (min-width:680px) and (max-width:1023px){.pt-aud-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.pt-aud-club{grid-column:1/-1}}
+@media (prefers-reduced-motion:reduce){.pt-aud-court i{animation:none}}
 .pt-lang:focus-visible{outline:3px solid #15201A;outline-offset:4px}
 </style>
 </head>
@@ -177,6 +202,60 @@ img{max-width:100%}
 <div style="background: #FFFFFF; border-radius: 18px 18px 18px 4px; padding: 10px 14px; font-weight: 700; font-size: 17px; align-self: flex-start; margin-top: 30px">«Quindici, zero»</div>
 </div>
 <div><span style="font-weight: 800; color: #8FB31C">3</span><div style="font-weight: 800; font-size: 26px; line-height: 1.2">Il telefono conta e parla</div><div style="color: #4D5A52; margin-top: 6px">Senti il punteggio dopo ogni punto.</div></div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- WHO -->
+<section id="who" style="padding: 0 24px 104px">
+<div style="max-width: 1160px; margin: 0 auto">
+<h2 style="margin: 0 0 56px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Per <span style="font-style: italic; background: #D4F03C; padding: 0 10px; border-radius: 12px; display: inline-block; transform: rotate(-2deg)">chi è.</span></h2>
+<div class="pt-aud-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
+
+<div class="pt-aud" style="background: #F7F9F2">
+<div class="pt-aud-pic" style="background: #D4F03C; flex-direction: column; gap: 14px">
+<div style="display: flex; gap: 8px" aria-hidden="true"><span class="pt-aud-pill">15</span><span class="pt-aud-pill">30</span><span class="pt-aud-pill" style="background: #15201A; color: #FFFFFF">40</span></div>
+<div style="background: #FFFFFF; border-radius: 18px 18px 18px 4px; padding: 10px 16px; font-weight: 700; font-size: 17px">«Trenta, quindici»</div>
+</div>
+<span class="pt-aud-who">Principiante</span>
+<h3 class="pt-aud-t">Non sai come si conta? La tua maglietta conta per te.</h3>
+<div class="pt-aud-rows">
+<div><div class="pt-aud-k">Senza PadelTag</div><div class="pt-aud-was">Ti confondi con 15-30-40, ti vergogni a chiedere e perdi la concentrazione.</div></div>
+<div><div class="pt-aud-k"><i></i>Con PadelTag</div><div class="pt-aud-now">Il punteggio si tiene da solo. E vedi come migliori partita dopo partita.</div></div>
+</div>
+</div>
+
+<div class="pt-aud" style="background: #F7F9F2">
+<div class="pt-aud-pic" style="background: #FFFFFF; align-items: stretch; justify-content: space-between; flex-direction: column; padding: 20px 22px" aria-hidden="true">
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px">
+<div><div style="font-weight: 900; font-size: 48px; line-height: 1; letter-spacing: -0.03em">64%</div><div style="font-size: 14px; font-weight: 600; color: #4D5A52; margin-top: 4px">vittorie</div></div>
+<div style="display: flex; align-items: flex-end; gap: 6px; height: 64px"><span class="pt-aud-bar" style="height: 30%"></span><span class="pt-aud-bar" style="height: 45%"></span><span class="pt-aud-bar" style="height: 40%"></span><span class="pt-aud-bar" style="height: 64%"></span><span class="pt-aud-bar" style="height: 100%; background: #D4F03C"></span></div>
+</div>
+<div style="display: flex; align-items: center; gap: 10px; background: #F7F9F2; border-radius: 14px; padding: 8px 12px; font-size: 14px"><span style="width: 28px; height: 28px; flex: none; border-radius: 50%; background: #FFC2B0; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px">S</span><span style="flex: 1; min-width: 0">Miglior compagno</span><b>Sofia</b></div>
+</div>
+<span class="pt-aud-who">Giochi già</span>
+<h3 class="pt-aud-t">Guarda come migliori - e con chi vinci più spesso.</h3>
+<div class="pt-aud-rows">
+<div><div class="pt-aud-k">Senza PadelTag</div><div class="pt-aud-was">Giochi spesso, ma non vedi progressi e non capisci cosa funziona.</div></div>
+<div><div class="pt-aud-k"><i></i>Con PadelTag</div><div class="pt-aud-now">Storico delle partite, percentuale di vittorie, serie. Il tuo miglior compagno, l’avversario più scomodo e il momento del set in cui cali.</div></div>
+</div>
+</div>
+
+<div class="pt-aud pt-aud-club" style="background: #1F4FA3; color: #FFFFFF">
+<div class="pt-aud-pic" style="background: #173D80; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 16px" aria-hidden="true">
+<div class="pt-aud-court"><span><i></i>Campo 1</span><b>6:4 · 30:15</b></div>
+<div class="pt-aud-court"><span><i></i>Campo 2</span><b>2:5 · 40:40</b></div>
+<div class="pt-aud-court"><span><i></i>Campo 3</span><b>3:3 · 15:0</b></div>
+<div class="pt-aud-court"><span><i></i>Campo 4</span><b>5:1 · 0:30</b></div>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap"><span class="pt-aud-who">Tornei e club</span><span class="pt-aud-soon">Presto</span></div>
+<h3 class="pt-aud-t">Il punteggio di tutti i campi in diretta - sullo schermo dell’arbitro.</h3>
+<div class="pt-aud-rows">
+<div><div class="pt-aud-k">Senza PadelTag</div><div class="pt-aud-was">Fogli di carta, discussioni sul punteggio, risultati copiati a mano.</div></div>
+<div><div class="pt-aud-k"><i></i>Con PadelTag</div><div class="pt-aud-now">Punteggio automatico, tabellone live e risultati del torneo subito nel sistema.</div></div>
+</div>
 </div>
 
 </div>
