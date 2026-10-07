@@ -11,6 +11,7 @@ en.update(EN_JS)
 JS_KEYS = list(EN_JS) + ['us', 'them', 'said_init']
 SITE = 'https://padeltag.app'
 import hashlib
+TAG_V = hashlib.md5((root / 'tag.png').read_bytes()).hexdigest()[:8]
 DEMO_V = hashlib.md5((root / 'demo.js').read_bytes()).hexdigest()[:8]  # новая версия скрипта — браузер не возьмёт старую из кэша
 
 hreflang = '\n'.join(f'<link rel="alternate" hreflang="{c}" href="{SITE}{p}">' for c, _, p, _ in LANGS)
@@ -73,6 +74,7 @@ for code, _, path, direction in LANGS:
         return html.escape(tr[k], quote=True)
     out = re.sub(r'\{\{(\w+)\}\}', fill, out)
     assert '{{' not in out
+    out = out.replace('/tag.png"', '/tag.png?v=' + TAG_V + '"')
     out = out.replace('src="/demo.js"', 'src="/demo.js?v=' + DEMO_V + '"')
     dest = root / path.strip('/') / 'index.html' if path != '/' else root / 'index.html'
     dest.parent.mkdir(exist_ok=True)

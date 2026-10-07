@@ -1,6 +1,6 @@
 (function () {
   var T = window.PT_T || {};
-  var TAG = '/tag.png';
+  var TAG = (document.querySelector('img.pt-float') || {}).getAttribute ? document.querySelector('img.pt-float').getAttribute('src') : '/tag.png';
   var fills = ['#D4F03C', '#FFC2B0'];
   var names = [T.us || 'Us', T.them || 'Them'];
   var players = ['Alex', 'Maya', 'Leo', 'Nina'];
