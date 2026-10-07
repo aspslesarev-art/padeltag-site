@@ -55,6 +55,10 @@ img{max-width:100%}
 .pt-card{background:#FFFFFF;border:none;border-radius:32px;padding:28px 16px 20px;display:flex;flex-direction:column;align-items:center;gap:14px;font-family:inherit;color:#15201A;min-height:48px}
 .pt-glow{width:170px;max-width:100%;height:120px;display:flex;align-items:center;justify-content:center;border-radius:999px}
 .pt-glow img{width:160px;max-width:94%;transition:transform .12s ease;filter:drop-shadow(0 12px 12px rgba(21,32,26,0.28))}
+@keyframes pthint{0%{transform:scale(.92);opacity:.75}100%{transform:scale(1.25);opacity:0}}
+.pt-glow{position:relative}
+.pt-card.hint .pt-glow::after{content:"";position:absolute;inset:0;border-radius:inherit;border:3px solid #15201A;animation:pthint 1.6s cubic-bezier(.2,.8,.2,1) infinite;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.pt-card.hint .pt-glow::after{animation:none;opacity:.35}}
 .pt-card.down .pt-glow img{transform:scale(.9) translateY(4px)}
 .pt-name{display:inline-flex;align-items:center;gap:8px;font-size:19px;font-weight:700}
 .pt-dot{width:12px;height:12px;border-radius:50%;display:inline-block}
@@ -97,7 +101,7 @@ img{max-width:100%}
 <p style="margin: 28px 0 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 500px">Aggancia PadelTag. Vinci il punto - lo premi. Il telefono conta e dice il punteggio ad alta voce.</p>
 <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px">
 <a href="#get" class="pt-btn" style="background: #15201A; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: inline-flex; align-items: center">Prendi PadelTag</a>
-<a href="#try" class="pt-btn" style="background: #F1F5E8; color: #15201A; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: inline-flex; align-items: center">Premilo qui</a>
+<a href="#try" class="pt-btn" style="background: #F1F5E8; color: #15201A; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: inline-flex; align-items: center">Provalo ora</a>
 </div>
 </div>
 
@@ -178,8 +182,8 @@ img{max-width:100%}
 <div style="max-width: 1160px; margin: 0 auto">
 <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 48px">
 <div>
-<h2 style="margin: 0 0 10px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Dai, premilo.</h2>
-<p style="margin: 0; color: #4D5A52">Funziona proprio come in campo.</p>
+<h2 style="margin: 0 0 10px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Provalo qui.</h2>
+<p style="margin: 0; color: #4D5A52">Premi un PadelTag qui sotto e guarda come si contano i punti.</p>
 </div>
 </div>
 
@@ -401,6 +405,6 @@ img{max-width:100%}
 </div>
 
 <script>window.PT_T={"score_btn": "Bottone punti", "click_aria": "Premi il bottone: ", "leg_us": "Punto per noi", "leg_them": "Punto per loro", "leg_undo": "Annulla", "leg_point": "Punto", "game": "Game!", "golden": "Punto d’oro", "nothing": "Niente da annullare", "words": {"0": "zero", "15": "quindici", "30": "trenta", "40": "quaranta"}, "q1": "«", "q2": "»", "sep": ", ", "us": "Noi", "them": "Loro", "said_init": "Premi un bottone"};</script>
-<script src="/demo.js"></script>
+<script src="/demo.js?v=4833d2b3"></script>
 </body>
 </html>

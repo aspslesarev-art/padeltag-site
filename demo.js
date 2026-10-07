@@ -5,6 +5,7 @@
   var names = [T.us || 'Us', T.them || 'Them'];
   var players = ['Alex', 'Maya', 'Leo', 'Nina'];
   var s, clicks = {}, timers = {}, flashT;
+  var touched = false; // пока не нажали ни разу — теги пульсируют: «жми сюда»
 
   function fresh(mode) { return { mode: mode, pts: [0, 0], pp: [0, 0, 0, 0], hist: [] }; }
   function label(p) { return ['0', '15', '30', '40'][Math.min(p, 3)]; }
@@ -46,7 +47,7 @@
       var team = Math.floor(slot / 2);
       var name = s.mode === 1 ? T.score_btn || 'Score button' : s.mode === 2 ? names[team] : players[slot];
       var b = document.createElement('button');
-      b.className = 'pt-card pt-tag';
+      b.className = 'pt-card pt-tag' + (touched ? '' : ' hint');
       b.setAttribute('aria-label', (T.click_aria || 'Click button: ') + name);
       b.innerHTML = '<span class="pt-glow" style="background:' + (s.mode === 1 ? '#F1F5E8' : fills[team]) + '"><img src="' + TAG + '" alt=""></span>' +
         '<span class="pt-name"><span class="pt-dot" style="background:' + (s.mode === 1 ? '#15201A' : (team === 0 ? '#8FB31C' : '#FF8C6B')) + '"></span></span>';
@@ -54,6 +55,7 @@
       b.addEventListener('click', function () {
         b.classList.add('down');
         setTimeout(function () { b.classList.remove('down'); }, 160);
+        if (!touched) { touched = true; var h = document.querySelectorAll('.pt-card.hint'); for (var i = 0; i < h.length; i++) h[i].classList.remove('hint'); }
         press(slot);
       });
       wrap.appendChild(b);
