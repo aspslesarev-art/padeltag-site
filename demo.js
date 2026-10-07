@@ -102,6 +102,18 @@
     say(q(T.leg_undo || 'Undo')); renderScore();
   }
 
+  // Высоту кнопок и подсказок держим по самому большому режиму — при переключении экран не прыгает.
+  function lockHeights() {
+    var keep = s, tags = $('pt-tags'), lg = $('pt-legend'), ht = 0, hl = 0;
+    tags.style.minHeight = ''; lg.style.minHeight = '';
+    [1, 2, 4].forEach(function (m) {
+      s = fresh(m); renderTags();
+      ht = Math.max(ht, tags.offsetHeight); hl = Math.max(hl, lg.offsetHeight);
+    });
+    s = keep; renderTags();
+    tags.style.minHeight = ht + 'px'; lg.style.minHeight = hl + 'px';
+  }
+
   function setMode(m) {
     clearClicks(); s = fresh(m);
     var btns = document.querySelectorAll('.pt-mode');
@@ -114,5 +126,12 @@
     for (var i = 0; i < btns.length; i++) btns[i].addEventListener('click', function () { setMode(+this.getAttribute('data-mode')); });
     $('pt-reset').addEventListener('click', function () { setMode(s.mode); });
     setMode(4);
+    lockHeights();
+    var rt, lastW = innerWidth;
+    addEventListener('resize', function () {
+      if (innerWidth === lastW) return; lastW = innerWidth;
+      clearTimeout(rt); rt = setTimeout(lockHeights, 150);
+    });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(lockHeights);
   });
 })();
