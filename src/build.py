@@ -62,24 +62,51 @@ def typo(t, code):
 PHRASES = {'aud1_t', 'aud2_t', 'aud3_t'}
 SKIP_TYPO = {'h1_b', 'meta_title', 'meta_desc', 'og_desc', 'q1', 'q2', 'sep'}
 
+PAGES = ['', 'new', 'pro', 'club']  # главная и три страницы под аудитории: /ru/, /ru/new/, /ru/pro/, /ru/club/
+AUD_N = {'new': 1, 'pro': 2, 'club': 3}
+
+def page_path(path, page): return path + (page + '/' if page else '')
+
+def cut(src, page):
+    """Оставляет блоки <!--main-->…<!--/main--> только на главной, <!--aud-->…<!--/aud--> — только на страницах аудиторий."""
+    keep, drop = ('main', 'aud') if not page else ('aud', 'main')
+    src = re.sub(r'<!--%s-->.*?<!--/%s-->' % (drop, drop), '', src, flags=re.S)
+    return src.replace('<!--%s-->' % keep, '').replace('<!--/%s-->' % keep, '')
+
 for code, _, path, direction in LANGS:
+  for page in PAGES:
     tr = dict(en); tr.update(T.get(code, {}))
+    if page:
+        b = tr[page + '_badge']; tr['meta_title'] = 'PadelTag - ' + b[0].lower() + b[1:] if code != 'de' else 'PadelTag - ' + b
     tr = {k: (v if k in SKIP_TYPO else typo(v, code)) for k, v in tr.items()}
     names = NAMES[code]
     tr['players'] = names
     for i, n in enumerate(names): tr['pn%d' % i] = n; tr['pi%d' % i] = n[0]
-    missing = [k for k in en if code != 'en' and k not in T.get(code, {}) and k not in ('q1', 'q2', 'sep')]
-    if missing: print(code, 'missing:', missing)
-    opts = ''.join(f'<option value="{c}" data-href="{p}"{" selected" if c == code else ""}>{n}</option>' for c, n, p, _ in LANGS)
-    out = tpl
+    if not page:
+        missing = [k for k in en if code != 'en' and k not in T.get(code, {}) and k not in ('q1', 'q2', 'sep')]
+        if missing: print(code, 'missing:', missing)
+    pp = page_path(path, page)
+    hl = '\n'.join(f'<link rel="alternate" hreflang="{c}" href="{SITE}{page_path(p, page)}">' for c, _, p, _ in LANGS)
+    hl += f'\n<link rel="alternate" hreflang="x-default" href="{SITE}{page_path("/", page)}">'
+    opts = ''.join(f'<option value="{c}" data-href="{page_path(p, page)}"{" selected" if c == code else ""}>{n}</option>' for c, n, p, _ in LANGS)
+    out = cut(tpl, page)
     def fill(m):
         k = m.group(1)
         if k == 'lang': return code
         if k == 'dir': return direction
-        if k == 'path': return path
-        if k == 'hreflang': return hreflang
-        if k == 'autolang': return autolang if code == 'en' else ''
+        if k == 'path': return pp
+        if k == 'base': return path
+        if k == 'hreflang': return hl
+        if k == 'autolang': return autolang if code == 'en' and not page else ''
         if k == 'langopts': return opts
+        if k.startswith('X_'):  # подстановки страницы аудитории
+            x = k[2:]
+            if x.startswith('cur_'): return 'aria-current="page"' if x[4:] == page else ''
+            if x == 'mode': return '1' if page == 'new' else '4'
+            if x == 'try_p': k = page + '_try_p' if page else 'try_p'
+            elif x == 'h': k = 'aud%d_t' % AUD_N[page]
+            elif x == 'p': k = 'hero_p_' + page
+            else: k = page + '_' + x
         if k in ('ios_url', 'android_url'):
             u = STORE['ios' if 'ios' in k else 'android']; return html.escape(u) if u else '#app'
         if k in ('ios_attrs', 'android_attrs'):
@@ -95,12 +122,12 @@ for code, _, path, direction in LANGS:
     assert '{{' not in out
     out = out.replace('/tag.png"', '/tag.png?v=' + TAG_V + '"')
     out = out.replace('src="/demo.js"', 'src="/demo.js?v=' + DEMO_V + '"')
-    dest = root / path.strip('/') / 'index.html' if path != '/' else root / 'index.html'
-    dest.parent.mkdir(exist_ok=True)
+    dest = root / pp.strip('/') / 'index.html' if pp != '/' else root / 'index.html'
+    dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(out)
     print('built', dest.relative_to(root))
 
-sm = ''.join(f'<url><loc>{SITE}{p}</loc>' + ''.join(f'<xhtml:link rel="alternate" hreflang="{c2}" href="{SITE}{p2}"/>' for c2, _, p2, _ in LANGS) + '</url>' for _, _, p, _ in LANGS)
+sm = ''.join(f'<url><loc>{SITE}{page_path(p, pg)}</loc>' + ''.join(f'<xhtml:link rel="alternate" hreflang="{c2}" href="{SITE}{page_path(p2, pg)}"/>' for c2, _, p2, _ in LANGS) + '</url>' for pg in PAGES for _, _, p, _ in LANGS)
 (root / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">' + sm + '</urlset>\n')
 (root / 'app').mkdir(exist_ok=True)
 (root / 'app' / 'index.html').write_text('''<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PadelTag app</title><meta name="robots" content="noindex">

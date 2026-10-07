@@ -101,14 +101,7 @@ img{max-width:100%}
 @media (max-width:640px){.pt-aud{padding:24px}}
 @media (min-width:680px) and (max-width:1023px){.pt-aud-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.pt-aud-club{grid-column:1/-1}}
 @media (prefers-reduced-motion:reduce){.pt-aud-court i{animation:none}}
-/* Кто ты: переключатель аудитории; выбор меняет подпись, порядок карточек и подсвечивает тариф. */
-.pt-for{display:inline-flex;gap:4px;background:#F1F5E8;border-radius:999px;padding:4px;margin-bottom:20px;max-width:100%;overflow-x:auto}
-.pt-for button{border:none;cursor:pointer;font-family:inherit;font-size:15px;font-weight:600;padding:8px 16px;min-height:40px;border-radius:999px;background:transparent;color:#15201A;white-space:nowrap;transition:background-color .12s ease}
-.pt-for button:hover{background:#E3E9D6}
-.pt-for button[aria-pressed="true"]{background:#15201A;color:#FFFFFF}
-.pt-for button:focus-visible{outline:3px solid #15201A;outline-offset:2px}
 .pt-wrap{display:block}
-html[data-for="new"] .pt-aud[data-a="new"],html[data-for="pro"] .pt-aud[data-a="pro"],html[data-for="club"] .pt-aud[data-a="club"]{order:-1;box-shadow:0 0 0 3px #15201A}
 .pt-plan{border-radius:40px;padding:36px;display:flex;flex-direction:column;gap:16px;position:relative;min-width:0}
 .pt-plan-t{font-weight:800;font-size:24px;line-height:1.2}
 .pt-plan-p{font-weight:900;font-size:64px;line-height:1;letter-spacing:-0.03em}
@@ -120,13 +113,25 @@ html[data-for="new"] .pt-aud[data-a="new"],html[data-for="pro"] .pt-aud[data-a="
 .pt-rec{display:none;position:absolute;top:24px;right:24px;background:#15201A;color:#FFFFFF;font-size:14px;font-weight:700;padding:8px 14px;border-radius:999px}
 .pt-plan[data-a="pro"] .pt-rec{background:#FFFFFF;color:#15201A}
 .pt-plan[data-a="club"] .pt-rec{background:#D4F03C;color:#15201A}
-html[data-for="new"] .pt-plan[data-a="free"] .pt-rec,html[data-for="pro"] .pt-plan[data-a="pro"] .pt-rec,html[data-for="club"] .pt-plan[data-a="club"] .pt-rec{display:inline-block}
-html[data-for="new"] .pt-plan[data-a="free"],html[data-for="pro"] .pt-plan[data-a="pro"],html[data-for="club"] .pt-plan[data-a="club"]{box-shadow:0 0 0 3px #15201A}
 [dir="rtl"] .pt-rec{right:auto;left:24px}
 @supports (grid-template-rows: subgrid){.pt-plan{display:grid;grid-template-rows:subgrid;grid-row:span 5;align-items:start}.pt-plan .pt-rec{position:absolute}}
 .pt-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 #tag img{max-width:40%}
-@media (max-width:640px){.pt-for{display:flex;width:100%;overflow:visible}.pt-for button{flex:1 1 0;min-width:0;font-size:14px;padding:6px 8px;white-space:normal;line-height:1.15;min-height:44px}#tag>div{padding:32px 24px!important}#tag img{display:none}.pt-plan{padding:28px}.pt-plan-p{font-size:52px}}
+@media (max-width:640px){#tag>div{padding:32px 24px!important}#tag img{display:none}}
+.pt-go{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.pt-go a{background:#15201A;color:#FFFFFF;text-decoration:none;font-weight:600;font-size:17px;padding:14px 20px;border-radius:999px;min-height:60px;display:inline-flex;align-items:center}
+.pt-go a:nth-child(2){background:#D4F03C;color:#15201A}.pt-go a:nth-child(3){background:#1F4FA3;color:#FFFFFF}
+.pt-go a:focus-visible,.pt-tabs a:focus-visible,.pt-more:focus-visible{outline:3px solid #15201A;outline-offset:3px}
+.pt-tabs{display:inline-flex;gap:4px;background:#F1F5E8;border-radius:999px;padding:4px;margin-bottom:20px;max-width:100%}
+.pt-tabs a{text-decoration:none;color:#15201A;font-size:15px;font-weight:600;padding:8px 16px;min-height:40px;border-radius:999px;display:inline-flex;align-items:center;transition:background-color .12s ease}
+.pt-tabs a:hover{background:#E3E9D6;color:#15201A}.pt-tabs a[aria-current="page"]{background:#15201A;color:#FFFFFF}
+.pt-more{align-self:flex-start;font-weight:700;font-size:17px;text-decoration:underline;text-underline-offset:4px;color:inherit}
+.pt-aud-club .pt-more{color:#FFFFFF}
+.pt-ben{background:#F7F9F2;border-radius:30px;padding:26px;display:flex;flex-direction:column;gap:10px}
+.pt-ben-i{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center}
+.pt-ben h3{margin:6px 0 0;font-weight:800;font-size:21px;line-height:1.25}
+.pt-ben p{margin:0;color:#4D5A52;font-size:17px}
+@media (max-width:640px){.pt-go a{width:100%;justify-content:center}.pt-tabs{display:flex;width:100%}.pt-tabs a{flex:1 1 0;min-width:0;justify-content:center;text-align:center;font-size:14px;padding:6px 8px;line-height:1.15;min-height:44px}}
 .pt-lang:focus-visible{outline:3px solid #15201A;outline-offset:4px}
 </style>
 </head>
@@ -141,9 +146,8 @@ html[data-for="new"] .pt-plan[data-a="free"],html[data-for="pro"] .pt-plan[data-
 </a>
 <nav style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap; font-size: 17px">
 <a href="#try" class="pt-navlink" style="text-decoration: none; color: #4D5A52">Essayer</a>
-<a href="#modes" class="pt-navlink" style="text-decoration: none; color: #4D5A52">Comment jouer</a>
 <select class="pt-lang" aria-label="Language" onchange="try{localStorage.setItem('pt-lang',this.value)}catch(e){}location.href=this.options[this.selectedIndex].getAttribute('data-href')"><option value="en" data-href="/">English</option><option value="es" data-href="/es/">Español</option><option value="fr" data-href="/fr/" selected>Français</option><option value="de" data-href="/de/">Deutsch</option><option value="it" data-href="/it/">Italiano</option><option value="pt" data-href="/pt/">Português</option><option value="nl" data-href="/nl/">Nederlands</option><option value="sv" data-href="/sv/">Svenska</option><option value="da" data-href="/da/">Dansk</option><option value="ru" data-href="/ru/">Русский</option><option value="ar" data-href="/ar/">العربية</option></select>
-<a href="#get" class="pt-btn pt-navbuy" style="background: #15201A; color: #FFFFFF; text-decoration: none; font-weight: 600; padding: 12px 24px; border-radius: 999px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">Tarifs</a>
+<a href="#app" class="pt-btn pt-navbuy" style="background: #15201A; color: #FFFFFF; text-decoration: none; font-weight: 600; padding: 12px 24px; border-radius: 999px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">Télécharger</a>
 </nav>
 </div>
 </header>
@@ -152,21 +156,17 @@ html[data-for="new"] .pt-plan[data-a="free"],html[data-for="pro"] .pt-plan[data-
 <section id="top" style="padding: 40px 24px 80px">
 <div style="max-width: 1160px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 40px">
 <div style="flex: 1 1 460px; min-width: 0">
-<div id="pt-for" class="pt-for" role="group" aria-label="Qui es-⁠tu">
-<button type="button" data-for="new" aria-pressed="false">Je débute</button><button type="button" data-for="pro" aria-pressed="false">Je joue souvent</button><button type="button" data-for="club" aria-pressed="false">Club et tournois</button>
-</div>
+
 <div style="display: inline-flex; align-items: center; gap: 8px; background: #F1F5E8; border-radius: 999px; padding: 8px 16px; font-size: 15px; font-weight: 500; margin-bottom: 28px">
 <span style="width: 8px; height: 8px; border-radius: 50%; background: #8FB31C; display: inline-block"></span>Un bouton intelligent pour le padel
 </div>
 <h1 style="margin: 0; font-weight: 900; font-size: clamp(50px, 6.6vw, 92px); line-height: 0.98; letter-spacing: -0.035em">Le padel ne sera plus jamais <span style="font-style: italic; background: #D4F03C; padding: 0 12px; border-radius: 16px; display: inline-block; white-space: nowrap; transform: rotate(-2deg)">le même.</span></h1>
-<p class="pt-hp" data-a="" style="margin: 28px 0 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 500px">Fini les disputes sur le score. Chaque point va dans tes stats : tu vois ce qui marche et tu progresses plus vite. Le score est gratuit pour toujours.</p>
-<p class="pt-hp" data-a="new" hidden style="margin: 28px 0 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 500px">Pas besoin de retenir 15-⁠30-⁠40 : un clic et ton téléphone annonce le score. Tu joues, c’est tout. Le score est gratuit pour toujours.</p>
-<p class="pt-hp" data-a="pro" hidden style="margin: 28px 0 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 500px">Chaque point va dans tes stats : victoires, pourcentage de victoires, historique. Des chiffres honnêtes au lieu de « je crois qu’on a gagné » - tu vois ce qui marche et tu progresses plus vite.</p>
-<p class="pt-hp" data-a="club" hidden style="margin: 28px 0 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 500px">Americano et mexicano sans papier : paires et terrains se font tout seuls, le score de chaque terrain arrive dans un classement en direct - sur n’importe quel écran par un lien.</p>
-<div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px">
-<a href="#app" class="pt-btn" style="background: #15201A; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: inline-flex; align-items: center">Télécharger l’appli</a>
-<a href="#try" class="pt-btn" style="background: #F1F5E8; color: #15201A; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: inline-flex; align-items: center">Tester maintenant</a>
+<p style="margin: 28px 0 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 500px">Fini les disputes sur le score. Chaque point va dans tes stats : tu vois ce qui marche et tu progresses plus vite. Le score est gratuit pour toujours.</p>
+<div style="margin-top: 36px; font-weight: 800; font-size: 21px">Qui es-⁠tu ?</div>
+<div class="pt-go">
+<a href="/fr/new/" class="pt-btn">Je débute</a><a href="/fr/pro/" class="pt-btn">Je joue souvent</a><a href="/fr/club/" class="pt-btn">J’organise des tournois</a>
 </div>
+
 </div>
 
 <div style="flex: 1 1 480px; min-width: 0; display: flex; justify-content: center">
@@ -197,6 +197,7 @@ html[data-for="new"] .pt-plan[data-a="free"],html[data-for="pro"] .pt-plan[data-
 </div>
 </section>
 
+
 <!-- WHO -->
 <section id="who" style="padding: 8px 24px 0">
 <div style="max-width: 1160px; margin: 0 auto">
@@ -213,6 +214,7 @@ html[data-for="new"] .pt-plan[data-a="free"],html[data-for="pro"] .pt-plan[data-
 <div class="pt-aud-rows">
 <div><div class="pt-aud-k">Sans PadelTag</div><div class="pt-aud-was">Tu confonds 15-⁠30-⁠40, tu n’oses pas demander et tu perds ta concentration.</div></div>
 <div><div class="pt-aud-k"><i></i>Avec PadelTag</div><div class="pt-aud-now">Un clic - un point, ton téléphone dit le score à voix haute. Le point en or et le tie-⁠break aussi.</div></div>
+<a class="pt-more" href="/fr/new/">En savoir plus <span aria-hidden="true">→</span></a>
 </div>
 </div>
 
@@ -229,6 +231,7 @@ html[data-for="new"] .pt-plan[data-a="free"],html[data-for="pro"] .pt-plan[data-
 <div class="pt-aud-rows">
 <div><div class="pt-aud-k">Sans PadelTag</div><div class="pt-aud-was">Tu joues souvent, mais tu ne vois pas tes progrès ni ce qui marche.</div></div>
 <div><div class="pt-aud-k"><i></i>Avec PadelTag</div><div class="pt-aud-now">Chaque match dans ton historique : score, partenaire, adversaires, tes points. Matchs, victoires, pourcentage de victoires et points - sur l’écran d’accueil.</div></div>
+<a class="pt-more" href="/fr/pro/">En savoir plus <span aria-hidden="true">→</span></a>
 </div>
 </div>
 
@@ -244,6 +247,7 @@ html[data-for="new"] .pt-plan[data-a="free"],html[data-for="pro"] .pt-plan[data-
 <div class="pt-aud-rows">
 <div><div class="pt-aud-k">Sans PadelTag</div><div class="pt-aud-was">Feuilles de papier, disputes sur le score, résultats recopiés à la main.</div></div>
 <div><div class="pt-aud-k"><i></i>Avec PadelTag</div><div class="pt-aud-now">Americano et mexicano : paires et terrains se font tout seuls, le score de chaque terrain arrive direct dans le classement. Il s’ouvre par un lien sur n’importe quel écran.</div></div>
+<a class="pt-more" href="/fr/club/">En savoir plus <span aria-hidden="true">→</span></a>
 </div>
 </div>
 
@@ -251,10 +255,11 @@ html[data-for="new"] .pt-plan[data-a="free"],html[data-for="pro"] .pt-plan[data-
 </div>
 </section>
 
+
 <!-- HOW -->
 <section style="padding: 104px 24px">
 <div style="max-width: 1160px; margin: 0 auto">
-<h2 style="margin: 0 0 56px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em; max-width: 720px">Clipse. Clique. Joue.</h2>
+<h2 style="margin: 0 0 56px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em; max-width: 720px">Accroche. Marque. Clique.</h2>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px">
 
 <div style="background: #F7F9F2; border-radius: 36px; padding: 28px; display: flex; flex-direction: column; gap: 20px">
@@ -272,7 +277,7 @@ html[data-for="new"] .pt-plan[data-a="free"],html[data-for="pro"] .pt-plan[data-
 </div>
 <img src="/tag.png?v=25307c78" alt="" style="width: 62%; filter: drop-shadow(0 16px 16px rgba(21,32,26,0.25))">
 </div>
-<div><span style="font-weight: 800; color: #8FB31C">2</span><div style="font-weight: 800; font-size: 26px; line-height: 1.2">Point gagné ? Clique</div><div style="color: #4D5A52; margin-top: 6px">Gros bouton. Facile à trouver sans regarder.</div></div>
+<div><span style="font-weight: 800; color: #8FB31C">2</span><div style="font-weight: 800; font-size: 26px; line-height: 1.2">Point gagné ? Clique</div><div style="color: #4D5A52; margin-top: 6px">Gros bouton. Facile à toucher sans regarder.</div></div>
 </div>
 
 <div style="background: #F7F9F2; border-radius: 36px; padding: 28px; display: flex; flex-direction: column; gap: 20px">
@@ -280,7 +285,7 @@ html[data-for="new"] .pt-plan[data-a="free"],html[data-for="pro"] .pt-plan[data-
 <div style="width: 92px; height: 170px; border-radius: 20px; background: #15201A; padding: 5px; box-sizing: border-box"><div style="width: 100%; height: 100%; border-radius: 15px; background: #FFFFFF; padding: 16px 5px 5px; box-sizing: border-box; display: flex; flex-direction: column; gap: 4px"><div style="flex: 1; border-radius: 10px; background: #D4F03C; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 30px">15</div><div style="flex: 1; border-radius: 10px; background: #FFE3DA; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 30px">0</div></div></div>
 <div style="background: #FFFFFF; border-radius: 18px 18px 18px 4px; padding: 10px 14px; font-weight: 700; font-size: 17px; align-self: flex-start; margin-top: 30px">« Quinze, zéro »</div>
 </div>
-<div><span style="font-weight: 800; color: #8FB31C">3</span><div style="font-weight: 800; font-size: 26px; line-height: 1.2">Le téléphone parle et enregistre</div><div style="color: #4D5A52; margin-top: 6px">Tu entends le score après chaque point. Le match s’ajoute tout seul à ton historique.</div></div>
+<div><span style="font-weight: 800; color: #8FB31C">3</span><div style="font-weight: 800; font-size: 26px; line-height: 1.2">Tout va dans ton historique</div><div style="color: #4D5A52; margin-top: 6px">Le téléphone annonce le score et enregistre le match dans ton historique.</div></div>
 </div>
 
 </div>
@@ -288,7 +293,7 @@ html[data-for="new"] .pt-plan[data-a="free"],html[data-for="pro"] .pt-plan[data-
 </section>
 
 <!-- TRY -->
-<section id="try" style="padding: 104px 24px; background: #F7F9F2">
+<section id="try" data-mode="4" style="padding: 104px 24px; background: #F7F9F2">
 <div style="max-width: 1160px; margin: 0 auto">
 <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 48px">
 <div>
@@ -333,122 +338,6 @@ html[data-for="new"] .pt-plan[data-a="free"],html[data-for="pro"] .pt-plan[data-
 </div>
 </div>
 </div>
-</div>
-</section>
-
-<!-- MODES -->
-<section id="modes" style="padding: 104px 24px">
-<div style="max-width: 1160px; margin: 0 auto">
-<h2 style="margin: 0 0 56px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Un, quatre ou seize.<br><span style="color: #8C968F">À toi de choisir.</span></h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
-
-<div style="background: #F7F9F2; border-radius: 36px; padding: 28px; display: flex; flex-direction: column; gap: 18px">
-<div style="height: 150px; display: flex; align-items: center; justify-content: center">
-<img src="/tag.png?v=25307c78" alt="" style="width: 150px; filter: drop-shadow(0 12px 12px rgba(21,32,26,0.25))">
-</div>
-<div style="font-weight: 800; font-size: 26px; line-height: 1.2">Un pour tous</div>
-<div style="color: #4D5A52">Une seule personne compte. 1 clic - nous, 2 clics - eux.</div>
-</div>
-
-
-<div style="background: #F7F9F2; border-radius: 36px; padding: 28px; display: flex; flex-direction: column; gap: 18px; position: relative">
-<div style="position: absolute; top: 22px; right: 22px; background: #15201A; color: #FFFFFF; font-size: 13px; font-weight: 700; padding: 6px 12px; border-radius: 999px">+ stats par joueur</div>
-<div style="height: 150px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; align-items: center; justify-items: center; padding: 28px 20px 0">
-<span style="width: 58px; height: 58px; border-radius: 50%; background: #D4F03C; display: flex; align-items: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 54px"></span>
-<span style="width: 58px; height: 58px; border-radius: 50%; background: #FFC2B0; display: flex; align-items: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 54px"></span>
-<span style="width: 58px; height: 58px; border-radius: 50%; background: #D4F03C; display: flex; align-items: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 54px"></span>
-<span style="width: 58px; height: 58px; border-radius: 50%; background: #FFC2B0; display: flex; align-items: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 54px"></span>
-</div>
-<div style="font-weight: 800; font-size: 26px; line-height: 1.2">Un par joueur</div>
-<div style="color: #4D5A52">Après le match - qui a marqué le plus. De quoi chambrer les copains.</div>
-</div>
-
-<div style="background: #1F4FA3; color: #FFFFFF; border-radius: 36px; padding: 28px; display: flex; flex-direction: column; gap: 18px">
-<div style="height: 150px; display: grid; grid-template-columns: repeat(4, 30px); gap: 8px 14px; align-content: center; justify-content: center"><span style="width: 30px; height: 30px; border-radius: 50%; background: #D4F03C; display: flex; align-items: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 28px"></span><span style="width: 30px; height: 30px; border-radius: 50%; background: #FFC2B0; display: flex; align-items: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 28px"></span><span style="width: 30px; height: 30px; border-radius: 50%; background: #D4F03C; display: flex; align-items: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 28px"></span><span style="width: 30px; height: 30px; border-radius: 50%; background: #FFC2B0; display: flex; align-items: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 28px"></span><span style="width: 30px; height: 30px; border-radius: 50%; background: #FFC2B0; display: flex; align-items: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 28px"></span><span style="width: 30px; height: 30px; border-radius: 50%; background: #D4F03C; display: flex; align-items: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 28px"></span><span style="width: 30px; height: 30px; border-radius: 50%; background: #FFC2B0; display: flex; align-items: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 28px"></span><span style="width: 30px; height: 30px; border-radius: 50%; background: #D4F03C; display: flex; align-items: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 28px"></span><span style="width: 30px; height: 30px; border-radius: 50%; background: #D4F03C; display: flex; align-items: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 28px"></span><span style="width: 30px; height: 30px; border-radius: 50%; background: #FFC2B0; display: flex; align-items: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 28px"></span><span style="width: 30px; height: 30px; border-radius: 50%; background: #D4F03C; display: flex; align-items: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 28px"></span><span style="width: 30px; height: 30px; border-radius: 50%; background: #FFC2B0; display: flex; align-items: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 28px"></span><span style="width: 30px; height: 30px; border-radius: 50%; background: #FFC2B0; display: flex; align-items: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 28px"></span><span style="width: 30px; height: 30px; border-radius: 50%; background: #D4F03C; display: flex; align-items: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 28px"></span><span style="width: 30px; height: 30px; border-radius: 50%; background: #FFC2B0; display: flex; align-items: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 28px"></span><span style="width: 30px; height: 30px; border-radius: 50%; background: #D4F03C; display: flex; align-items: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 28px"></span></div>
-<div style="font-weight: 800; font-size: 26px; line-height: 1.2">16 - un tournoi sur 4 terrains</div>
-<div style="color: #D5E0F5">Americano ou mexicano : distribue les boutons - paires, terrains et classement se font tout seuls.</div>
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- STATS -->
-<section id="stats" style="padding: 104px 24px; background: #15201A; color: #FFFFFF">
-<div style="max-width: 1160px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
-<div style="flex: 1 1 420px; min-width: 0">
-<div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(212,240,60,0.14); color: #D4F03C; border-radius: 999px; padding: 8px 16px; font-size: 15px; font-weight: 600; margin-bottom: 24px">Ton tag = ton profil</div>
-<h2 style="margin: 0 0 20px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Tout ton jeu. <span style="color: #D4F03C">En chiffres.</span></h2>
-<p style="margin: 0 0 36px; font-size: 21px; color: #C9D0CB; max-width: 480px">Associe ton bouton à ton compte une seule fois. Pendant le match, tu vois tes points ; après, tout est dans tes stats : matchs, victoires, pourcentage de victoires, historique.</p>
-<div style="display: flex; flex-direction: column; gap: 18px">
-<div style="display: flex; align-items: center; gap: 16px"><span style="width: 44px; height: 44px; flex: none; border-radius: 14px; background: #D4F03C; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></span><span style="font-size: 19px; font-weight: 500">Ton tag sait que c’est toi</span></div>
-<div style="display: flex; align-items: center; gap: 16px"><span style="width: 44px; height: 44px; flex: none; border-radius: 14px; background: #D4F03C; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"></path></svg></span><span style="font-size: 19px; font-weight: 500">L’historique complet de tes matchs</span></div>
-<div style="display: flex; align-items: center; gap: 16px"><span style="width: 44px; height: 44px; flex: none; border-radius: 14px; background: #D4F03C; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M15.5 14.5A5 5 0 0 1 21.5 19"></path></svg></span><span style="font-size: 19px; font-weight: 500">Tes points visibles pendant le match</span></div>
-</div>
-</div>
-
-<div style="flex: 0 1 330px; min-width: 0; margin: 0 auto">
-<div style="width: 310px; max-width: 100%; height: 620px; border-radius: 52px; background: #05070A; padding: 11px; box-sizing: border-box; box-shadow: 0 30px 80px rgba(0,0,0,0.4); margin: 0 auto">
-<div style="width: 100%; height: 100%; border-radius: 42px; background: #FFFFFF; color: #15201A; padding: 46px 16px 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px; position: relative; overflow: hidden">
-<div style="position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 84px; height: 24px; border-radius: 999px; background: #05070A"></div>
-<div style="display: flex; align-items: center; gap: 12px">
-<span style="width: 48px; height: 48px; border-radius: 50%; background: #D4F03C; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 20px">G</span>
-<div><div style="font-weight: 800; font-size: 20px; line-height: 1.1">Gabriel</div><div style="font-size: 13px; color: #4D5A52">Tag relié</div></div>
-</div>
-<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
-<div style="background: #D4F03C; border-radius: 18px; padding: 12px 14px"><div style="font-size: 12px; font-weight: 600">Points ce mois-⁠ci</div><div style="font-weight: 900; font-size: 34px; line-height: 1.1">186</div></div>
-<div style="background: #F1F5E8; border-radius: 18px; padding: 12px 14px"><div style="font-size: 12px; font-weight: 600">Matchs gagnés</div><div style="font-weight: 900; font-size: 34px; line-height: 1.1; white-space: nowrap">9/14</div></div>
-</div>
-<div style="font-size: 13px; font-weight: 700; color: #4D5A52; letter-spacing: 0.06em; margin-top: 2px">DERNIERS MATCHS</div>
-<div style="display: flex; flex-direction: column; gap: 6px">
-<div style="display: flex; align-items: center; justify-content: space-between; background: #F7F9F2; border-radius: 14px; padding: 10px 12px; font-size: 14px"><span><b>Aujourd’hui</b> · gagné <span style="white-space: nowrap">6-4 7-5</span></span><b style="white-space: nowrap">41 pts</b></div>
-<div style="display: flex; align-items: center; justify-content: space-between; background: #F7F9F2; border-radius: 14px; padding: 10px 12px; font-size: 14px"><span><b>Sam</b> · perdu <span style="white-space: nowrap">4-6 3-6</span></span><b style="white-space: nowrap">22 pts</b></div>
-<div style="display: flex; align-items: center; justify-content: space-between; background: #F7F9F2; border-radius: 14px; padding: 10px 12px; font-size: 14px"><span><b>Jeu</b> · gagné <span style="white-space: nowrap">6-3</span></span><b style="white-space: nowrap">27 pts</b></div>
-</div>
-<div style="font-size: 13px; font-weight: 700; color: #4D5A52; letter-spacing: 0.06em; margin-top: 2px">AMIS</div>
-<div style="display: flex; flex-direction: column; gap: 6px; font-size: 14px">
-<div style="display: flex; align-items: center; gap: 10px"><span style="width: 28px; height: 28px; border-radius: 50%; background: #FFC2B0; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px">L</span><span style="flex: 1">Léo</span><b>203</b></div>
-<div style="display: flex; align-items: center; gap: 10px"><span style="width: 28px; height: 28px; border-radius: 50%; background: #D4F03C; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px">G</span><span style="flex: 1; font-weight: 700">Toi</span><b>186</b></div>
-<div style="display: flex; align-items: center; gap: 10px"><span style="width: 28px; height: 28px; border-radius: 50%; background: #F1F5E8; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px">J</span><span style="flex: 1">Jade</span><b>154</b></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- PLANS -->
-<section id="get" style="padding: 0 24px 104px">
-<div style="max-width: 1160px; margin: 0 auto">
-<h2 style="margin: 0 0 12px; font-weight: 900; font-size: clamp(40px, 5.4vw, 72px); line-height: 0.98; letter-spacing: -0.035em">Tu joues.<br>On compte.</h2>
-<p style="margin: 0 0 48px; font-size: 21px; color: #4D5A52; max-width: 640px">Le bouton s’achète dans n’importe quelle boutique - environ $7–⁠14. Le score est gratuit pour toujours, l’abonnement quand tu veux voir tes progrès.</p>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
-<div class="pt-plan" data-a="free" style="background: #F7F9F2; color: #15201A">
-<span class="pt-rec">Pour toi</span>
-<div class="pt-plan-t">Gratuit</div>
-<div class="pt-plan-p">$0 <span class="pt-plan-per">pour toujours</span></div>
-<div class="pt-plan-n">Tout pour tenir le score.</div>
-<ul class="pt-plan-l"><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Score au bouton et à la voix</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>1, 2 ou 4 boutons</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Point en or et tie-⁠break</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Annuler par double clic</span></li></ul>
-<a href="#app" class="pt-btn pt-plan-b" style="background: #FFFFFF; color: #15201A; border: 2px solid #15201A">Télécharger l’appli</a>
-</div>
-<div class="pt-plan" data-a="pro" style="background: #D4F03C; color: #15201A">
-<span class="pt-rec">Pour toi</span>
-<div class="pt-plan-t">Pro</div>
-<div class="pt-plan-p">$2.99 <span class="pt-plan-per">/ mois</span></div>
-<div class="pt-plan-n">ou $19.99 par an · 14 jours gratuits</div>
-<ul class="pt-plan-l"><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Historique de tous les matchs</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Victoires, pourcentage, points</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Stats de chaque joueur</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Le score d’un autre match sur ton téléphone</span></li></ul>
-<a href="#app" class="pt-btn pt-plan-b" style="background: #15201A; color: #FFFFFF; border: 2px solid #15201A">Essai gratuit 14 jours</a>
-</div>
-<div class="pt-plan" data-a="club" style="background: #1F4FA3; color: #FFFFFF">
-<span class="pt-rec">Pour toi</span>
-<div class="pt-plan-t">Max · pour les clubs</div>
-<div class="pt-plan-p"><span style="font-size: 0.56em; letter-spacing: -0.02em">Sur mesure</span></div>
-<div class="pt-plan-n">Écris-⁠nous, on calcule le prix pour ton club.</div>
-<ul class="pt-plan-l"><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Americano et mexicano</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Paires et terrains se font tout seuls</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Un téléphone par terrain</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Classement en direct par lien</span></li></ul>
-<a href="[MAX CONTACT]" class="pt-btn pt-plan-b" style="background: #FFFFFF; color: #15201A; border: 2px solid #FFFFFF">Demander le prix</a>
-</div>
-</div>
-<p style="margin: 24px 0 0; text-align: center; font-size: 16px; color: #4D5A52">Appli pour iPhone. Abonnement résiliable à tout moment dans les réglages de l’App Store.</p>
 </div>
 </section>
 
@@ -498,19 +387,6 @@ html[data-for="new"] .pt-plan[data-a="free"],html[data-for="pro"] .pt-plan[data-
 <script>window.PT_T={"score_btn": "Bouton de score", "click_aria": "Cliquer sur : ", "leg_us": "Point pour nous", "leg_them": "Point pour eux", "leg_undo": "Annuler", "leg_point": "Point", "game": "Jeu !", "golden": "Point décisif", "nothing": "Rien à annuler", "words": {"0": "zéro", "15": "quinze", "30": "trente", "40": "quarante"}, "q1": "« ", "q2": " »", "sep": ", ", "us": "Nous", "them": "Eux", "said_init": "Clique sur un bouton", "players": ["Gabriel", "Jade", "Léo", "Louise"]};</script>
 <script>
 (function(){
-  // Кто ты: ?for=new|pro|club или прошлый выбор. Без выбора — общая подпись.
-  var keys=['new','pro','club'],q=null;
-  try{q=new URLSearchParams(location.search).get('for')}catch(e){}
-  if(keys.indexOf(q)<0){q=null;try{q=localStorage.getItem('pt-for')}catch(e){}}
-  function set(v,save){
-    if(keys.indexOf(v)<0)v='';
-    document.documentElement.setAttribute('data-for',v);
-    document.querySelectorAll('#pt-for button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.for===v?'true':'false')});
-    document.querySelectorAll('.pt-hp').forEach(function(p){p.hidden=p.dataset.a!==v});
-    if(save){try{localStorage.setItem('pt-for',v)}catch(e){}}
-  }
-  document.querySelectorAll('#pt-for button').forEach(function(b){b.addEventListener('click',function(){set(b.dataset.for===document.documentElement.getAttribute('data-for')?'':b.dataset.for,true)})});
-  set(q,false);
   // Где купить кнопку: страна → магазин. Названия стран — на языке страницы.
   var S={US:['Amazon','https://www.amazon.com/s?k=itag+anti+lost'],CA:['Amazon','https://www.amazon.ca/s?k=itag+anti+lost'],GB:['Amazon','https://www.amazon.co.uk/s?k=itag+anti+lost'],AU:['Amazon','https://www.amazon.com.au/s?k=itag+anti+lost'],DE:['Amazon','https://www.amazon.de/s?k=itag+anti+lost'],AT:['Amazon','https://www.amazon.de/s?k=itag+anti+lost'],CH:['Amazon','https://www.amazon.de/s?k=itag+anti+lost'],FR:['Amazon','https://www.amazon.fr/s?k=itag+anti+lost'],BE:['Amazon','https://www.amazon.com.be/s?k=itag+anti+lost'],NL:['Amazon','https://www.amazon.nl/s?k=itag+anti+lost'],ES:['Amazon','https://www.amazon.es/s?k=itag+anti+lost'],PT:['Amazon','https://www.amazon.es/s?k=itag+anti+lost'],IT:['Amazon','https://www.amazon.it/s?k=itag+anti+lost'],SE:['Amazon','https://www.amazon.se/s?k=itag+anti+lost'],DK:['Amazon','https://www.amazon.de/s?k=itag+anti+lost'],PL:['Amazon','https://www.amazon.pl/s?k=itag+anti+lost'],AE:['Amazon','https://www.amazon.ae/s?k=itag+anti+lost'],SA:['Amazon','https://www.amazon.sa/s?k=itag+anti+lost'],EG:['Amazon','https://www.amazon.eg/s?k=itag+anti+lost'],MX:['Amazon','https://www.amazon.com.mx/s?k=itag+anti+lost'],BR:['Amazon','https://www.amazon.com.br/s?k=itag+anti+lost'],IN:['Amazon','https://www.amazon.in/s?k=itag+anti+lost'],JP:['Amazon','https://www.amazon.co.jp/s?k=itag+anti+lost'],SG:['Amazon','https://www.amazon.sg/s?k=itag+anti+lost'],RU:['Ozon','https://www.ozon.ru/search/?text=itag+%D0%B1%D1%80%D0%B5%D0%BB%D0%BE%D0%BA'],ID:['Shopee','https://shopee.co.id/search?keyword=itag'],TH:['Shopee','https://shopee.co.th/search?keyword=itag']};
   var other=['AliExpress','https://www.aliexpress.com/w/wholesale-itag-anti-lost.html'];
@@ -530,6 +406,6 @@ html[data-for="new"] .pt-plan[data-a="free"],html[data-for="pro"] .pt-plan[data-
 })();
 </script>
 
-<script src="/demo.js?v=7cac2b10"></script>
+<script src="/demo.js?v=7a464af6"></script>
 </body>
 </html>

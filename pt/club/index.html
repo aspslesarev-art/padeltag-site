@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="pt" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PadelTag - para organizadores</title>
+<meta name="description" content="PadelTag é um botão que prendes à camisola. Ganhaste o ponto - carregas. O telemóvel conta e diz o resultado em voz alta.">
+<meta property="og:title" content="PadelTag - para organizadores">
+<meta property="og:description" content="Prende. Carrega para marcar. O telemóvel conta e diz o resultado.">
+<meta property="og:image" content="https://padeltag.app/tag.png?v=25307c78">
+<link rel="icon" type="image/png" href="/tag.png?v=25307c78">
+<link rel="canonical" href="https://padeltag.app/pt/club/">
+<link rel="alternate" hreflang="en" href="https://padeltag.app/club/">
+<link rel="alternate" hreflang="es" href="https://padeltag.app/es/club/">
+<link rel="alternate" hreflang="fr" href="https://padeltag.app/fr/club/">
+<link rel="alternate" hreflang="de" href="https://padeltag.app/de/club/">
+<link rel="alternate" hreflang="it" href="https://padeltag.app/it/club/">
+<link rel="alternate" hreflang="pt" href="https://padeltag.app/pt/club/">
+<link rel="alternate" hreflang="nl" href="https://padeltag.app/nl/club/">
+<link rel="alternate" hreflang="sv" href="https://padeltag.app/sv/club/">
+<link rel="alternate" hreflang="da" href="https://padeltag.app/da/club/">
+<link rel="alternate" hreflang="ru" href="https://padeltag.app/ru/club/">
+<link rel="alternate" hreflang="ar" href="https://padeltag.app/ar/club/">
+<link rel="alternate" hreflang="x-default" href="https://padeltag.app/club/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#15201A}a:hover{color:#3B4A40}
+@keyframes ptfloat{0%,100%{transform:translateY(0) rotate(-16deg)}50%{transform:translateY(-14px) rotate(-13deg)}}
+@keyframes ptring{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.5);opacity:0}}
+.pt-float{animation:ptfloat 5s ease-in-out infinite;transition:filter .12s ease}
+.pt-float.down{filter:brightness(1.25) drop-shadow(0 18px 18px rgba(21,32,26,0.35))!important}
+.pt-float:focus-visible{outline:3px solid #15201A;outline-offset:8px;border-radius:40px}
+.pt-pop{transform:scale(1.18)}
+.pt-ring{animation:ptring 1.8s ease-out infinite}
+.pt-ring2{animation-delay:.6s}
+.pt-tag{cursor:pointer;transition:transform .15s ease}
+.pt-tag:hover{transform:translateY(-4px)}
+.pt-tag:focus-visible,.pt-btn:focus-visible{outline:3px solid #15201A;outline-offset:4px}
+.pt-btn{transition:transform .12s ease}
+.pt-btn:hover{transform:translateY(-2px)}
+*{box-sizing:border-box}
+/* Журнальные переносы: заголовки — ровными строками, абзацы — без висячих слов, мелкий текст — мягкие переносы по языку. */
+body{text-wrap:pretty;hanging-punctuation:first}
+h1,h2,h3,[style*="font-weight: 800"],[style*="font-weight: 900"]{text-wrap:balance;hyphens:manual}
+:lang(de) p,:lang(de) .pt-aud-was,:lang(de) .pt-aud-now,:lang(de) [style*="color: #4D5A52"],:lang(de) [style*="color: #2B3313"],:lang(de) [style*="color: #C9D0CB"],:lang(nl) p,:lang(nl) .pt-aud-was,:lang(nl) .pt-aud-now,:lang(nl) [style*="color: #4D5A52"],:lang(nl) [style*="color: #2B3313"],:lang(nl) [style*="color: #C9D0CB"],:lang(sv) p,:lang(sv) .pt-aud-was,:lang(sv) .pt-aud-now,:lang(sv) [style*="color: #4D5A52"],:lang(sv) [style*="color: #2B3313"],:lang(sv) [style*="color: #C9D0CB"],:lang(da) p,:lang(da) .pt-aud-was,:lang(da) .pt-aud-now,:lang(da) [style*="color: #4D5A52"],:lang(da) [style*="color: #2B3313"],:lang(da) [style*="color: #C9D0CB"]{hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:10 5 5;-webkit-hyphenate-limit-before:5;-webkit-hyphenate-limit-after:5}
+a,button,.pt-chip,.pt-mode,nav{hyphens:manual}
+html{scroll-behavior:smooth}
+img{max-width:100%}
+.pt-mode{border:none;cursor:pointer;font-family:inherit;font-size:17px;font-weight:600;padding:12px 22px;min-height:48px;border-radius:999px;background:transparent;color:#15201A}
+.pt-mode[aria-pressed="true"]{background:#15201A;color:#FFFFFF}
+.pt-panel{flex:1;border-radius:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transition:transform .15s ease, box-shadow .15s ease}
+.pt-panel.flash{transform:scale(1.03);box-shadow:0 0 0 4px #15201A inset}
+.pt-score{font-size:104px;font-weight:900;line-height:1;letter-spacing:-0.04em}
+.pt-players{display:none;gap:14px;font-size:14px}
+.pt-players.on{display:flex}
+.pt-card{background:#FFFFFF;border:none;border-radius:32px;padding:28px 16px 20px;display:flex;flex-direction:column;align-items:center;gap:14px;font-family:inherit;color:#15201A;min-height:48px}
+.pt-glow{width:170px;max-width:100%;height:120px;display:flex;align-items:center;justify-content:center;border-radius:999px}
+.pt-glow img{width:160px;max-width:94%;transition:transform .12s ease;filter:drop-shadow(0 12px 12px rgba(21,32,26,0.28))}
+@keyframes pthint{0%{transform:scale(.92);opacity:.75}40%,100%{transform:scale(1.25);opacity:0}}
+.pt-glow{position:relative}
+.pt-card.hint .pt-glow::after{content:"";position:absolute;inset:0;border-radius:inherit;border:3px solid #15201A;animation:pthint var(--hd,3s) cubic-bezier(.2,.8,.2,1) var(--hl,0s) infinite;opacity:0;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.pt-card.hint .pt-glow::after{animation:none;opacity:.35}}
+.pt-card.down .pt-glow img{transform:scale(.9) translateY(4px)}
+.pt-name{display:inline-flex;align-items:center;gap:8px;font-size:19px;font-weight:700}
+.pt-dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.pt-chip{display:inline-flex;align-items:center;gap:10px;background:#FFFFFF;border-radius:999px;padding:10px 18px;font-size:17px;font-weight:500}
+.pt-chip i{width:10px;height:10px;border-radius:50%;background:#15201A;display:inline-block}
+.pt-chip span{display:inline-flex;gap:4px}
+.pt-lang{appearance:none;-webkit-appearance:none;border:none;font-family:inherit;font-size:16px;font-weight:600;color:#15201A;background:#F1F5E8 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2315201A' stroke-width='2' fill='none'/%3E%3C/svg%3E") no-repeat right 14px center;padding:0 36px 0 16px;min-height:48px;border-radius:999px;cursor:pointer}
+[dir="rtl"] .pt-lang{background-position:left 14px center;padding:0 16px 0 36px}
+@media (max-width:640px){.pt-navlink,.pt-navbuy{display:none!important}#pt-modes{flex-wrap:nowrap!important;max-width:100%}.pt-mode{font-size:15px;padding:10px 14px;white-space:nowrap}}
+@supports (grid-template-rows: subgrid){.pt-price{display:grid!important;grid-template-rows:subgrid;grid-row:span 6;align-items:start}.pt-price>a{align-self:end;white-space:nowrap;padding-left:16px!important;padding-right:16px!important}.pt-price>div[style*="inline-flex"]{justify-self:stretch}.pt-price svg{flex:none}}
+.pt-store[aria-disabled="true"]{cursor:default}.pt-store[aria-disabled="true"]:hover{transform:none}
+.pt-soon{position:absolute;top:-10px;right:-8px;background:#D4F03C;color:#15201A;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;opacity:1}
+@media (max-width:640px){.pt-qr{display:none!important}#app>div{padding:32px 24px!important}}
+/* Для кого: три карточки, строки «без / с PadelTag» стоят на одной высоте во всех трёх. */
+.pt-aud{border-radius:36px;padding:28px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.pt-aud-pic{height:180px;border-radius:26px;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.pt-aud-pill{width:56px;height:56px;border-radius:50%;background:#FFFFFF;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:21px;letter-spacing:-0.02em}
+.pt-aud-bar{width:14px;border-radius:4px;background:#E3E9D6;display:block}
+.pt-aud-court{background:#FFFFFF;color:#15201A;border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.pt-aud-court span{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#4D5A52}
+.pt-aud-court i{width:8px;height:8px;border-radius:50%;background:#FF8C6B;display:inline-block;animation:ptlive 1.6s ease-in-out infinite}
+.pt-aud-court b{direction:ltr;unicode-bidi:isolate;font-weight:800;font-size:17px;white-space:nowrap;letter-spacing:-0.01em}
+@keyframes ptlive{50%{opacity:.25}}
+.pt-aud-who{align-self:flex-start;justify-self:start;background:#FFFFFF;border-radius:999px;padding:6px 14px;font-size:15px;font-weight:600}
+.pt-aud-club .pt-aud-who{background:rgb(255 255 255 / .14);color:#FFFFFF}
+.pt-ph{display:inline-block;text-wrap:balance}
+.pt-aud-t{margin:0;font-weight:800;font-size:24px;line-height:1.2;letter-spacing:-0.02em}
+.pt-aud-rows{display:flex;flex-direction:column;gap:16px;margin-top:auto;padding-top:16px;border-top:1px solid #E3E9D6}
+.pt-aud-club .pt-aud-rows{border-top-color:rgb(255 255 255 / .2)}
+.pt-aud-k{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#4D5A52;margin-bottom:4px}
+.pt-aud-k i{width:10px;height:10px;border-radius:50%;background:#D4F03C;box-shadow:0 0 0 2px #15201A inset;display:inline-block}
+.pt-aud-was{font-size:17px;color:#4D5A52}
+.pt-aud-now{font-size:17px;font-weight:500}
+.pt-aud-club .pt-aud-k,.pt-aud-club .pt-aud-was{color:#D5E0F5}
+.pt-aud-club .pt-aud-k i{box-shadow:none}
+@supports (grid-template-rows: subgrid){.pt-aud{display:grid;grid-template-rows:subgrid;grid-row:span 4;gap:16px}.pt-aud-rows{margin-top:0}}
+@media (max-width:640px){.pt-aud{padding:24px}}
+@media (min-width:680px) and (max-width:1023px){.pt-aud-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.pt-aud-club{grid-column:1/-1}}
+@media (prefers-reduced-motion:reduce){.pt-aud-court i{animation:none}}
+.pt-wrap{display:block}
+.pt-plan{border-radius:40px;padding:36px;display:flex;flex-direction:column;gap:16px;position:relative;min-width:0}
+.pt-plan-t{font-weight:800;font-size:24px;line-height:1.2}
+.pt-plan-p{font-weight:900;font-size:64px;line-height:1;letter-spacing:-0.03em}
+.pt-plan-per{font-size:19px;font-weight:600;letter-spacing:0}
+.pt-plan-n{font-size:17px;opacity:.85}
+.pt-plan-l{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:17px}
+.pt-plan-l li{display:flex;gap:10px;align-items:flex-start}.pt-plan-l svg{flex:none;margin-top:3px}
+.pt-plan-b{margin-top:auto;text-decoration:none;font-weight:600;font-size:19px;padding:16px 24px;border-radius:999px;min-height:60px;display:flex;align-items:center;justify-content:center;white-space:nowrap}
+.pt-rec{display:none;position:absolute;top:24px;right:24px;background:#15201A;color:#FFFFFF;font-size:14px;font-weight:700;padding:8px 14px;border-radius:999px}
+.pt-plan[data-a="pro"] .pt-rec{background:#FFFFFF;color:#15201A}
+.pt-plan[data-a="club"] .pt-rec{background:#D4F03C;color:#15201A}
+[dir="rtl"] .pt-rec{right:auto;left:24px}
+@supports (grid-template-rows: subgrid){.pt-plan{display:grid;grid-template-rows:subgrid;grid-row:span 5;align-items:start}.pt-plan .pt-rec{position:absolute}}
+.pt-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#tag img{max-width:40%}
+@media (max-width:640px){#tag>div{padding:32px 24px!important}#tag img{display:none}}
+.pt-go{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.pt-go a{background:#15201A;color:#FFFFFF;text-decoration:none;font-weight:600;font-size:17px;padding:14px 20px;border-radius:999px;min-height:60px;display:inline-flex;align-items:center}
+.pt-go a:nth-child(2){background:#D4F03C;color:#15201A}.pt-go a:nth-child(3){background:#1F4FA3;color:#FFFFFF}
+.pt-go a:focus-visible,.pt-tabs a:focus-visible,.pt-more:focus-visible{outline:3px solid #15201A;outline-offset:3px}
+.pt-tabs{display:inline-flex;gap:4px;background:#F1F5E8;border-radius:999px;padding:4px;margin-bottom:20px;max-width:100%}
+.pt-tabs a{text-decoration:none;color:#15201A;font-size:15px;font-weight:600;padding:8px 16px;min-height:40px;border-radius:999px;display:inline-flex;align-items:center;transition:background-color .12s ease}
+.pt-tabs a:hover{background:#E3E9D6;color:#15201A}.pt-tabs a[aria-current="page"]{background:#15201A;color:#FFFFFF}
+.pt-more{align-self:flex-start;font-weight:700;font-size:17px;text-decoration:underline;text-underline-offset:4px;color:inherit}
+.pt-aud-club .pt-more{color:#FFFFFF}
+.pt-ben{background:#F7F9F2;border-radius:30px;padding:26px;display:flex;flex-direction:column;gap:10px}
+.pt-ben-i{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center}
+.pt-ben h3{margin:6px 0 0;font-weight:800;font-size:21px;line-height:1.25}
+.pt-ben p{margin:0;color:#4D5A52;font-size:17px}
+@media (max-width:640px){.pt-go a{width:100%;justify-content:center}.pt-tabs{display:flex;width:100%}.pt-tabs a{flex:1 1 0;min-width:0;justify-content:center;text-align:center;font-size:14px;padding:6px 8px;line-height:1.15;min-height:44px}}
+.pt-lang:focus-visible{outline:3px solid #15201A;outline-offset:4px}
+</style>
+</head>
+<body>
+<div style="background: #FFFFFF; color: #15201A; font-family: Rubik, system-ui, sans-serif; font-size: 19px; line-height: 1.5; min-height: 100vh; overflow-x: hidden">
+
+<header style="padding: 20px 24px">
+<div style="max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+<a href="#top" style="display: flex; align-items: center; gap: 10px; text-decoration: none">
+<span style="width: 34px; height: 34px; border-radius: 50%; background: #D4F03C; display: inline-flex; align-items: center; justify-content: center"><span style="width: 12px; height: 12px; border-radius: 50%; background: #15201A; display: inline-block"></span></span>
+<span style="font-weight: 800; font-size: 22px; letter-spacing: -0.01em">PadelTag</span>
+</a>
+<nav style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap; font-size: 17px">
+<a href="#try" class="pt-navlink" style="text-decoration: none; color: #4D5A52">Experimenta</a>
+<select class="pt-lang" aria-label="Language" onchange="try{localStorage.setItem('pt-lang',this.value)}catch(e){}location.href=this.options[this.selectedIndex].getAttribute('data-href')"><option value="en" data-href="/club/">English</option><option value="es" data-href="/es/club/">Español</option><option value="fr" data-href="/fr/club/">Français</option><option value="de" data-href="/de/club/">Deutsch</option><option value="it" data-href="/it/club/">Italiano</option><option value="pt" data-href="/pt/club/" selected>Português</option><option value="nl" data-href="/nl/club/">Nederlands</option><option value="sv" data-href="/sv/club/">Svenska</option><option value="da" data-href="/da/club/">Dansk</option><option value="ru" data-href="/ru/club/">Русский</option><option value="ar" data-href="/ar/club/">العربية</option></select>
+<a href="#app" class="pt-btn pt-navbuy" style="background: #15201A; color: #FFFFFF; text-decoration: none; font-weight: 600; padding: 12px 24px; border-radius: 999px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">Descarregar</a>
+</nav>
+</div>
+</header>
+
+<!-- HERO -->
+<section id="top" style="padding: 40px 24px 80px">
+<div style="max-width: 1160px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 40px">
+<div style="flex: 1 1 460px; min-width: 0">
+
+<nav class="pt-tabs" aria-label="Quem és?"><a href="/pt/new/" >Sou principiante</a><a href="/pt/pro/" >Jogo muito</a><a href="/pt/club/" aria-current="page">Organizo torneios</a></nav>
+<div style="display: inline-flex; align-items: center; gap: 8px; background: #F1F5E8; border-radius: 999px; padding: 8px 16px; font-size: 15px; font-weight: 500; margin-bottom: 28px">
+<span style="width: 8px; height: 8px; border-radius: 50%; background: #8FB31C; display: inline-block"></span>Para organizadores
+</div>
+<h1 style="margin: 0; font-weight: 900; font-size: clamp(40px, 5vw, 68px); line-height: 1.02; letter-spacing: -0.03em"><span class="pt-ph">O resultado de todos os campos em tempo real -</span> <span class="pt-ph">num só ecrã.</span></h1>
+<p style="margin: 28px 0 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 500px">Americano e mexicano sem papéis: duplas e campos fazem-⁠se sozinhos, o resultado de cada campo vai para uma tabela ao vivo - em qualquer ecrã por link.</p>
+<div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px">
+<a href="#app" class="pt-btn" style="background: #15201A; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: inline-flex; align-items: center">Descarregar a app</a>
+<a href="#try" class="pt-btn" style="background: #F1F5E8; color: #15201A; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: inline-flex; align-items: center">Experimentar agora</a>
+</div>
+
+</div>
+
+<div style="flex: 1 1 480px; min-width: 0; display: flex; justify-content: center">
+<div style="position: relative; width: 520px; max-width: 100%; aspect-ratio: 1 / 1">
+<!-- padel ball -->
+<div style="position: absolute; inset: 6%; border-radius: 50%; background: #D4F03C; overflow: hidden">
+<svg viewBox="0 0 100 100" width="100%" height="100%" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0"><path d="M -5 30 C 30 40, 30 60, -5 72" stroke="#FFFFFF" stroke-width="2.4" fill="none" opacity="0.9"></path><path d="M 105 28 C 70 40, 70 60, 105 70" stroke="#FFFFFF" stroke-width="2.4" fill="none" opacity="0.9"></path></svg>
+</div>
+<!-- click rings -->
+<div style="position: absolute; left: 58%; top: 40%; width: 120px; height: 120px; margin: -60px 0 0 -60px; pointer-events: none">
+<div class="pt-ring" style="position: absolute; inset: 0; border-radius: 50%; border: 3px solid #15201A"></div>
+<div class="pt-ring pt-ring2" style="position: absolute; inset: 0; border-radius: 50%; border: 3px solid #15201A"></div>
+</div>
+<!-- the tag -->
+<img class="pt-float" id="pt-hero-tag" role="button" tabindex="0" src="/tag.png?v=25307c78" alt="Botão PadelTag" style="cursor: pointer; position: absolute; left: 12%; top: 24%; width: 72%; filter: drop-shadow(0 30px 30px rgba(21,32,26,0.35)) drop-shadow(0 6px 8px rgba(21,32,26,0.25))">
+<!-- stickers -->
+<div style="position: absolute; left: 0; top: 10%; background: #FFFFFF; border-radius: 18px; padding: 10px 16px; font-weight: 700; font-size: 17px; box-shadow: 0 10px 30px rgba(21,32,26,0.12); transform: rotate(-4deg)">1 clique = ponto</div>
+<div style="position: absolute; right: 0; top: 74%; background: #15201A; color: #FFFFFF; border-radius: 18px; padding: 10px 16px; font-weight: 700; font-size: 17px; box-shadow: 0 10px 30px rgba(21,32,26,0.2); transform: rotate(3deg)">2 cliques = anular</div>
+<!-- mini phone -->
+<div style="position: absolute; right: 2%; top: 2%; width: 116px; height: 220px; border-radius: 24px; background: #15201A; padding: 6px; box-sizing: border-box; box-shadow: 0 20px 40px rgba(21,32,26,0.25); transform: rotate(6deg)">
+<div style="width: 100%; height: 100%; border-radius: 19px; background: #FFFFFF; padding: 20px 6px 6px; box-sizing: border-box; display: flex; flex-direction: column; gap: 4px">
+<div style="flex: 1; border-radius: 12px; background: #D4F03C; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 40px; letter-spacing: -0.04em; transition: transform .12s ease" id="pt-hero-0">40</div>
+<div style="flex: 1; border-radius: 12px; background: #FFC2B0; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 40px; letter-spacing: -0.04em; transition: transform .12s ease" id="pt-hero-1">30</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- BENEFITS -->
+<section id="why" style="padding: 8px 24px 0">
+<div style="max-width: 1160px; margin: 0 auto">
+<h2 style="margin: 0 0 48px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em; max-width: 760px">Um torneio sem papéis</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px">
+<div class="pt-ben"><span class="pt-ben-i" style="background: #D4F03C"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg></span><h3>Americano e mexicano</h3><p>As duplas fazem-⁠se sozinhas - parceiros e adversários repetem-⁠se o menos possível.</p></div>
+<div class="pt-ben"><span class="pt-ben-i" style="background: #FFC2B0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span><h3>Um telemóvel por campo</h3><p>Metes o código do campo e os jogadores carregam nos seus botões. Nada para copiar à mão.</p></div>
+<div class="pt-ben"><span class="pt-ben-i" style="background: #D4F03C"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"></path><path d="M4 9h11a5 5 0 0 1 0 10h-3"></path></svg></span><h3>Classificação ao vivo</h3><p>A tabela atualiza-⁠se depois de cada jogo. Abre-⁠se por link em qualquer ecrã.</p></div>
+<div class="pt-ben"><span class="pt-ben-i" style="background: #FFC2B0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6l-8-3Z"></path><path d="m9 12 2 2 4-4"></path></svg></span><h3>Distribuis os botões e pronto</h3><p>Cada jogador tem o seu botão. Os pontos vão para a classificação individual.</p></div>
+</div>
+</div>
+</section>
+
+
+<!-- HOW -->
+<section style="padding: 104px 24px">
+<div style="max-width: 1160px; margin: 0 auto">
+<h2 style="margin: 0 0 56px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em; max-width: 720px">Prende. Marca. Carrega.</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px">
+
+<div style="background: #F7F9F2; border-radius: 36px; padding: 28px; display: flex; flex-direction: column; gap: 20px">
+<div style="height: 200px; border-radius: 26px; background: #D4F03C; display: flex; align-items: center; justify-content: center; overflow: hidden">
+<img src="/tag.png?v=25307c78" alt="" style="width: 70%; transform: rotate(-10deg); filter: drop-shadow(0 16px 16px rgba(21,32,26,0.3))">
+</div>
+<div><span style="font-weight: 800; color: #8FB31C">1</span><div style="font-weight: 800; font-size: 26px; line-height: 1.2">Prende-⁠o à camisola</div><div style="color: #4D5A52; margin-top: 6px">Leve e pequeno. Vais esquecer que está lá.</div></div>
+</div>
+
+<div style="background: #F7F9F2; border-radius: 36px; padding: 28px; display: flex; flex-direction: column; gap: 20px">
+<div style="height: 200px; border-radius: 26px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden">
+<div style="position: absolute; left: 58%; top: 50%; width: 90px; height: 90px; margin: -45px 0 0 -45px">
+<div class="pt-ring" style="position: absolute; inset: 0; border-radius: 50%; border: 3px solid #8FB31C"></div>
+<div class="pt-ring pt-ring2" style="position: absolute; inset: 0; border-radius: 50%; border: 3px solid #8FB31C"></div>
+</div>
+<img src="/tag.png?v=25307c78" alt="" style="width: 62%; filter: drop-shadow(0 16px 16px rgba(21,32,26,0.25))">
+</div>
+<div><span style="font-weight: 800; color: #8FB31C">2</span><div style="font-weight: 800; font-size: 26px; line-height: 1.2">Ganhaste o ponto? Carrega</div><div style="color: #4D5A52; margin-top: 6px">Botão grande. Acertas sem olhar.</div></div>
+</div>
+
+<div style="background: #F7F9F2; border-radius: 36px; padding: 28px; display: flex; flex-direction: column; gap: 20px">
+<div style="height: 200px; border-radius: 26px; background: #FFC2B0; display: flex; align-items: center; justify-content: center; gap: 14px">
+<div style="width: 92px; height: 170px; border-radius: 20px; background: #15201A; padding: 5px; box-sizing: border-box"><div style="width: 100%; height: 100%; border-radius: 15px; background: #FFFFFF; padding: 16px 5px 5px; box-sizing: border-box; display: flex; flex-direction: column; gap: 4px"><div style="flex: 1; border-radius: 10px; background: #D4F03C; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 30px">15</div><div style="flex: 1; border-radius: 10px; background: #FFE3DA; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 30px">0</div></div></div>
+<div style="background: #FFFFFF; border-radius: 18px 18px 18px 4px; padding: 10px 14px; font-weight: 700; font-size: 17px; align-self: flex-start; margin-top: 30px">«Quinze, zero»</div>
+</div>
+<div><span style="font-weight: 800; color: #8FB31C">3</span><div style="font-weight: 800; font-size: 26px; line-height: 1.2">Tudo vai para o histórico</div><div style="color: #4D5A52; margin-top: 6px">O telemóvel diz o resultado e guarda o jogo no teu histórico.</div></div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- TRY -->
+<section id="try" data-mode="4" style="padding: 104px 24px; background: #F7F9F2">
+<div style="max-width: 1160px; margin: 0 auto">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 48px">
+<div>
+<h2 style="margin: 0 0 10px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Experimenta aqui mesmo.</h2>
+<p style="margin: 0; color: #4D5A52">É assim que se joga em cada campo do torneio: cada jogador com o seu botão, o marcador conta sozinho.</p>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: center; justify-content: center">
+<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 16px">
+<div id="pt-modes" style="display: inline-flex; align-self: center; gap: 6px; background: #FFFFFF; border-radius: 999px; padding: 6px; flex-wrap: wrap" role="group" aria-label="Quantos botões">
+<button class="pt-btn pt-mode" data-mode="1" aria-pressed="false">1 botão</button>
+<button class="pt-btn pt-mode" data-mode="2" aria-pressed="false">2 botões</button>
+<button class="pt-btn pt-mode" data-mode="4" aria-pressed="true">4 botões</button>
+</div>
+<div id="pt-legend" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; align-content: flex-start; width: 100%"></div>
+</div>
+<div id="pt-tags" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); align-content: center; gap: 16px"></div>
+</div>
+
+<div style="flex: 0 1 300px; min-width: 0">
+<div style="width: 290px; max-width: 100%; height: 580px; border-radius: 50px; background: #15201A; padding: 11px; box-sizing: border-box; box-shadow: 0 30px 60px rgba(21,32,26,0.18); margin: 0 auto">
+<div style="width: 100%; height: 100%; border-radius: 40px; background: #FFFFFF; padding: 44px 12px 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px; position: relative">
+<div style="position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 80px; height: 24px; border-radius: 999px; background: #15201A"></div>
+<div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 15px; font-weight: 600; min-height: 28px" aria-live="polite">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg>
+<span id="pt-said">Carrega num botão</span>
+</div>
+<div class="pt-panel" id="pt-panel-0" style="background: #D4F03C">
+<div style="font-size: 15px; font-weight: 600">Nós</div>
+<div class="pt-score" id="pt-score-0">0</div>
+<div class="pt-players" id="pt-players-0"></div>
+</div>
+<div class="pt-panel" id="pt-panel-1" style="background: #FFC2B0">
+<div style="font-size: 15px; font-weight: 600">Eles</div>
+<div class="pt-score" id="pt-score-1">0</div>
+<div class="pt-players" id="pt-players-1"></div>
+</div>
+<button class="pt-btn" id="pt-reset" style="min-height: 44px; border-radius: 999px; background: #F1F5E8; color: #15201A; border: none; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer">Novo jogo</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SHOP -->
+<section id="tag" style="padding: 0 24px 104px">
+<div style="max-width: 1160px; margin: 0 auto; background: #F7F9F2; border-radius: 40px; padding: 48px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px 48px">
+<div style="flex: 1 1 420px; min-width: 0">
+<h2 style="margin: 0 0 16px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">O botão está ao virar da esquina.</h2>
+<p style="margin: 0 0 28px; color: #4D5A52; max-width: 560px">Serve um porta-⁠chaves iTag com um botão - normalmente $7–⁠14. Escolhe o teu país e mostramos uma loja.</p>
+<div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center">
+<label class="pt-sr" for="pt-country">País</label>
+<select id="pt-country" data-other="Outro país" class="pt-lang" style="background-color: #FFFFFF; min-height: 60px; font-size: 17px"></select>
+<a id="pt-shop" href="https://www.aliexpress.com/w/wholesale-itag-anti-lost.html" target="_blank" rel="noopener" class="pt-btn" style="background: #15201A; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 28px; border-radius: 999px; min-height: 60px; display: inline-flex; align-items: center; gap: 8px">Comprar na<span id="pt-shop-name">AliExpress</span></a>
+</div>
+</div>
+<img src="/tag.png?v=25307c78" alt="" style="flex: 0 0 auto; width: 220px; transform: rotate(-10deg); filter: drop-shadow(0 18px 18px rgba(21,32,26,0.28))">
+</div>
+</section>
+
+<!-- APP -->
+<section id="app" style="padding: 0 24px 104px">
+<div style="max-width: 1160px; margin: 0 auto; background: #F7F9F2; border-radius: 40px; padding: 48px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px 48px">
+<div style="flex: 1 1 420px; min-width: 0">
+<h2 style="margin: 0 0 24px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Descarrega a app</h2>
+<p class="pt-qr" style="margin: -12px 0 28px; color: #4D5A52">Aponta a câmara ao código QR ou toca na tua loja.</p>
+<div style="display: flex; gap: 12px; flex-wrap: wrap">
+<a id="pt-ios" href="#app" class="pt-btn pt-store" aria-disabled="true" tabindex="-1" onclick="return false" style="display: inline-flex; align-items: center; gap: 12px; background: #15201A; color: #FFFFFF; text-decoration: none; border-radius: 16px; padding: 10px 20px 10px 16px; min-height: 60px; position: relative"><svg width="24" height="28" viewBox="0 0 384 470" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg><span style="display: flex; flex-direction: column; line-height: 1.1"><span style="font-size: 12px; opacity: .8">Descarregar na</span><span style="font-size: 21px; font-weight: 700; letter-spacing: -0.01em">App Store</span></span><span class="pt-soon">Em breve</span></a>
+<a id="pt-android" href="#app" class="pt-btn pt-store" aria-disabled="true" tabindex="-1" onclick="return false" style="display: inline-flex; align-items: center; gap: 12px; background: #15201A; color: #FFFFFF; text-decoration: none; border-radius: 16px; padding: 10px 20px 10px 16px; min-height: 60px; position: relative"><svg width="24" height="26" viewBox="0 0 512 512" aria-hidden="true"><path fill="#00D7FE" d="M48 59.5v393c0 9 5 16.5 12.2 20.2L288 256 60.2 39.3C53 43 48 50.5 48 59.5z"/><path fill="#FFCE00" d="M378.4 166.4 288 256l90.4 89.6 102.1-58c19.9-11.3 19.9-40 0-51.3z"/><path fill="#FF3A44" d="M288 256 60.2 472.7c5.4 2.8 11.9 3.2 18.1.2l300.1-127.3z"/><path fill="#00F076" d="M78.3 39.1c-6.2-3-12.7-2.6-18.1.2L288 256l90.4-89.6z"/></svg><span style="display: flex; flex-direction: column; line-height: 1.1"><span style="font-size: 12px; opacity: .8">Disponível no</span><span style="font-size: 21px; font-weight: 700; letter-spacing: -0.01em">Google Play</span></span><span class="pt-soon">Em breve</span></a>
+</div>
+</div>
+<div class="pt-qr" style="flex: 0 0 auto; background: #FFFFFF; border-radius: 28px; padding: 16px; box-shadow: 0 1px 2px rgb(21 32 26 / .04), 0 8px 24px rgb(21 32 26 / .08)">
+<img src="/qr-app.svg" alt="QR: padeltag.app/app" width="200" height="200" style="display: block">
+<div style="text-align: center; font-size: 14px; font-weight: 600; margin-top: 8px; color: #4D5A52">padeltag.app/app</div>
+</div>
+</div>
+</section>
+
+<footer style="padding: 24px 24px 48px">
+<div style="max-width: 1160px; margin: 0 auto; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 16px; color: #4D5A52">
+<span style="font-weight: 800; color: #15201A">PadelTag</span>
+<span>padeltag.app · Feito por <a href="https://kelappa.com" style="color: #4D5A52">kelappa.com</a></span>
+</div>
+</footer>
+
+</div>
+
+<script>window.PT_T={"score_btn": "Botão de pontos", "click_aria": "Carregar no botão: ", "leg_us": "Ponto para nós", "leg_them": "Ponto para eles", "leg_undo": "Anular", "leg_point": "Ponto", "game": "Jogo!", "golden": "Ponto de ouro", "nothing": "Nada para anular", "words": {"0": "zero", "15": "quinze", "30": "trinta", "40": "quarenta"}, "q1": "«", "q2": "»", "sep": ", ", "us": "Nós", "them": "Eles", "said_init": "Carrega num botão", "players": ["João", "Maria", "Miguel", "Ana"]};</script>
+<script>
+(function(){
+  // Где купить кнопку: страна → магазин. Названия стран — на языке страницы.
+  var S={US:['Amazon','https://www.amazon.com/s?k=itag+anti+lost'],CA:['Amazon','https://www.amazon.ca/s?k=itag+anti+lost'],GB:['Amazon','https://www.amazon.co.uk/s?k=itag+anti+lost'],AU:['Amazon','https://www.amazon.com.au/s?k=itag+anti+lost'],DE:['Amazon','https://www.amazon.de/s?k=itag+anti+lost'],AT:['Amazon','https://www.amazon.de/s?k=itag+anti+lost'],CH:['Amazon','https://www.amazon.de/s?k=itag+anti+lost'],FR:['Amazon','https://www.amazon.fr/s?k=itag+anti+lost'],BE:['Amazon','https://www.amazon.com.be/s?k=itag+anti+lost'],NL:['Amazon','https://www.amazon.nl/s?k=itag+anti+lost'],ES:['Amazon','https://www.amazon.es/s?k=itag+anti+lost'],PT:['Amazon','https://www.amazon.es/s?k=itag+anti+lost'],IT:['Amazon','https://www.amazon.it/s?k=itag+anti+lost'],SE:['Amazon','https://www.amazon.se/s?k=itag+anti+lost'],DK:['Amazon','https://www.amazon.de/s?k=itag+anti+lost'],PL:['Amazon','https://www.amazon.pl/s?k=itag+anti+lost'],AE:['Amazon','https://www.amazon.ae/s?k=itag+anti+lost'],SA:['Amazon','https://www.amazon.sa/s?k=itag+anti+lost'],EG:['Amazon','https://www.amazon.eg/s?k=itag+anti+lost'],MX:['Amazon','https://www.amazon.com.mx/s?k=itag+anti+lost'],BR:['Amazon','https://www.amazon.com.br/s?k=itag+anti+lost'],IN:['Amazon','https://www.amazon.in/s?k=itag+anti+lost'],JP:['Amazon','https://www.amazon.co.jp/s?k=itag+anti+lost'],SG:['Amazon','https://www.amazon.sg/s?k=itag+anti+lost'],RU:['Ozon','https://www.ozon.ru/search/?text=itag+%D0%B1%D1%80%D0%B5%D0%BB%D0%BE%D0%BA'],ID:['Shopee','https://shopee.co.id/search?keyword=itag'],TH:['Shopee','https://shopee.co.th/search?keyword=itag']};
+  var other=['AliExpress','https://www.aliexpress.com/w/wholesale-itag-anti-lost.html'];
+  var sel=document.getElementById('pt-country'),a=document.getElementById('pt-shop'),nm=document.getElementById('pt-shop-name');
+  if(!sel)return;
+  var L=document.documentElement.lang,dn=null;try{dn=new Intl.DisplayNames([L],{type:'region'})}catch(e){}
+  var codes=Object.keys(S).map(function(c){return [c,dn?dn.of(c):c]}).sort(function(x,y){return x[1].localeCompare(y[1],L)});
+  codes.push(['XX',sel.dataset.other]);
+  sel.innerHTML=codes.map(function(c){return '<option value="'+c[0]+'">'+c[1]+'</option>'}).join('');
+  var byLang={en:'US',es:'ES',fr:'FR',de:'DE',it:'IT',pt:'PT',nl:'NL',sv:'SE',da:'DK',ru:'RU',ar:'AE'},guess=null;
+  try{var n=navigator.languages||[navigator.language];for(var i=0;i<n.length;i++){var r=(n[i]||'').split('-')[1];if(r&&S[r.toUpperCase()]){guess=r.toUpperCase();break}}}catch(e){}
+  var saved=null;try{saved=localStorage.getItem('pt-country')}catch(e){}
+  sel.value=saved&&(S[saved]||saved==='XX')?saved:(guess||byLang[L]||'XX');
+  function upd(){var s=S[sel.value]||other;a.href=s[1];nm.textContent=s[0]}
+  sel.addEventListener('change',function(){try{localStorage.setItem('pt-country',sel.value)}catch(e){}upd()});
+  upd();
+})();
+</script>
+
+<script src="/demo.js?v=7a464af6"></script>
+</body>
+</html>

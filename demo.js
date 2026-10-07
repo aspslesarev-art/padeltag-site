@@ -200,7 +200,7 @@
     var btns = document.querySelectorAll('.pt-mode');
     for (var i = 0; i < btns.length; i++) btns[i].addEventListener('click', function () { setMode(+this.getAttribute('data-mode')); });
     $('pt-reset').addEventListener('click', function () { setMode(s.mode); });
-    setMode(4);
+    setMode(+($('try').getAttribute('data-mode')) || 4); // на странице новичка — одна кнопка, у остальных — четыре
     // Голос подгружаем, как только блок показался на экране, — к первому нажатию он уже готов.
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { audio(); io.disconnect(); } }, { rootMargin: '300px' });
