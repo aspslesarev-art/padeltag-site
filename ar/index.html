@@ -97,7 +97,6 @@ img{max-width:100%}
 .pt-aud-now{font-size:17px;font-weight:500}
 .pt-aud-club .pt-aud-k,.pt-aud-club .pt-aud-was{color:#D5E0F5}
 .pt-aud-club .pt-aud-k i{box-shadow:none}
-.pt-aud-soon{background:#D4F03C;color:#15201A;font-size:15px;font-weight:700;padding:6px 14px;border-radius:999px}
 @supports (grid-template-rows: subgrid){.pt-aud{display:grid;grid-template-rows:subgrid;grid-row:span 4;gap:16px}.pt-aud-rows{margin-top:0}}
 @media (max-width:640px){.pt-aud{padding:24px}}
 @media (min-width:680px) and (max-width:1023px){.pt-aud-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.pt-aud-club{grid-column:1/-1}}
@@ -131,7 +130,7 @@ img{max-width:100%}
 <span style="width: 8px; height: 8px; border-radius: 50%; background: #8FB31C; display: inline-block"></span>زر ذكي للبادل
 </div>
 <h1 style="margin: 0; font-weight: 900; font-size: clamp(50px, 6.6vw, 92px); line-height: 0.98; letter-spacing: -0.035em">البادل لن يعود <span style="font-style: italic; background: #D4F03C; padding: 0 12px; border-radius: 16px; display: inline-block; white-space: nowrap; transform: rotate(-2deg)">كما كان.</span></h1>
-<p style="margin: 28px 0 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 500px">زر واحد يحسب عنك كل ما يحدث في لعبك. تحليل كامل: من النقاط إلى أفضل شريك لك، وعلى أي ملعب، وفي أي يوم وأي ساعة.</p>
+<p style="margin: 28px 0 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 500px">ضغطة - تُحتسب النقطة، والهاتف يعلن النتيجة. كل مباراة تُحفظ: النتيجة، الانتصارات، نقاطك ومع من لعبت.</p>
 <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px">
 <a href="#get" class="pt-btn" style="background: #15201A; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: inline-flex; align-items: center">احصل على PadelTag</a>
 <a href="#try" class="pt-btn" style="background: #F1F5E8; color: #15201A; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: inline-flex; align-items: center">جرّبه الآن</a>
@@ -169,7 +168,7 @@ img{max-width:100%}
 <!-- WHO -->
 <section id="who" style="padding: 8px 24px 0">
 <div style="max-width: 1160px; margin: 0 auto">
-<h2 style="margin: 0 0 56px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">لمن <span style="font-style: italic; background: #D4F03C; padding: 0 10px; border-radius: 12px; display: inline-block; transform: rotate(-2deg)">هو؟</span></h2>
+<h2 style="margin: 0 0 56px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">ماذا <span style="font-style: italic; background: #D4F03C; padding: 0 10px; border-radius: 12px; display: inline-block; transform: rotate(-2deg)">يقدّم لك.</span></h2>
 <div class="pt-aud-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
 
 <div class="pt-aud" style="background: #F7F9F2">
@@ -181,7 +180,7 @@ img{max-width:100%}
 <h3 class="pt-aud-t"><span class="pt-ph">لا تعرف كيف تحسب النقاط؟ قميصك يحسب عنك.</span></h3>
 <div class="pt-aud-rows">
 <div><div class="pt-aud-k">بدون PadelTag</div><div class="pt-aud-was">تخلط بين 15-⁠30-⁠40، وتخجل من السؤال، وتفقد تركيزك في اللعب.</div></div>
-<div><div class="pt-aud-k"><i></i>مع PadelTag</div><div class="pt-aud-now">النتيجة تُسجَّل وحدها. وترى كيف تتطور من مباراة إلى أخرى.</div></div>
+<div><div class="pt-aud-k"><i></i>مع PadelTag</div><div class="pt-aud-now">ضغطة - نقطة، والهاتف يعلن النتيجة بصوت عالٍ. ويحسب النقطة الذهبية وكسر التعادل بنفسه أيضًا.</div></div>
 </div>
 </div>
 
@@ -191,28 +190,28 @@ img{max-width:100%}
 <div><div style="font-weight: 900; font-size: 48px; line-height: 1; letter-spacing: -0.03em">64%</div><div style="font-size: 14px; font-weight: 600; color: #4D5A52; margin-top: 4px">فوز</div></div>
 <div style="display: flex; align-items: flex-end; gap: 6px; height: 64px"><span class="pt-aud-bar" style="height: 30%"></span><span class="pt-aud-bar" style="height: 45%"></span><span class="pt-aud-bar" style="height: 40%"></span><span class="pt-aud-bar" style="height: 64%"></span><span class="pt-aud-bar" style="height: 100%; background: #D4F03C"></span></div>
 </div>
-<div style="display: flex; align-items: center; gap: 10px; background: #F7F9F2; border-radius: 14px; padding: 8px 12px; font-size: 14px"><span style="width: 28px; height: 28px; flex: none; border-radius: 50%; background: #FFC2B0; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px">ف</span><span style="flex: 1; min-width: 0">أفضل شريك</span><b>فاطمة</b></div>
+<div style="display: flex; align-items: center; gap: 10px; background: #F7F9F2; border-radius: 14px; padding: 8px 12px; font-size: 14px"><span style="width: 28px; height: 28px; flex: none; border-radius: 50%; background: #FFC2B0; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px">ف</span><span style="flex: 1; min-width: 0">الشريك</span><b>فاطمة</b></div>
 </div>
-<span class="pt-aud-who">تلعب بانتظام</span>
-<h3 class="pt-aud-t"><span class="pt-ph">شاهد كيف تتطور -</span> <span class="pt-ph">ومع من تفوز أكثر.</span></h3>
+<span class="pt-aud-who">لاعب متمرس</span>
+<h3 class="pt-aud-t"><span class="pt-ph">شاهد كيف تتطور -</span> <span class="pt-ph">مباراة بعد مباراة.</span></h3>
 <div class="pt-aud-rows">
 <div><div class="pt-aud-k">بدون PadelTag</div><div class="pt-aud-was">تلعب بانتظام، لكنك لا ترى تقدمك ولا تعرف ما الذي ينجح.</div></div>
-<div><div class="pt-aud-k"><i></i>مع PadelTag</div><div class="pt-aud-now">سجل المباريات، نسبة الفوز، السلاسل. أفضل شريك، أصعب منافس، واللحظة في المجموعة التي تتراجع فيها.</div></div>
+<div><div class="pt-aud-k"><i></i>مع PadelTag</div><div class="pt-aud-now">كل مباراة في سجلك: النتيجة، الشريك، المنافسون، نقاطك. المباريات، الانتصارات، نسبة الفوز والنقاط - على الشاشة الرئيسية.</div></div>
 </div>
 </div>
 
 <div class="pt-aud pt-aud-club" style="background: #1F4FA3; color: #FFFFFF">
 <div class="pt-aud-pic" style="background: #173D80; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 16px" aria-hidden="true">
-<div class="pt-aud-court"><span><i></i>ملعب 1</span><b>6:4 · 30:15</b></div>
-<div class="pt-aud-court"><span><i></i>ملعب 2</span><b>2:5 · 40:40</b></div>
-<div class="pt-aud-court"><span><i></i>ملعب 3</span><b>3:3 · 15:0</b></div>
-<div class="pt-aud-court"><span><i></i>ملعب 4</span><b>5:1 · 0:30</b></div>
+<div class="pt-aud-court"><span><i></i>ملعب 1</span><b>16 : 12</b></div>
+<div class="pt-aud-court"><span><i></i>ملعب 2</span><b>9 : 14</b></div>
+<div class="pt-aud-court"><span><i></i>ملعب 3</span><b>11 : 11</b></div>
+<div class="pt-aud-court"><span><i></i>ملعب 4</span><b>18 : 6</b></div>
 </div>
-<div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap"><span class="pt-aud-who">البطولات والأندية</span><span class="pt-aud-soon">قريبًا</span></div>
-<h3 class="pt-aud-t"><span class="pt-ph">نتيجة كل الملاعب مباشرةً -</span> <span class="pt-ph">على شاشة الحكم.</span></h3>
+<span class="pt-aud-who">البطولات والأندية</span>
+<h3 class="pt-aud-t"><span class="pt-ph">نتيجة كل الملاعب مباشرةً -</span> <span class="pt-ph">على شاشة واحدة.</span></h3>
 <div class="pt-aud-rows">
 <div><div class="pt-aud-k">بدون PadelTag</div><div class="pt-aud-was">أوراق، خلافات على النتيجة، ونقل النتائج يدويًا.</div></div>
-<div><div class="pt-aud-k"><i></i>مع PadelTag</div><div class="pt-aud-now">نتيجة تلقائية، لوحة مباشرة، ونتائج البطولة في النظام فورًا.</div></div>
+<div><div class="pt-aud-k"><i></i>مع PadelTag</div><div class="pt-aud-now">أمريكانو ومكسيكانو: الأزواج والملاعب تُرتّب تلقائيًا، ونتيجة كل ملعب تدخل جدول الترتيب فورًا. يُفتح الجدول برابط على أي شاشة.</div></div>
 </div>
 </div>
 
