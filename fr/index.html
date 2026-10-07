@@ -101,6 +101,32 @@ img{max-width:100%}
 @media (max-width:640px){.pt-aud{padding:24px}}
 @media (min-width:680px) and (max-width:1023px){.pt-aud-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.pt-aud-club{grid-column:1/-1}}
 @media (prefers-reduced-motion:reduce){.pt-aud-court i{animation:none}}
+/* Кто ты: переключатель аудитории; выбор меняет подпись, порядок карточек и подсвечивает тариф. */
+.pt-for{display:inline-flex;gap:4px;background:#F1F5E8;border-radius:999px;padding:4px;margin-bottom:20px;max-width:100%;overflow-x:auto}
+.pt-for button{border:none;cursor:pointer;font-family:inherit;font-size:15px;font-weight:600;padding:8px 16px;min-height:40px;border-radius:999px;background:transparent;color:#15201A;white-space:nowrap;transition:background-color .12s ease}
+.pt-for button:hover{background:#E3E9D6}
+.pt-for button[aria-pressed="true"]{background:#15201A;color:#FFFFFF}
+.pt-for button:focus-visible{outline:3px solid #15201A;outline-offset:2px}
+.pt-wrap{display:block}
+html[data-for="new"] .pt-aud[data-a="new"],html[data-for="pro"] .pt-aud[data-a="pro"],html[data-for="club"] .pt-aud[data-a="club"]{order:-1;box-shadow:0 0 0 3px #15201A}
+.pt-plan{border-radius:40px;padding:36px;display:flex;flex-direction:column;gap:16px;position:relative;min-width:0}
+.pt-plan-t{font-weight:800;font-size:24px;line-height:1.2}
+.pt-plan-p{font-weight:900;font-size:64px;line-height:1;letter-spacing:-0.03em}
+.pt-plan-per{font-size:19px;font-weight:600;letter-spacing:0}
+.pt-plan-n{font-size:17px;opacity:.85}
+.pt-plan-l{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:17px}
+.pt-plan-l li{display:flex;gap:10px;align-items:flex-start}.pt-plan-l svg{flex:none;margin-top:3px}
+.pt-plan-b{margin-top:auto;text-decoration:none;font-weight:600;font-size:19px;padding:16px 24px;border-radius:999px;min-height:60px;display:flex;align-items:center;justify-content:center;white-space:nowrap}
+.pt-rec{display:none;position:absolute;top:24px;right:24px;background:#15201A;color:#FFFFFF;font-size:14px;font-weight:700;padding:8px 14px;border-radius:999px}
+.pt-plan[data-a="pro"] .pt-rec{background:#FFFFFF;color:#15201A}
+.pt-plan[data-a="club"] .pt-rec{background:#D4F03C;color:#15201A}
+html[data-for="new"] .pt-plan[data-a="free"] .pt-rec,html[data-for="pro"] .pt-plan[data-a="pro"] .pt-rec,html[data-for="club"] .pt-plan[data-a="club"] .pt-rec{display:inline-block}
+html[data-for="new"] .pt-plan[data-a="free"],html[data-for="pro"] .pt-plan[data-a="pro"],html[data-for="club"] .pt-plan[data-a="club"]{box-shadow:0 0 0 3px #15201A}
+[dir="rtl"] .pt-rec{right:auto;left:24px}
+@supports (grid-template-rows: subgrid){.pt-plan{display:grid;grid-template-rows:subgrid;grid-row:span 5;align-items:start}.pt-plan .pt-rec{position:absolute}}
+.pt-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#tag img{max-width:40%}
+@media (max-width:640px){.pt-for{display:flex;width:100%;overflow:visible}.pt-for button{flex:1 1 0;min-width:0;font-size:14px;padding:6px 8px;white-space:normal;line-height:1.15;min-height:44px}#tag>div{padding:32px 24px!important}#tag img{display:none}.pt-plan{padding:28px}.pt-plan-p{font-size:52px}}
 .pt-lang:focus-visible{outline:3px solid #15201A;outline-offset:4px}
 </style>
 </head>
@@ -117,7 +143,7 @@ img{max-width:100%}
 <a href="#try" class="pt-navlink" style="text-decoration: none; color: #4D5A52">Essayer</a>
 <a href="#modes" class="pt-navlink" style="text-decoration: none; color: #4D5A52">Comment jouer</a>
 <select class="pt-lang" aria-label="Language" onchange="try{localStorage.setItem('pt-lang',this.value)}catch(e){}location.href=this.options[this.selectedIndex].getAttribute('data-href')"><option value="en" data-href="/">English</option><option value="es" data-href="/es/">Español</option><option value="fr" data-href="/fr/" selected>Français</option><option value="de" data-href="/de/">Deutsch</option><option value="it" data-href="/it/">Italiano</option><option value="pt" data-href="/pt/">Português</option><option value="nl" data-href="/nl/">Nederlands</option><option value="sv" data-href="/sv/">Svenska</option><option value="da" data-href="/da/">Dansk</option><option value="ru" data-href="/ru/">Русский</option><option value="ar" data-href="/ar/">العربية</option></select>
-<a href="#get" class="pt-btn pt-navbuy" style="background: #15201A; color: #FFFFFF; text-decoration: none; font-weight: 600; padding: 12px 24px; border-radius: 999px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">Acheter</a>
+<a href="#get" class="pt-btn pt-navbuy" style="background: #15201A; color: #FFFFFF; text-decoration: none; font-weight: 600; padding: 12px 24px; border-radius: 999px; min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center">Tarifs</a>
 </nav>
 </div>
 </header>
@@ -126,13 +152,19 @@ img{max-width:100%}
 <section id="top" style="padding: 40px 24px 80px">
 <div style="max-width: 1160px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 40px">
 <div style="flex: 1 1 460px; min-width: 0">
+<div id="pt-for" class="pt-for" role="group" aria-label="Qui es-⁠tu">
+<button type="button" data-for="new" aria-pressed="false">Je débute</button><button type="button" data-for="pro" aria-pressed="false">Je joue souvent</button><button type="button" data-for="club" aria-pressed="false">Club et tournois</button>
+</div>
 <div style="display: inline-flex; align-items: center; gap: 8px; background: #F1F5E8; border-radius: 999px; padding: 8px 16px; font-size: 15px; font-weight: 500; margin-bottom: 28px">
 <span style="width: 8px; height: 8px; border-radius: 50%; background: #8FB31C; display: inline-block"></span>Un bouton intelligent pour le padel
 </div>
 <h1 style="margin: 0; font-weight: 900; font-size: clamp(50px, 6.6vw, 92px); line-height: 0.98; letter-spacing: -0.035em">Le padel ne sera plus jamais <span style="font-style: italic; background: #D4F03C; padding: 0 12px; border-radius: 16px; display: inline-block; white-space: nowrap; transform: rotate(-2deg)">le même.</span></h1>
-<p style="margin: 28px 0 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 500px">Fini les disputes sur le score. Chaque point va dans tes stats : tu vois ce qui marche et tu progresses plus vite. Le score est gratuit pour toujours.</p>
+<p class="pt-hp" data-a="" style="margin: 28px 0 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 500px">Fini les disputes sur le score. Chaque point va dans tes stats : tu vois ce qui marche et tu progresses plus vite. Le score est gratuit pour toujours.</p>
+<p class="pt-hp" data-a="new" hidden style="margin: 28px 0 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 500px">Pas besoin de retenir 15-⁠30-⁠40 : un clic et ton téléphone annonce le score. Tu joues, c’est tout. Le score est gratuit pour toujours.</p>
+<p class="pt-hp" data-a="pro" hidden style="margin: 28px 0 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 500px">Chaque point va dans tes stats : victoires, pourcentage de victoires, historique. Des chiffres honnêtes au lieu de « je crois qu’on a gagné » - tu vois ce qui marche et tu progresses plus vite.</p>
+<p class="pt-hp" data-a="club" hidden style="margin: 28px 0 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 500px">Americano et mexicano sans papier : paires et terrains se font tout seuls, le score de chaque terrain arrive dans un classement en direct - sur n’importe quel écran par un lien.</p>
 <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px">
-<a href="#get" class="pt-btn" style="background: #15201A; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: inline-flex; align-items: center">Je veux PadelTag</a>
+<a href="#app" class="pt-btn" style="background: #15201A; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: inline-flex; align-items: center">Télécharger l’appli</a>
 <a href="#try" class="pt-btn" style="background: #F1F5E8; color: #15201A; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: inline-flex; align-items: center">Tester maintenant</a>
 </div>
 </div>
@@ -171,7 +203,7 @@ img{max-width:100%}
 <h2 style="margin: 0 0 56px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Ce que ça <span style="font-style: italic; background: #D4F03C; padding: 0 10px; border-radius: 12px; display: inline-block; transform: rotate(-2deg)">t’apporte.</span></h2>
 <div class="pt-aud-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
 
-<div class="pt-aud" style="background: #F7F9F2">
+<div class="pt-aud" data-a="new" style="background: #F7F9F2">
 <div class="pt-aud-pic" style="background: #D4F03C; flex-direction: column; gap: 14px">
 <div style="display: flex; gap: 8px" aria-hidden="true"><span class="pt-aud-pill">15</span><span class="pt-aud-pill">30</span><span class="pt-aud-pill" style="background: #15201A; color: #FFFFFF">40</span></div>
 <div style="background: #FFFFFF; border-radius: 18px 18px 18px 4px; padding: 10px 16px; font-weight: 700; font-size: 17px">« Trente, quinze »</div>
@@ -184,7 +216,7 @@ img{max-width:100%}
 </div>
 </div>
 
-<div class="pt-aud" style="background: #F7F9F2">
+<div class="pt-aud" data-a="pro" style="background: #F7F9F2">
 <div class="pt-aud-pic" style="background: #FFFFFF; align-items: stretch; justify-content: space-between; flex-direction: column; padding: 20px 22px" aria-hidden="true">
 <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px">
 <div><div style="font-weight: 900; font-size: 48px; line-height: 1; letter-spacing: -0.03em">64%</div><div style="font-size: 14px; font-weight: 600; color: #4D5A52; margin-top: 4px">de victoires</div></div>
@@ -200,7 +232,7 @@ img{max-width:100%}
 </div>
 </div>
 
-<div class="pt-aud pt-aud-club" style="background: #1F4FA3; color: #FFFFFF">
+<div class="pt-aud pt-aud-club" data-a="club" style="background: #1F4FA3; color: #FFFFFF">
 <div class="pt-aud-pic" style="background: #173D80; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 16px" aria-hidden="true">
 <div class="pt-aud-court"><span><i></i>Terrain 1</span><b>16 : 12</b></div>
 <div class="pt-aud-court"><span><i></i>Terrain 2</span><b>9 : 14</b></div>
@@ -385,60 +417,54 @@ img{max-width:100%}
 </div>
 </section>
 
-<!-- CTA -->
-<section id="get" style="padding: 0 24px 96px">
+<!-- PLANS -->
+<section id="get" style="padding: 0 24px 104px">
 <div style="max-width: 1160px; margin: 0 auto">
 <h2 style="margin: 0 0 12px; font-weight: 900; font-size: clamp(40px, 5.4vw, 72px); line-height: 0.98; letter-spacing: -0.035em">Tu joues.<br>On compte.</h2>
-<p style="margin: 0 0 48px; font-size: 21px; color: #4D5A52">Un pour toi, quatre pour un terrain ou seize pour un tournoi.</p>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; align-items: stretch">
+<p style="margin: 0 0 48px; font-size: 21px; color: #4D5A52; max-width: 640px">Le bouton s’achète dans n’importe quelle boutique - environ $7–⁠14. Le score est gratuit pour toujours, l’abonnement quand tu veux voir tes progrès.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
+<div class="pt-plan" data-a="free" style="background: #F7F9F2; color: #15201A">
+<span class="pt-rec">Pour toi</span>
+<div class="pt-plan-t">Gratuit</div>
+<div class="pt-plan-p">$0 <span class="pt-plan-per">pour toujours</span></div>
+<div class="pt-plan-n">Tout pour tenir le score.</div>
+<ul class="pt-plan-l"><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Score au bouton et à la voix</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>1, 2 ou 4 boutons</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Point en or et tie-⁠break</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Annuler par double clic</span></li></ul>
+<a href="#app" class="pt-btn pt-plan-b" style="background: #FFFFFF; color: #15201A; border: 2px solid #15201A">Télécharger l’appli</a>
+</div>
+<div class="pt-plan" data-a="pro" style="background: #D4F03C; color: #15201A">
+<span class="pt-rec">Pour toi</span>
+<div class="pt-plan-t">Pro</div>
+<div class="pt-plan-p">$2.99 <span class="pt-plan-per">/ mois</span></div>
+<div class="pt-plan-n">ou $19.99 par an · 14 jours gratuits</div>
+<ul class="pt-plan-l"><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Historique de tous les matchs</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Victoires, pourcentage, points</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Stats de chaque joueur</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Le score d’un autre match sur ton téléphone</span></li></ul>
+<a href="#app" class="pt-btn pt-plan-b" style="background: #15201A; color: #FFFFFF; border: 2px solid #15201A">Essai gratuit 14 jours</a>
+</div>
+<div class="pt-plan" data-a="club" style="background: #1F4FA3; color: #FFFFFF">
+<span class="pt-rec">Pour toi</span>
+<div class="pt-plan-t">Max · pour les clubs</div>
+<div class="pt-plan-p"><span style="font-size: 0.56em; letter-spacing: -0.02em">Sur mesure</span></div>
+<div class="pt-plan-n">Écris-⁠nous, on calcule le prix pour ton club.</div>
+<ul class="pt-plan-l"><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Americano et mexicano</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Paires et terrains se font tout seuls</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Un téléphone par terrain</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"></path></svg><span>Classement en direct par lien</span></li></ul>
+<a href="[MAX CONTACT]" class="pt-btn pt-plan-b" style="background: #FFFFFF; color: #15201A; border: 2px solid #FFFFFF">Demander le prix</a>
+</div>
+</div>
+<p style="margin: 24px 0 0; text-align: center; font-size: 16px; color: #4D5A52">Appli pour iPhone. Abonnement résiliable à tout moment dans les réglages de l’App Store.</p>
+</div>
+</section>
 
-<div class="pt-price" style="background: #F7F9F2; border-radius: 40px; padding: 36px; display: flex; flex-direction: column; gap: 20px">
-<div style="height: 200px; display: flex; align-items: center; justify-content: center">
-<img src="/tag.png?v=25307c78" alt="Un PadelTag" style="width: 210px; transform: rotate(-10deg); filter: drop-shadow(0 18px 18px rgba(21,32,26,0.28))">
+<!-- SHOP -->
+<section id="tag" style="padding: 0 24px 104px">
+<div style="max-width: 1160px; margin: 0 auto; background: #F7F9F2; border-radius: 40px; padding: 48px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px 48px">
+<div style="flex: 1 1 420px; min-width: 0">
+<h2 style="margin: 0 0 16px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Le bouton, tu le trouves près de chez toi.</h2>
+<p style="margin: 0 0 28px; color: #4D5A52; max-width: 560px">Un porte-⁠clés iTag à un bouton suffit - en général $7–⁠14 pièce. Choisis ton pays, on te montre une boutique.</p>
+<div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center">
+<label class="pt-sr" for="pt-country">Pays</label>
+<select id="pt-country" data-other="Autre pays" class="pt-lang" style="background-color: #FFFFFF; min-height: 60px; font-size: 17px"></select>
+<a id="pt-shop" href="https://www.aliexpress.com/w/wholesale-itag-anti-lost.html" target="_blank" rel="noopener" class="pt-btn" style="background: #15201A; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 28px; border-radius: 999px; min-height: 60px; display: inline-flex; align-items: center; gap: 8px">Acheter sur<span id="pt-shop-name">AliExpress</span></a>
 </div>
-<div style="font-weight: 800; font-size: 26px">1 PadelTag</div>
-<div style="display: flex; align-items: baseline; gap: 8px"><span style="font-weight: 900; font-size: 64px; line-height: 1; letter-spacing: -0.03em">$12</span></div>
-<div style="display: inline-flex; align-items: center; gap: 10px; background: #FFFFFF; border-radius: 18px; padding: 12px 16px; font-weight: 600; align-self: flex-start">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13M3 12h18"></path><path d="M12 8c-2-4-6-4-6-1.5S9 8 12 8Zm0 0c2-4 6-4 6-1.5S15 8 12 8Z"></path></svg>
-+ 1 mois de PadelTag Pro offert
 </div>
-<div style="color: #4D5A52">Parfait si une seule personne compte. Ou pour compléter ton pack.</div>
-<a href="[BUY 1 LINK]" class="pt-btn" style="margin-top: auto; background: #FFFFFF; color: #15201A; border: 2px solid #15201A; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: flex; align-items: center; justify-content: center">Acheter 1 tag</a>
-</div>
-
-<div class="pt-price" style="background: #FFE3DA; border-radius: 40px; padding: 36px; display: flex; flex-direction: column; gap: 20px; position: relative">
-<div style="position: absolute; top: 24px; right: 24px; background: #15201A; color: #FFFFFF; font-size: 14px; font-weight: 700; padding: 8px 14px; border-radius: 999px">Économise $9</div>
-<div style="height: 200px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 12px; align-items: center; justify-items: center; padding: 0 30px">
-<img src="/tag.png?v=25307c78" alt="" style="width: 120px; transform: rotate(-12deg); filter: drop-shadow(0 10px 10px rgba(21,32,26,0.3))">
-<img src="/tag.png?v=25307c78" alt="" style="width: 120px; transform: rotate(8deg); filter: drop-shadow(0 10px 10px rgba(21,32,26,0.3))">
-<img src="/tag.png?v=25307c78" alt="" style="width: 120px; transform: rotate(6deg); filter: drop-shadow(0 10px 10px rgba(21,32,26,0.3))">
-<img src="/tag.png?v=25307c78" alt="" style="width: 120px; transform: rotate(-8deg); filter: drop-shadow(0 10px 10px rgba(21,32,26,0.3))">
-</div>
-<div style="font-weight: 800; font-size: 26px">Pack de 4 · tout le terrain</div>
-<div style="display: flex; align-items: baseline; gap: 12px"><span style="font-weight: 900; font-size: 64px; line-height: 1; letter-spacing: -0.03em">$39</span><span style="font-size: 22px; color: #6B4A40; text-decoration: line-through">$48</span></div>
-<div style="display: inline-flex; align-items: center; gap: 10px; background: #FFFFFF; border-radius: 18px; padding: 12px 16px; font-weight: 600; align-self: flex-start">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13M3 12h18"></path><path d="M12 8c-2-4-6-4-6-1.5S9 8 12 8Zm0 0c2-4 6-4 6-1.5S15 8 12 8Z"></path></svg>
-+ 4 mois de PadelTag Pro offerts
-</div>
-<div style="color: #4D5A52">Un tag par joueur. Vois qui a marqué le plus.</div>
-<a href="[BUY 4 LINK]" class="pt-btn" style="margin-top: auto; background: #FFFFFF; color: #15201A; border: 2px solid #15201A; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: flex; align-items: center; justify-content: center">Prendre le pack de 4</a>
-</div>
-
-<div class="pt-price" style="background: #D4F03C; border-radius: 40px; padding: 36px; display: flex; flex-direction: column; gap: 20px; position: relative">
-<div style="position: absolute; top: 24px; right: 24px; background: #15201A; color: #FFFFFF; font-size: 14px; font-weight: 700; padding: 8px 14px; border-radius: 999px">Économise $36</div>
-<div style="height: 200px; display: grid; grid-template-columns: repeat(4, 40px); gap: 6px 20px; align-content: center; justify-content: center"><img src="/tag.png?v=25307c78" alt="" style="width: 40px; transform: rotate(-12deg); filter: drop-shadow(0 6px 6px rgba(21,32,26,0.3))"><img src="/tag.png?v=25307c78" alt="" style="width: 40px; transform: rotate(8deg); filter: drop-shadow(0 6px 6px rgba(21,32,26,0.3))"><img src="/tag.png?v=25307c78" alt="" style="width: 40px; transform: rotate(6deg); filter: drop-shadow(0 6px 6px rgba(21,32,26,0.3))"><img src="/tag.png?v=25307c78" alt="" style="width: 40px; transform: rotate(-8deg); filter: drop-shadow(0 6px 6px rgba(21,32,26,0.3))"><img src="/tag.png?v=25307c78" alt="" style="width: 40px; transform: rotate(-12deg); filter: drop-shadow(0 6px 6px rgba(21,32,26,0.3))"><img src="/tag.png?v=25307c78" alt="" style="width: 40px; transform: rotate(8deg); filter: drop-shadow(0 6px 6px rgba(21,32,26,0.3))"><img src="/tag.png?v=25307c78" alt="" style="width: 40px; transform: rotate(6deg); filter: drop-shadow(0 6px 6px rgba(21,32,26,0.3))"><img src="/tag.png?v=25307c78" alt="" style="width: 40px; transform: rotate(-8deg); filter: drop-shadow(0 6px 6px rgba(21,32,26,0.3))"><img src="/tag.png?v=25307c78" alt="" style="width: 40px; transform: rotate(-12deg); filter: drop-shadow(0 6px 6px rgba(21,32,26,0.3))"><img src="/tag.png?v=25307c78" alt="" style="width: 40px; transform: rotate(8deg); filter: drop-shadow(0 6px 6px rgba(21,32,26,0.3))"><img src="/tag.png?v=25307c78" alt="" style="width: 40px; transform: rotate(6deg); filter: drop-shadow(0 6px 6px rgba(21,32,26,0.3))"><img src="/tag.png?v=25307c78" alt="" style="width: 40px; transform: rotate(-8deg); filter: drop-shadow(0 6px 6px rgba(21,32,26,0.3))"><img src="/tag.png?v=25307c78" alt="" style="width: 40px; transform: rotate(-12deg); filter: drop-shadow(0 6px 6px rgba(21,32,26,0.3))"><img src="/tag.png?v=25307c78" alt="" style="width: 40px; transform: rotate(8deg); filter: drop-shadow(0 6px 6px rgba(21,32,26,0.3))"><img src="/tag.png?v=25307c78" alt="" style="width: 40px; transform: rotate(6deg); filter: drop-shadow(0 6px 6px rgba(21,32,26,0.3))"><img src="/tag.png?v=25307c78" alt="" style="width: 40px; transform: rotate(-8deg); filter: drop-shadow(0 6px 6px rgba(21,32,26,0.3))"></div>
-<div style="font-weight: 800; font-size: 26px">Pack de 16 · tournoi sur 4 terrains</div>
-<div style="display: flex; align-items: baseline; gap: 12px"><span style="font-weight: 900; font-size: 64px; line-height: 1; letter-spacing: -0.03em">$156</span><span style="font-size: 22px; color: rgb(79, 90, 42); text-decoration: line-through">$192</span></div>
-<div style="display: inline-flex; align-items: center; gap: 10px; background: #FFFFFF; border-radius: 18px; padding: 12px 16px; font-weight: 600; align-self: flex-start">
-<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M12 4v16M3 12h18"></path></svg>
-Americano et mexicano pour 16 joueurs
-</div>
-<div style="color: #2B3313">Un bouton par joueur. Le score de tous les terrains dans un classement en direct.</div>
-<a href="[BUY 16 LINK]" class="pt-btn" style="margin-top: auto; background: #15201A; color: #FFFFFF; border: 2px solid #15201A; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: flex; align-items: center; justify-content: center">Acheter le pack de 16</a>
-</div>
-
-</div>
-<p style="margin: 24px 0 0; text-align: center; font-size: 16px; color: #4D5A52">Appli gratuite pour iPhone. PadelTag Pro après le cadeau : [PRO PRICE] / mois.</p>
+<img src="/tag.png?v=25307c78" alt="" style="flex: 0 0 auto; width: 220px; transform: rotate(-10deg); filter: drop-shadow(0 18px 18px rgba(21,32,26,0.28))">
 </div>
 </section>
 
@@ -470,6 +496,40 @@ Americano et mexicano pour 16 joueurs
 </div>
 
 <script>window.PT_T={"score_btn": "Bouton de score", "click_aria": "Cliquer sur : ", "leg_us": "Point pour nous", "leg_them": "Point pour eux", "leg_undo": "Annuler", "leg_point": "Point", "game": "Jeu !", "golden": "Point décisif", "nothing": "Rien à annuler", "words": {"0": "zéro", "15": "quinze", "30": "trente", "40": "quarante"}, "q1": "« ", "q2": " »", "sep": ", ", "us": "Nous", "them": "Eux", "said_init": "Clique sur un bouton", "players": ["Gabriel", "Jade", "Léo", "Louise"]};</script>
+<script>
+(function(){
+  // Кто ты: ?for=new|pro|club или прошлый выбор. Без выбора — общая подпись.
+  var keys=['new','pro','club'],q=null;
+  try{q=new URLSearchParams(location.search).get('for')}catch(e){}
+  if(keys.indexOf(q)<0){q=null;try{q=localStorage.getItem('pt-for')}catch(e){}}
+  function set(v,save){
+    if(keys.indexOf(v)<0)v='';
+    document.documentElement.setAttribute('data-for',v);
+    document.querySelectorAll('#pt-for button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.for===v?'true':'false')});
+    document.querySelectorAll('.pt-hp').forEach(function(p){p.hidden=p.dataset.a!==v});
+    if(save){try{localStorage.setItem('pt-for',v)}catch(e){}}
+  }
+  document.querySelectorAll('#pt-for button').forEach(function(b){b.addEventListener('click',function(){set(b.dataset.for===document.documentElement.getAttribute('data-for')?'':b.dataset.for,true)})});
+  set(q,false);
+  // Где купить кнопку: страна → магазин. Названия стран — на языке страницы.
+  var S={US:['Amazon','https://www.amazon.com/s?k=itag+anti+lost'],CA:['Amazon','https://www.amazon.ca/s?k=itag+anti+lost'],GB:['Amazon','https://www.amazon.co.uk/s?k=itag+anti+lost'],AU:['Amazon','https://www.amazon.com.au/s?k=itag+anti+lost'],DE:['Amazon','https://www.amazon.de/s?k=itag+anti+lost'],AT:['Amazon','https://www.amazon.de/s?k=itag+anti+lost'],CH:['Amazon','https://www.amazon.de/s?k=itag+anti+lost'],FR:['Amazon','https://www.amazon.fr/s?k=itag+anti+lost'],BE:['Amazon','https://www.amazon.com.be/s?k=itag+anti+lost'],NL:['Amazon','https://www.amazon.nl/s?k=itag+anti+lost'],ES:['Amazon','https://www.amazon.es/s?k=itag+anti+lost'],PT:['Amazon','https://www.amazon.es/s?k=itag+anti+lost'],IT:['Amazon','https://www.amazon.it/s?k=itag+anti+lost'],SE:['Amazon','https://www.amazon.se/s?k=itag+anti+lost'],DK:['Amazon','https://www.amazon.de/s?k=itag+anti+lost'],PL:['Amazon','https://www.amazon.pl/s?k=itag+anti+lost'],AE:['Amazon','https://www.amazon.ae/s?k=itag+anti+lost'],SA:['Amazon','https://www.amazon.sa/s?k=itag+anti+lost'],EG:['Amazon','https://www.amazon.eg/s?k=itag+anti+lost'],MX:['Amazon','https://www.amazon.com.mx/s?k=itag+anti+lost'],BR:['Amazon','https://www.amazon.com.br/s?k=itag+anti+lost'],IN:['Amazon','https://www.amazon.in/s?k=itag+anti+lost'],JP:['Amazon','https://www.amazon.co.jp/s?k=itag+anti+lost'],SG:['Amazon','https://www.amazon.sg/s?k=itag+anti+lost'],RU:['Ozon','https://www.ozon.ru/search/?text=itag+%D0%B1%D1%80%D0%B5%D0%BB%D0%BE%D0%BA'],ID:['Shopee','https://shopee.co.id/search?keyword=itag'],TH:['Shopee','https://shopee.co.th/search?keyword=itag']};
+  var other=['AliExpress','https://www.aliexpress.com/w/wholesale-itag-anti-lost.html'];
+  var sel=document.getElementById('pt-country'),a=document.getElementById('pt-shop'),nm=document.getElementById('pt-shop-name');
+  if(!sel)return;
+  var L=document.documentElement.lang,dn=null;try{dn=new Intl.DisplayNames([L],{type:'region'})}catch(e){}
+  var codes=Object.keys(S).map(function(c){return [c,dn?dn.of(c):c]}).sort(function(x,y){return x[1].localeCompare(y[1],L)});
+  codes.push(['XX',sel.dataset.other]);
+  sel.innerHTML=codes.map(function(c){return '<option value="'+c[0]+'">'+c[1]+'</option>'}).join('');
+  var byLang={en:'US',es:'ES',fr:'FR',de:'DE',it:'IT',pt:'PT',nl:'NL',sv:'SE',da:'DK',ru:'RU',ar:'AE'},guess=null;
+  try{var n=navigator.languages||[navigator.language];for(var i=0;i<n.length;i++){var r=(n[i]||'').split('-')[1];if(r&&S[r.toUpperCase()]){guess=r.toUpperCase();break}}}catch(e){}
+  var saved=null;try{saved=localStorage.getItem('pt-country')}catch(e){}
+  sel.value=saved&&(S[saved]||saved==='XX')?saved:(guess||byLang[L]||'XX');
+  function upd(){var s=S[sel.value]||other;a.href=s[1];nm.textContent=s[0]}
+  sel.addEventListener('change',function(){try{localStorage.setItem('pt-country',sel.value)}catch(e){}upd()});
+  upd();
+})();
+</script>
+
 <script src="/demo.js?v=7cac2b10"></script>
 </body>
 </html>

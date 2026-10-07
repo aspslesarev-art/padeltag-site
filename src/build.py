@@ -54,6 +54,7 @@ def typo(t, code):
     body = body.replace(' - ', NB + '- ')
     # Короткое слово через дефис («онлайн-табло», «15-30-40») не рвём на две строки: невидимая склейка после дефиса.
     body = re.sub(r'\b(\w{1,8})-(?=\w{1,8}\b)', '\\1-\u2060', body)
+    body = re.sub(r'(\d)–(?=\d)', '\\1–\u2060', body)  # диапазон «$7–14» не рвём
     if code == 'fr':
         body = re.sub(r' ([?!;:»])', NNB + r'\1', body).replace('« ', '«' + NNB)
     return lead + body + trail
