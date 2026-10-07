@@ -43,8 +43,8 @@ a{color:#15201A}a:hover{color:#3B4A40}
 *{box-sizing:border-box}
 /* Журнальные переносы: заголовки — ровными строками, абзацы — без висячих слов, мелкий текст — мягкие переносы по языку. */
 body{text-wrap:pretty;hanging-punctuation:first}
-h1,h2,[style*="font-weight: 800"],[style*="font-weight: 900"]{text-wrap:balance;hyphens:manual}
-:lang(de) p,:lang(de) [style*="color: #4D5A52"],:lang(de) [style*="color: #2B3313"],:lang(de) [style*="color: #C9D0CB"],:lang(nl) p,:lang(nl) [style*="color: #4D5A52"],:lang(nl) [style*="color: #2B3313"],:lang(nl) [style*="color: #C9D0CB"],:lang(sv) p,:lang(sv) [style*="color: #4D5A52"],:lang(sv) [style*="color: #2B3313"],:lang(sv) [style*="color: #C9D0CB"],:lang(da) p,:lang(da) [style*="color: #4D5A52"],:lang(da) [style*="color: #2B3313"],:lang(da) [style*="color: #C9D0CB"]{hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:10 5 5;-webkit-hyphenate-limit-before:5;-webkit-hyphenate-limit-after:5}
+h1,h2,h3,[style*="font-weight: 800"],[style*="font-weight: 900"]{text-wrap:balance;hyphens:manual}
+:lang(de) p,:lang(de) .pt-aud-was,:lang(de) .pt-aud-now,:lang(de) [style*="color: #4D5A52"],:lang(de) [style*="color: #2B3313"],:lang(de) [style*="color: #C9D0CB"],:lang(nl) p,:lang(nl) .pt-aud-was,:lang(nl) .pt-aud-now,:lang(nl) [style*="color: #4D5A52"],:lang(nl) [style*="color: #2B3313"],:lang(nl) [style*="color: #C9D0CB"],:lang(sv) p,:lang(sv) .pt-aud-was,:lang(sv) .pt-aud-now,:lang(sv) [style*="color: #4D5A52"],:lang(sv) [style*="color: #2B3313"],:lang(sv) [style*="color: #C9D0CB"],:lang(da) p,:lang(da) .pt-aud-was,:lang(da) .pt-aud-now,:lang(da) [style*="color: #4D5A52"],:lang(da) [style*="color: #2B3313"],:lang(da) [style*="color: #C9D0CB"]{hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:10 5 5;-webkit-hyphenate-limit-before:5;-webkit-hyphenate-limit-after:5}
 a,button,.pt-chip,.pt-mode,nav{hyphens:manual}
 html{scroll-behavior:smooth}
 img{max-width:100%}
@@ -87,7 +87,8 @@ img{max-width:100%}
 @keyframes ptlive{50%{opacity:.25}}
 .pt-aud-who{align-self:flex-start;justify-self:start;background:#FFFFFF;border-radius:999px;padding:6px 14px;font-size:15px;font-weight:600}
 .pt-aud-club .pt-aud-who{background:rgb(255 255 255 / .14);color:#FFFFFF}
-.pt-aud-t{margin:0;font-weight:800;font-size:26px;line-height:1.2;letter-spacing:-0.01em}
+.pt-ph{display:inline-block;text-wrap:balance}
+.pt-aud-t{margin:0;font-weight:800;font-size:24px;line-height:1.2;letter-spacing:-0.02em}
 .pt-aud-rows{display:flex;flex-direction:column;gap:16px;margin-top:auto;padding-top:16px;border-top:1px solid #E3E9D6}
 .pt-aud-club .pt-aud-rows{border-top-color:rgb(255 255 255 / .2)}
 .pt-aud-k{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#4D5A52;margin-bottom:4px}
@@ -98,6 +99,7 @@ img{max-width:100%}
 .pt-aud-club .pt-aud-k i{box-shadow:none}
 .pt-aud-soon{background:#D4F03C;color:#15201A;font-size:15px;font-weight:700;padding:6px 14px;border-radius:999px}
 @supports (grid-template-rows: subgrid){.pt-aud{display:grid;grid-template-rows:subgrid;grid-row:span 4;gap:16px}.pt-aud-rows{margin-top:0}}
+@media (max-width:640px){.pt-aud{padding:24px}}
 @media (min-width:680px) and (max-width:1023px){.pt-aud-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.pt-aud-club{grid-column:1/-1}}
 @media (prefers-reduced-motion:reduce){.pt-aud-court i{animation:none}}
 .pt-lang:focus-visible{outline:3px solid #15201A;outline-offset:4px}
@@ -220,9 +222,9 @@ img{max-width:100%}
 <div style="background: #FFFFFF; border-radius: 18px 18px 18px 4px; padding: 10px 16px; font-weight: 700; font-size: 17px">„Dreißig, fünfzehn“</div>
 </div>
 <span class="pt-aud-who">Einsteiger</span>
-<h3 class="pt-aud-t">Du weißt nicht, wie man zählt? Dein Shirt zählt für dich.</h3>
+<h3 class="pt-aud-t"><span class="pt-ph">Du weißt nicht, wie man zählt?</span> <span class="pt-ph">Dein Shirt zählt für dich.</span></h3>
 <div class="pt-aud-rows">
-<div><div class="pt-aud-k">Ohne PadelTag</div><div class="pt-aud-was">Du verwechselst 15-30-40, traust dich nicht zu fragen und verlierst den Fokus.</div></div>
+<div><div class="pt-aud-k">Ohne PadelTag</div><div class="pt-aud-was">Du verwechselst 15-⁠30-⁠40, traust dich nicht zu fragen und verlierst den Fokus.</div></div>
 <div><div class="pt-aud-k"><i></i>Mit PadelTag</div><div class="pt-aud-now">Der Spielstand zählt sich selbst. Und du siehst, wie du von Spiel zu Spiel besser wirst.</div></div>
 </div>
 </div>
@@ -236,10 +238,10 @@ img{max-width:100%}
 <div style="display: flex; align-items: center; gap: 10px; background: #F7F9F2; border-radius: 14px; padding: 8px 12px; font-size: 14px"><span style="width: 28px; height: 28px; flex: none; border-radius: 50%; background: #FFC2B0; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px">E</span><span style="flex: 1; min-width: 0">Bester Partner</span><b>Emilia</b></div>
 </div>
 <span class="pt-aud-who">Du spielst schon</span>
-<h3 class="pt-aud-t">Sieh, wie du besser wirst - und mit wem du öfter gewinnst.</h3>
+<h3 class="pt-aud-t"><span class="pt-ph">Sieh, wie du besser wirst -</span> <span class="pt-ph">und mit wem du öfter gewinnst.</span></h3>
 <div class="pt-aud-rows">
 <div><div class="pt-aud-k">Ohne PadelTag</div><div class="pt-aud-was">Du spielst regelmäßig, siehst aber keinen Fortschritt und weißt nicht, was funktioniert.</div></div>
-<div><div class="pt-aud-k"><i></i>Mit PadelTag</div><div class="pt-aud-now">Match-Verlauf, Siegquote, Serien. Dein bester Partner, dein unbequemster Gegner und der Moment im Satz, in dem du einbrichst.</div></div>
+<div><div class="pt-aud-k"><i></i>Mit PadelTag</div><div class="pt-aud-now">Match-⁠Verlauf, Siegquote, Serien. Dein bester Partner, dein unbequemster Gegner und der Moment im Satz, in dem du einbrichst.</div></div>
 </div>
 </div>
 
@@ -251,10 +253,10 @@ img{max-width:100%}
 <div class="pt-aud-court"><span><i></i>Court 4</span><b>5:1 · 0:30</b></div>
 </div>
 <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap"><span class="pt-aud-who">Turniere und Clubs</span><span class="pt-aud-soon">Bald</span></div>
-<h3 class="pt-aud-t">Der Spielstand aller Courts live - auf dem Bildschirm des Schiedsrichters.</h3>
+<h3 class="pt-aud-t"><span class="pt-ph">Der Spielstand aller Courts live -</span> <span class="pt-ph">auf dem Bildschirm des Schiedsrichters.</span></h3>
 <div class="pt-aud-rows">
 <div><div class="pt-aud-k">Ohne PadelTag</div><div class="pt-aud-was">Zettel, Streit um den Spielstand, Ergebnisse von Hand übertragen.</div></div>
-<div><div class="pt-aud-k"><i></i>Mit PadelTag</div><div class="pt-aud-now">Automatischer Spielstand, Live-Anzeige und Turnierergebnisse sofort im System.</div></div>
+<div><div class="pt-aud-k"><i></i>Mit PadelTag</div><div class="pt-aud-now">Automatischer Spielstand, Live-⁠Anzeige und Turnierergebnisse sofort im System.</div></div>
 </div>
 </div>
 
@@ -465,14 +467,14 @@ img{max-width:100%}
 <img src="/tag.png?v=25307c78" alt="" style="width: 120px; transform: rotate(6deg); filter: drop-shadow(0 10px 10px rgba(21,32,26,0.3))">
 <img src="/tag.png?v=25307c78" alt="" style="width: 120px; transform: rotate(-8deg); filter: drop-shadow(0 10px 10px rgba(21,32,26,0.3))">
 </div>
-<div style="font-weight: 800; font-size: 26px">4er-Pack · der ganze Court</div>
+<div style="font-weight: 800; font-size: 26px">4er-⁠Pack · der ganze Court</div>
 <div style="display: flex; align-items: baseline; gap: 12px"><span style="font-weight: 900; font-size: 64px; line-height: 1; letter-spacing: -0.03em">$39</span><span style="font-size: 22px; color: rgb(79, 90, 42); text-decoration: line-through">$48</span></div>
 <div style="display: inline-flex; align-items: center; gap: 10px; background: #FFFFFF; border-radius: 18px; padding: 12px 16px; font-weight: 600; align-self: flex-start">
 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13M3 12h18"></path><path d="M12 8c-2-4-6-4-6-1.5S9 8 12 8Zm0 0c2-4 6-4 6-1.5S15 8 12 8Z"></path></svg>
 + 4 Monate PadelTag Pro gratis
 </div>
 <div style="color: #2B3313">Ein Tag für jeden Spieler. Sieh, wer die meisten Punkte gemacht hat.</div>
-<a href="[BUY 4 LINK]" class="pt-btn" style="margin-top: auto; background: #15201A; color: #FFFFFF; border: 2px solid #15201A; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: flex; align-items: center; justify-content: center">4er-Pack holen</a>
+<a href="[BUY 4 LINK]" class="pt-btn" style="margin-top: auto; background: #15201A; color: #FFFFFF; border: 2px solid #15201A; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: flex; align-items: center; justify-content: center">4er-⁠Pack holen</a>
 </div>
 
 </div>
@@ -485,7 +487,7 @@ img{max-width:100%}
 <div style="max-width: 1160px; margin: 0 auto; background: #F7F9F2; border-radius: 40px; padding: 48px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px 48px">
 <div style="flex: 1 1 420px; min-width: 0">
 <h2 style="margin: 0 0 24px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Hol dir die App</h2>
-<p class="pt-qr" style="margin: -12px 0 28px; color: #4D5A52">Halte die Kamera auf den QR-Code oder tippe auf deinen Store.</p>
+<p class="pt-qr" style="margin: -12px 0 28px; color: #4D5A52">Halte die Kamera auf den QR-⁠Code oder tippe auf deinen Store.</p>
 <div style="display: flex; gap: 12px; flex-wrap: wrap">
 <a id="pt-ios" href="#app" class="pt-btn pt-store" aria-disabled="true" tabindex="-1" onclick="return false" style="display: inline-flex; align-items: center; gap: 12px; background: #15201A; color: #FFFFFF; text-decoration: none; border-radius: 16px; padding: 10px 20px 10px 16px; min-height: 60px; position: relative"><svg width="24" height="28" viewBox="0 0 384 470" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg><span style="display: flex; flex-direction: column; line-height: 1.1"><span style="font-size: 12px; opacity: .8">Laden im</span><span style="font-size: 21px; font-weight: 700; letter-spacing: -0.01em">App Store</span></span><span class="pt-soon">Bald</span></a>
 <a id="pt-android" href="#app" class="pt-btn pt-store" aria-disabled="true" tabindex="-1" onclick="return false" style="display: inline-flex; align-items: center; gap: 12px; background: #15201A; color: #FFFFFF; text-decoration: none; border-radius: 16px; padding: 10px 20px 10px 16px; min-height: 60px; position: relative"><svg width="24" height="26" viewBox="0 0 512 512" aria-hidden="true"><path fill="#00D7FE" d="M48 59.5v393c0 9 5 16.5 12.2 20.2L288 256 60.2 39.3C53 43 48 50.5 48 59.5z"/><path fill="#FFCE00" d="M378.4 166.4 288 256l90.4 89.6 102.1-58c19.9-11.3 19.9-40 0-51.3z"/><path fill="#FF3A44" d="M288 256 60.2 472.7c5.4 2.8 11.9 3.2 18.1.2l300.1-127.3z"/><path fill="#00F076" d="M78.3 39.1c-6.2-3-12.7-2.6-18.1.2L288 256l90.4-89.6z"/></svg><span style="display: flex; flex-direction: column; line-height: 1.1"><span style="font-size: 12px; opacity: .8">Jetzt bei</span><span style="font-size: 21px; font-weight: 700; letter-spacing: -0.01em">Google Play</span></span><span class="pt-soon">Bald</span></a>
@@ -507,7 +509,7 @@ img{max-width:100%}
 
 </div>
 
-<script>window.PT_T={"score_btn": "Punkte-Knopf", "click_aria": "Knopf klicken: ", "leg_us": "Punkt für uns", "leg_them": "Punkt für die", "leg_undo": "Zurück", "leg_point": "Punkt", "game": "Spiel!", "golden": "Golden Point", "nothing": "Nichts zum Zurücknehmen", "words": {"0": "null", "15": "fünfzehn", "30": "dreißig", "40": "vierzig"}, "q1": "„", "q2": "“", "sep": ", ", "us": "Wir", "them": "Die", "said_init": "Klick auf einen Knopf", "players": ["Noah", "Emilia", "Paul", "Mia"]};</script>
+<script>window.PT_T={"score_btn": "Punkte-⁠Knopf", "click_aria": "Knopf klicken: ", "leg_us": "Punkt für uns", "leg_them": "Punkt für die", "leg_undo": "Zurück", "leg_point": "Punkt", "game": "Spiel!", "golden": "Golden Point", "nothing": "Nichts zum Zurücknehmen", "words": {"0": "null", "15": "fünfzehn", "30": "dreißig", "40": "vierzig"}, "q1": "„", "q2": "“", "sep": ", ", "us": "Wir", "them": "Die", "said_init": "Klick auf einen Knopf", "players": ["Noah", "Emilia", "Paul", "Mia"]};</script>
 <script src="/demo.js?v=7cac2b10"></script>
 </body>
 </html>

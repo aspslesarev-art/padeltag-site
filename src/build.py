@@ -52,10 +52,13 @@ def typo(t, code):
     body = t.strip()
     body = GLUE[code].sub(lambda m: m.group(1) + NB, body)
     body = body.replace(' - ', NB + '- ')
+    # Короткое слово через дефис («онлайн-табло», «15-30-40») не рвём на две строки: невидимая склейка после дефиса.
+    body = re.sub(r'\b(\w{1,8})-(?=\w{1,8}\b)', '\\1-\u2060', body)
     if code == 'fr':
         body = re.sub(r' ([?!;:»])', NNB + r'\1', body).replace('« ', '«' + NNB)
     return lead + body + trail
 
+PHRASES = {'aud1_t', 'aud2_t', 'aud3_t'}
 SKIP_TYPO = {'h1_b', 'meta_title', 'meta_desc', 'og_desc', 'q1', 'q2', 'sep'}
 
 for code, _, path, direction in LANGS:
@@ -84,6 +87,8 @@ for code, _, path, direction in LANGS:
         if k in ('ios_soon', 'android_soon'):
             return '' if STORE['ios' if 'ios' in k else 'android'] else '<span class="pt-soon">' + html.escape(tr['soon']) + '</span>'
         if k == 'js': return json.dumps({k2: tr[k2] for k2 in JS_KEYS}, ensure_ascii=False).replace('</', '<\\/')
+        if k in PHRASES:  # заголовок режется по смыслу: после ? . ! и после тире, кусок целиком переносится на новую строку
+            return ' '.join('<span class="pt-ph">' + html.escape(c) + '</span>' for c in re.split(r'(?<=[?!.:-]) ', tr[k]))
         return html.escape(tr[k], quote=True)
     out = re.sub(r'\{\{(\w+)\}\}', fill, out)
     assert '{{' not in out

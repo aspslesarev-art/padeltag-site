@@ -43,8 +43,8 @@ a{color:#15201A}a:hover{color:#3B4A40}
 *{box-sizing:border-box}
 /* Журнальные переносы: заголовки — ровными строками, абзацы — без висячих слов, мелкий текст — мягкие переносы по языку. */
 body{text-wrap:pretty;hanging-punctuation:first}
-h1,h2,[style*="font-weight: 800"],[style*="font-weight: 900"]{text-wrap:balance;hyphens:manual}
-:lang(de) p,:lang(de) [style*="color: #4D5A52"],:lang(de) [style*="color: #2B3313"],:lang(de) [style*="color: #C9D0CB"],:lang(nl) p,:lang(nl) [style*="color: #4D5A52"],:lang(nl) [style*="color: #2B3313"],:lang(nl) [style*="color: #C9D0CB"],:lang(sv) p,:lang(sv) [style*="color: #4D5A52"],:lang(sv) [style*="color: #2B3313"],:lang(sv) [style*="color: #C9D0CB"],:lang(da) p,:lang(da) [style*="color: #4D5A52"],:lang(da) [style*="color: #2B3313"],:lang(da) [style*="color: #C9D0CB"]{hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:10 5 5;-webkit-hyphenate-limit-before:5;-webkit-hyphenate-limit-after:5}
+h1,h2,h3,[style*="font-weight: 800"],[style*="font-weight: 900"]{text-wrap:balance;hyphens:manual}
+:lang(de) p,:lang(de) .pt-aud-was,:lang(de) .pt-aud-now,:lang(de) [style*="color: #4D5A52"],:lang(de) [style*="color: #2B3313"],:lang(de) [style*="color: #C9D0CB"],:lang(nl) p,:lang(nl) .pt-aud-was,:lang(nl) .pt-aud-now,:lang(nl) [style*="color: #4D5A52"],:lang(nl) [style*="color: #2B3313"],:lang(nl) [style*="color: #C9D0CB"],:lang(sv) p,:lang(sv) .pt-aud-was,:lang(sv) .pt-aud-now,:lang(sv) [style*="color: #4D5A52"],:lang(sv) [style*="color: #2B3313"],:lang(sv) [style*="color: #C9D0CB"],:lang(da) p,:lang(da) .pt-aud-was,:lang(da) .pt-aud-now,:lang(da) [style*="color: #4D5A52"],:lang(da) [style*="color: #2B3313"],:lang(da) [style*="color: #C9D0CB"]{hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:10 5 5;-webkit-hyphenate-limit-before:5;-webkit-hyphenate-limit-after:5}
 a,button,.pt-chip,.pt-mode,nav{hyphens:manual}
 html{scroll-behavior:smooth}
 img{max-width:100%}
@@ -87,7 +87,8 @@ img{max-width:100%}
 @keyframes ptlive{50%{opacity:.25}}
 .pt-aud-who{align-self:flex-start;justify-self:start;background:#FFFFFF;border-radius:999px;padding:6px 14px;font-size:15px;font-weight:600}
 .pt-aud-club .pt-aud-who{background:rgb(255 255 255 / .14);color:#FFFFFF}
-.pt-aud-t{margin:0;font-weight:800;font-size:26px;line-height:1.2;letter-spacing:-0.01em}
+.pt-ph{display:inline-block;text-wrap:balance}
+.pt-aud-t{margin:0;font-weight:800;font-size:24px;line-height:1.2;letter-spacing:-0.02em}
 .pt-aud-rows{display:flex;flex-direction:column;gap:16px;margin-top:auto;padding-top:16px;border-top:1px solid #E3E9D6}
 .pt-aud-club .pt-aud-rows{border-top-color:rgb(255 255 255 / .2)}
 .pt-aud-k{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#4D5A52;margin-bottom:4px}
@@ -98,6 +99,7 @@ img{max-width:100%}
 .pt-aud-club .pt-aud-k i{box-shadow:none}
 .pt-aud-soon{background:#D4F03C;color:#15201A;font-size:15px;font-weight:700;padding:6px 14px;border-radius:999px}
 @supports (grid-template-rows: subgrid){.pt-aud{display:grid;grid-template-rows:subgrid;grid-row:span 4;gap:16px}.pt-aud-rows{margin-top:0}}
+@media (max-width:640px){.pt-aud{padding:24px}}
 @media (min-width:680px) and (max-width:1023px){.pt-aud-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.pt-aud-club{grid-column:1/-1}}
 @media (prefers-reduced-motion:reduce){.pt-aud-court i{animation:none}}
 .pt-lang:focus-visible{outline:3px solid #15201A;outline-offset:4px}
@@ -128,7 +130,7 @@ img{max-width:100%}
 <div style="display: inline-flex; align-items: center; gap: 8px; background: #F1F5E8; border-radius: 999px; padding: 8px 16px; font-size: 15px; font-weight: 500; margin-bottom: 28px">
 <span style="width: 8px; height: 8px; border-radius: 50%; background: #8FB31C; display: inline-block"></span>Un bouton intelligent pour le padel
 </div>
-<h1 style="margin: 0; font-weight: 900; font-size: clamp(50px, 6.6vw, 92px); line-height: 0.98; letter-spacing: -0.035em">Ton t-shirt compte <span style="font-style: italic; background: #D4F03C; padding: 0 12px; border-radius: 16px; display: inline-block; transform: rotate(-2deg)">les points.</span></h1>
+<h1 style="margin: 0; font-weight: 900; font-size: clamp(50px, 6.6vw, 92px); line-height: 0.98; letter-spacing: -0.035em">Ton t-⁠shirt compte <span style="font-style: italic; background: #D4F03C; padding: 0 12px; border-radius: 16px; display: inline-block; transform: rotate(-2deg)">les points.</span></h1>
 <p style="margin: 28px 0 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 500px">Clipse PadelTag. Tu gagnes le point - tu cliques. Ton téléphone compte et annonce le score à voix haute.</p>
 <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px">
 <a href="#get" class="pt-btn" style="background: #15201A; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: inline-flex; align-items: center">Je veux PadelTag</a>
@@ -182,7 +184,7 @@ img{max-width:100%}
 <div style="height: 200px; border-radius: 26px; background: #D4F03C; display: flex; align-items: center; justify-content: center; overflow: hidden">
 <img src="/tag.png?v=25307c78" alt="" style="width: 70%; transform: rotate(-10deg); filter: drop-shadow(0 16px 16px rgba(21,32,26,0.3))">
 </div>
-<div><span style="font-weight: 800; color: #8FB31C">1</span><div style="font-weight: 800; font-size: 26px; line-height: 1.2">Clipse-le sur ton t-shirt</div><div style="color: #4D5A52; margin-top: 6px">Léger et petit. Tu oublieras qu’il est là.</div></div>
+<div><span style="font-weight: 800; color: #8FB31C">1</span><div style="font-weight: 800; font-size: 26px; line-height: 1.2">Clipse-⁠le sur ton t-⁠shirt</div><div style="color: #4D5A52; margin-top: 6px">Léger et petit. Tu oublieras qu’il est là.</div></div>
 </div>
 
 <div style="background: #F7F9F2; border-radius: 36px; padding: 28px; display: flex; flex-direction: column; gap: 20px">
@@ -220,9 +222,9 @@ img{max-width:100%}
 <div style="background: #FFFFFF; border-radius: 18px 18px 18px 4px; padding: 10px 16px; font-weight: 700; font-size: 17px">« Trente, quinze »</div>
 </div>
 <span class="pt-aud-who">Débutant</span>
-<h3 class="pt-aud-t">Tu ne sais pas compter les points ? Ton t-shirt compte pour toi.</h3>
+<h3 class="pt-aud-t"><span class="pt-ph">Tu ne sais pas compter les points ?</span> <span class="pt-ph">Ton t-⁠shirt compte pour toi.</span></h3>
 <div class="pt-aud-rows">
-<div><div class="pt-aud-k">Sans PadelTag</div><div class="pt-aud-was">Tu confonds 15-30-40, tu n’oses pas demander et tu perds ta concentration.</div></div>
+<div><div class="pt-aud-k">Sans PadelTag</div><div class="pt-aud-was">Tu confonds 15-⁠30-⁠40, tu n’oses pas demander et tu perds ta concentration.</div></div>
 <div><div class="pt-aud-k"><i></i>Avec PadelTag</div><div class="pt-aud-now">Le score se tient tout seul. Et tu vois tes progrès match après match.</div></div>
 </div>
 </div>
@@ -236,7 +238,7 @@ img{max-width:100%}
 <div style="display: flex; align-items: center; gap: 10px; background: #F7F9F2; border-radius: 14px; padding: 8px 12px; font-size: 14px"><span style="width: 28px; height: 28px; flex: none; border-radius: 50%; background: #FFC2B0; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px">J</span><span style="flex: 1; min-width: 0">Meilleur partenaire</span><b>Jade</b></div>
 </div>
 <span class="pt-aud-who">Joueur régulier</span>
-<h3 class="pt-aud-t">Vois tes progrès - et avec qui tu gagnes le plus.</h3>
+<h3 class="pt-aud-t"><span class="pt-ph">Vois tes progrès -</span> <span class="pt-ph">et avec qui tu gagnes le plus.</span></h3>
 <div class="pt-aud-rows">
 <div><div class="pt-aud-k">Sans PadelTag</div><div class="pt-aud-was">Tu joues souvent, mais tu ne vois pas tes progrès ni ce qui marche.</div></div>
 <div><div class="pt-aud-k"><i></i>Avec PadelTag</div><div class="pt-aud-now">Historique des matchs, pourcentage de victoires, séries. Ton meilleur partenaire, ton adversaire le plus gênant et le moment du set où tu lâches.</div></div>
@@ -251,7 +253,7 @@ img{max-width:100%}
 <div class="pt-aud-court"><span><i></i>Terrain 4</span><b>5:1 · 0:30</b></div>
 </div>
 <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap"><span class="pt-aud-who">Tournois et clubs</span><span class="pt-aud-soon">Bientôt</span></div>
-<h3 class="pt-aud-t">Le score de tous les terrains en direct - sur l’écran de l’arbitre.</h3>
+<h3 class="pt-aud-t"><span class="pt-ph">Le score de tous les terrains en direct -</span> <span class="pt-ph">sur l’écran de l’arbitre.</span></h3>
 <div class="pt-aud-rows">
 <div><div class="pt-aud-k">Sans PadelTag</div><div class="pt-aud-was">Feuilles de papier, disputes sur le score, résultats recopiés à la main.</div></div>
 <div><div class="pt-aud-k"><i></i>Avec PadelTag</div><div class="pt-aud-now">Score automatique, tableau en direct et résultats du tournoi tout de suite dans le système.</div></div>
@@ -267,8 +269,8 @@ img{max-width:100%}
 <div style="max-width: 1160px; margin: 0 auto">
 <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 48px">
 <div>
-<h2 style="margin: 0 0 10px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Teste-le ici même.</h2>
-<p style="margin: 0; color: #4D5A52">Clique sur un PadelTag ci-dessous et regarde les points s’ajouter.</p>
+<h2 style="margin: 0 0 10px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Teste-⁠le ici même.</h2>
+<p style="margin: 0; color: #4D5A52">Clique sur un PadelTag ci-⁠dessous et regarde les points s’ajouter.</p>
 </div>
 </div>
 
@@ -360,7 +362,7 @@ img{max-width:100%}
 <div style="display: flex; flex-direction: column; gap: 18px">
 <div style="display: flex; align-items: center; gap: 16px"><span style="width: 44px; height: 44px; flex: none; border-radius: 14px; background: #D4F03C; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></span><span style="font-size: 19px; font-weight: 500">Ton tag sait que c’est toi</span></div>
 <div style="display: flex; align-items: center; gap: 16px"><span style="width: 44px; height: 44px; flex: none; border-radius: 14px; background: #D4F03C; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"></path></svg></span><span style="font-size: 19px; font-weight: 500">L’historique complet de tes matchs</span></div>
-<div style="display: flex; align-items: center; gap: 16px"><span style="width: 44px; height: 44px; flex: none; border-radius: 14px; background: #D4F03C; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M15.5 14.5A5 5 0 0 1 21.5 19"></path></svg></span><span style="font-size: 19px; font-weight: 500">Compare-toi à tes partenaires de jeu</span></div>
+<div style="display: flex; align-items: center; gap: 16px"><span style="width: 44px; height: 44px; flex: none; border-radius: 14px; background: #D4F03C; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><circle cx="17" cy="9" r="2.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M15.5 14.5A5 5 0 0 1 21.5 19"></path></svg></span><span style="font-size: 19px; font-weight: 500">Compare-⁠toi à tes partenaires de jeu</span></div>
 </div>
 </div>
 
@@ -373,7 +375,7 @@ img{max-width:100%}
 <div><div style="font-weight: 800; font-size: 20px; line-height: 1.1">Gabriel</div><div style="font-size: 13px; color: #4D5A52">Tag relié</div></div>
 </div>
 <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
-<div style="background: #D4F03C; border-radius: 18px; padding: 12px 14px"><div style="font-size: 12px; font-weight: 600">Points ce mois-ci</div><div style="font-weight: 900; font-size: 34px; line-height: 1.1">186</div></div>
+<div style="background: #D4F03C; border-radius: 18px; padding: 12px 14px"><div style="font-size: 12px; font-weight: 600">Points ce mois-⁠ci</div><div style="font-weight: 900; font-size: 34px; line-height: 1.1">186</div></div>
 <div style="background: #F1F5E8; border-radius: 18px; padding: 12px 14px"><div style="font-size: 12px; font-weight: 600">Matchs gagnés</div><div style="font-weight: 900; font-size: 34px; line-height: 1.1; white-space: nowrap">9/14</div></div>
 </div>
 <div style="font-size: 13px; font-weight: 700; color: #4D5A52; letter-spacing: 0.06em; margin-top: 2px">DERNIERS MATCHS</div>
@@ -424,7 +426,7 @@ img{max-width:100%}
 <section id="get" style="padding: 0 24px 96px">
 <div style="max-width: 1160px; margin: 0 auto">
 <h2 style="margin: 0 0 12px; font-weight: 900; font-size: clamp(40px, 5.4vw, 72px); line-height: 0.98; letter-spacing: -0.035em">Tu joues.<br>On compte.</h2>
-<p style="margin: 0 0 48px; font-size: 21px; color: #4D5A52">Prends-en un, ou un pack pour tout le terrain.</p>
+<p style="margin: 0 0 48px; font-size: 21px; color: #4D5A52">Prends-⁠en un, ou un pack pour tout le terrain.</p>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; align-items: stretch">
 
 <div class="pt-price" style="background: #F7F9F2; border-radius: 40px; padding: 36px; display: flex; flex-direction: column; gap: 20px">
