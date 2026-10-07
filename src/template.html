@@ -27,6 +27,11 @@ a{color:#15201A}a:hover{color:#3B4A40}
 .pt-btn{transition:transform .12s ease}
 .pt-btn:hover{transform:translateY(-2px)}
 *{box-sizing:border-box}
+/* Журнальные переносы: заголовки — ровными строками, абзацы — без висячих слов, мелкий текст — мягкие переносы по языку. */
+body{text-wrap:pretty;hanging-punctuation:first}
+h1,h2,[style*="font-weight: 800"],[style*="font-weight: 900"]{text-wrap:balance;hyphens:manual}
+:lang(de) p,:lang(de) [style*="color: #4D5A52"],:lang(de) [style*="color: #2B3313"],:lang(de) [style*="color: #C9D0CB"],:lang(nl) p,:lang(nl) [style*="color: #4D5A52"],:lang(nl) [style*="color: #2B3313"],:lang(nl) [style*="color: #C9D0CB"],:lang(sv) p,:lang(sv) [style*="color: #4D5A52"],:lang(sv) [style*="color: #2B3313"],:lang(sv) [style*="color: #C9D0CB"],:lang(da) p,:lang(da) [style*="color: #4D5A52"],:lang(da) [style*="color: #2B3313"],:lang(da) [style*="color: #C9D0CB"]{hyphens:auto;-webkit-hyphens:auto;hyphenate-limit-chars:10 5 5;-webkit-hyphenate-limit-before:5;-webkit-hyphenate-limit-after:5}
+a,button,.pt-chip,.pt-mode,nav{hyphens:manual}
 html{scroll-behavior:smooth}
 img{max-width:100%}
 .pt-mode{border:none;cursor:pointer;font-family:inherit;font-size:17px;font-weight:600;padding:12px 22px;min-height:48px;border-radius:999px;background:transparent;color:#15201A}

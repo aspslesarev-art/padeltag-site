@@ -20,8 +20,41 @@ autolang = ('<script>(function(){try{var L=' + json.dumps(paths, ensure_ascii=Fa
             'var n=navigator.languages||[navigator.language];for(var i=0;i<n.length;i++){var c=(n[i]||"").slice(0,2).toLowerCase();'
             'if(c==="en")return;if(L[c]){location.replace(L[c]+location.hash);return}}}catch(e){}})();</script>\n')
 
+NB, NNB = '\u00a0', '\u202f'  # неразрывный пробел и узкий неразрывный (французская пунктуация)
+# Служебные слова из трёх букв, которые не оставляем в конце строки (одно-двухбуквенные — всегда).
+GLUE3 = {
+    'ru': 'для без при над под про как что или его её мой наш ваш',
+    'en': 'the and for but nor our',
+    'es': 'los las del con por que sin una sus mis',
+    'fr': 'les des une aux par sur que qui pas ton mon',
+    'de': 'der die das den dem des ein und mit für auf aus bei von vor zum zur',
+    'it': 'gli del dal nel sul con per una che',
+    'pt': 'uma das dos com por que sem nas nos',
+    'nl': 'het een van met aan bij uit',
+    'sv': 'och att för med den det som',
+    'da': 'for med den det som til',
+    'ar': 'على إلى عن',
+}
+GLUE = {c: re.compile(r'(?<![\w\u2019\'-])(\w{1,2}|' + '|'.join(w.split()) + r'|\d[\d.,]*) (?=\S)', re.I)
+        for c, w in GLUE3.items()}
+
+def typo(t, code):
+    """Журнальные переносы: короткое слово или число не остаётся в конце строки,
+    тире не начинает строку, во французском знаки ? ! ; : и кавычки « » не отрываются."""
+    if not isinstance(t, str) or not t.strip(): return t
+    lead, trail = t[:len(t) - len(t.lstrip())], t[len(t.rstrip()):]
+    body = t.strip()
+    body = GLUE[code].sub(lambda m: m.group(1) + NB, body)
+    body = body.replace(' - ', NB + '- ')
+    if code == 'fr':
+        body = re.sub(r' ([?!;:»])', NNB + r'\1', body).replace('« ', '«' + NNB)
+    return lead + body + trail
+
+SKIP_TYPO = {'h1_b', 'meta_title', 'meta_desc', 'og_desc', 'q1', 'q2', 'sep'}
+
 for code, _, path, direction in LANGS:
     tr = dict(en); tr.update(T.get(code, {}))
+    tr = {k: (v if k in SKIP_TYPO else typo(v, code)) for k, v in tr.items()}
     missing = [k for k in en if code != 'en' and k not in T.get(code, {}) and k not in ('q1', 'q2', 'sep')]
     if missing: print(code, 'missing:', missing)
     opts = ''.join(f'<option value="{c}" data-href="{p}"{" selected" if c == code else ""}>{n}</option>' for c, n, p, _ in LANGS)
