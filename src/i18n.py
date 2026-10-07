@@ -15,6 +15,21 @@ LANGS = [  # code, native name, url path, dir
     ('ar', 'العربية', '/ar/', 'rtl'),
 ]
 
+# Имена в демо и в примере профиля: 2 мужских + 2 женских, частые в стране языка (м, ж | м, ж — как места 0–3).
+NAMES = {
+    'en': ['James', 'Emma', 'Oliver', 'Olivia'],
+    'es': ['Hugo', 'Lucía', 'Martín', 'Sofía'],
+    'fr': ['Gabriel', 'Jade', 'Léo', 'Louise'],
+    'de': ['Noah', 'Emilia', 'Paul', 'Mia'],
+    'it': ['Luca', 'Sofia', 'Marco', 'Giulia'],
+    'pt': ['João', 'Maria', 'Miguel', 'Ana'],
+    'nl': ['Daan', 'Emma', 'Noah', 'Julia'],
+    'sv': ['William', 'Alice', 'Hugo', 'Maja'],
+    'da': ['William', 'Emma', 'Noah', 'Ida'],
+    'ru': ['Иван', 'Анна', 'Максим', 'Мария'],
+    'ar': ['محمد', 'فاطمة', 'أحمد', 'مريم'],
+}
+
 EN_JS = {
     'score_btn': 'Score button', 'click_aria': 'Click button: ',
     'leg_us': 'Point for Us', 'leg_them': 'Point for Them', 'leg_undo': 'Undo', 'leg_point': 'Point',

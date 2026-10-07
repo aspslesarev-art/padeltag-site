@@ -3,7 +3,7 @@
   var TAG = (document.querySelector('img.pt-float') || {}).getAttribute ? document.querySelector('img.pt-float').getAttribute('src') : '/tag.png';
   var fills = ['#D4F03C', '#FFC2B0'];
   var names = [T.us || 'Us', T.them || 'Them'];
-  var players = ['Alex', 'Maya', 'Leo', 'Nina'];
+  var players = T.players || ['Alex', 'Maya', 'Leo', 'Nina'];
   var s, clicks = {}, timers = {}, flashT;
   var touched = false; // пока не нажали ни разу — теги пульсируют: «жми сюда»
 

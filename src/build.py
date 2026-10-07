@@ -1,14 +1,14 @@
 # Builds padeltag.app in every language: / (English) and /<lang>/index.html.
 # Run: python3 src/build.py
 import html, json, pathlib, re
-from i18n import LANGS, EN_JS, T
+from i18n import LANGS, EN_JS, T, NAMES
 
 here = pathlib.Path(__file__).parent
 root = here.parent
 tpl = (here / 'template.html').read_text()
 en = json.loads((here / 'en.json').read_text())
 en.update(EN_JS)
-JS_KEYS = list(EN_JS) + ['us', 'them', 'said_init']
+JS_KEYS = list(EN_JS) + ['us', 'them', 'said_init', 'players']
 SITE = 'https://padeltag.app'
 import hashlib
 TAG_V = hashlib.md5((root / 'tag.png').read_bytes()).hexdigest()[:8]
@@ -58,6 +58,9 @@ SKIP_TYPO = {'h1_b', 'meta_title', 'meta_desc', 'og_desc', 'q1', 'q2', 'sep'}
 for code, _, path, direction in LANGS:
     tr = dict(en); tr.update(T.get(code, {}))
     tr = {k: (v if k in SKIP_TYPO else typo(v, code)) for k, v in tr.items()}
+    names = NAMES[code]
+    tr['players'] = names
+    for i, n in enumerate(names): tr['pn%d' % i] = n; tr['pi%d' % i] = n[0]
     missing = [k for k in en if code != 'en' and k not in T.get(code, {}) and k not in ('q1', 'q2', 'sep')]
     if missing: print(code, 'missing:', missing)
     opts = ''.join(f'<option value="{c}" data-href="{p}"{" selected" if c == code else ""}>{n}</option>' for c, n, p, _ in LANGS)
