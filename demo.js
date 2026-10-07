@@ -48,6 +48,9 @@
       var name = s.mode === 1 ? T.score_btn || 'Score button' : s.mode === 2 ? names[team] : players[slot];
       var b = document.createElement('button');
       b.className = 'pt-card pt-tag' + (touched ? '' : ' hint');
+      // Каждый тег «пикает» в своё время и в своём ритме — вразнобой, а не хором.
+      b.style.setProperty('--hl', (Math.random() * 3).toFixed(2) + 's');
+      b.style.setProperty('--hd', (2.4 + Math.random() * 1.6).toFixed(2) + 's');
       b.setAttribute('aria-label', (T.click_aria || 'Click button: ') + name);
       b.innerHTML = '<span class="pt-glow" style="background:' + (s.mode === 1 ? '#F1F5E8' : fills[team]) + '"><img src="' + TAG + '" alt=""></span>' +
         '<span class="pt-name"><span class="pt-dot" style="background:' + (s.mode === 1 ? '#15201A' : (team === 0 ? '#8FB31C' : '#FF8C6B')) + '"></span></span>';

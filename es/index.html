@@ -55,9 +55,9 @@ img{max-width:100%}
 .pt-card{background:#FFFFFF;border:none;border-radius:32px;padding:28px 16px 20px;display:flex;flex-direction:column;align-items:center;gap:14px;font-family:inherit;color:#15201A;min-height:48px}
 .pt-glow{width:170px;max-width:100%;height:120px;display:flex;align-items:center;justify-content:center;border-radius:999px}
 .pt-glow img{width:160px;max-width:94%;transition:transform .12s ease;filter:drop-shadow(0 12px 12px rgba(21,32,26,0.28))}
-@keyframes pthint{0%{transform:scale(.92);opacity:.75}100%{transform:scale(1.25);opacity:0}}
+@keyframes pthint{0%{transform:scale(.92);opacity:.75}40%,100%{transform:scale(1.25);opacity:0}}
 .pt-glow{position:relative}
-.pt-card.hint .pt-glow::after{content:"";position:absolute;inset:0;border-radius:inherit;border:3px solid #15201A;animation:pthint 1.6s cubic-bezier(.2,.8,.2,1) infinite;pointer-events:none}
+.pt-card.hint .pt-glow::after{content:"";position:absolute;inset:0;border-radius:inherit;border:3px solid #15201A;animation:pthint var(--hd,3s) cubic-bezier(.2,.8,.2,1) var(--hl,0s) infinite;opacity:0;pointer-events:none}
 @media (prefers-reduced-motion:reduce){.pt-card.hint .pt-glow::after{animation:none;opacity:.35}}
 .pt-card.down .pt-glow img{transform:scale(.9) translateY(4px)}
 .pt-name{display:inline-flex;align-items:center;gap:8px;font-size:19px;font-weight:700}
@@ -405,6 +405,6 @@ img{max-width:100%}
 </div>
 
 <script>window.PT_T={"score_btn": "Botón de puntos", "click_aria": "Pulsar botón: ", "leg_us": "Punto para nosotros", "leg_them": "Punto para ellos", "leg_undo": "Deshacer", "leg_point": "Punto", "game": "¡Juego!", "golden": "Punto de oro", "nothing": "Nada que deshacer", "words": {"0": "cero", "15": "quince", "30": "treinta", "40": "cuarenta"}, "q1": "«", "q2": "»", "sep": ", ", "us": "Nosotros", "them": "Ellos", "said_init": "Pulsa un botón"};</script>
-<script src="/demo.js?v=4833d2b3"></script>
+<script src="/demo.js?v=e6542d90"></script>
 </body>
 </html>
