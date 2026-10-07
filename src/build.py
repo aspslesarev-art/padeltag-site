@@ -10,6 +10,9 @@ en = json.loads((here / 'en.json').read_text())
 en.update(EN_JS)
 JS_KEYS = list(EN_JS) + ['us', 'them', 'said_init', 'players']
 SITE = 'https://padeltag.app'
+# Ссылки на приложение в магазинах. Пусто — кнопка «Скоро» и не нажимается.
+# QR на сайте и упаковке ведёт на /app — он сам открывает нужный магазин, сам код не меняется.
+STORE = {'ios': '', 'android': ''}
 import hashlib
 TAG_V = hashlib.md5((root / 'tag.png').read_bytes()).hexdigest()[:8]
 DEMO_V = hashlib.md5((root / 'demo.js').read_bytes()).hexdigest()[:8]  # новая версия скрипта — браузер не возьмёт старую из кэша
@@ -73,6 +76,13 @@ for code, _, path, direction in LANGS:
         if k == 'hreflang': return hreflang
         if k == 'autolang': return autolang if code == 'en' else ''
         if k == 'langopts': return opts
+        if k in ('ios_url', 'android_url'):
+            u = STORE['ios' if 'ios' in k else 'android']; return html.escape(u) if u else '#app'
+        if k in ('ios_attrs', 'android_attrs'):
+            u = STORE['ios' if 'ios' in k else 'android']
+            return 'target="_blank" rel="noopener"' if u else 'aria-disabled="true" tabindex="-1" onclick="return false"'
+        if k in ('ios_soon', 'android_soon'):
+            return '' if STORE['ios' if 'ios' in k else 'android'] else '<span class="pt-soon">' + html.escape(tr['soon']) + '</span>'
         if k == 'js': return json.dumps({k2: tr[k2] for k2 in JS_KEYS}, ensure_ascii=False).replace('</', '<\\/')
         return html.escape(tr[k], quote=True)
     out = re.sub(r'\{\{(\w+)\}\}', fill, out)
@@ -86,4 +96,11 @@ for code, _, path, direction in LANGS:
 
 sm = ''.join(f'<url><loc>{SITE}{p}</loc>' + ''.join(f'<xhtml:link rel="alternate" hreflang="{c2}" href="{SITE}{p2}"/>' for c2, _, p2, _ in LANGS) + '</url>' for _, _, p, _ in LANGS)
 (root / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">' + sm + '</urlset>\n')
+(root / 'app').mkdir(exist_ok=True)
+(root / 'app' / 'index.html').write_text('''<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PadelTag app</title><meta name="robots" content="noindex">
+<script>(function(){var ua=navigator.userAgent,ios=%s,android=%s;
+var isIOS=/iPhone|iPad|iPod/.test(ua)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+location.replace(isIOS&&ios?ios:(/Android/.test(ua)&&android?android:"/#app"));})();</script></head>
+<body style="font-family:system-ui;padding:24px"><a href="/#app">PadelTag</a></body></html>
+''' % (json.dumps(STORE['ios']), json.dumps(STORE['android'])))
 (root / 'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n')

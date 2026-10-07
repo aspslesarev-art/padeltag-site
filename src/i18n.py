@@ -89,6 +89,7 @@ T['es'] = {
  'leg_us': 'Punto para nosotros', 'leg_them': 'Punto para ellos', 'leg_undo': 'Deshacer', 'leg_point': 'Punto',
  'game': '¡Juego!', 'golden': 'Punto de oro', 'nothing': 'Nada que deshacer',
  'words': {'0': 'cero', '15': 'quince', '30': 'treinta', '40': 'cuarenta'}, 'q1': '«', 'q2': '»',
+ 'dl_h': 'Descarga la app', 'dl_p': 'Apunta la cámara al código QR o pulsa tu tienda.', 'as_small': 'Descárgalo en', 'gp_small': 'Disponible en', 'soon': 'Pronto',
 }
 
 T['fr'] = {
@@ -140,6 +141,7 @@ T['fr'] = {
  'leg_us': 'Point pour nous', 'leg_them': 'Point pour eux', 'leg_undo': 'Annuler', 'leg_point': 'Point',
  'game': 'Jeu !', 'golden': 'Point décisif', 'nothing': 'Rien à annuler',
  'words': {'0': 'zéro', '15': 'quinze', '30': 'trente', '40': 'quarante'}, 'q1': '« ', 'q2': ' »',
+ 'dl_h': 'Télécharge l’appli', 'dl_p': 'Scanne le QR code avec ton appareil photo ou choisis ta boutique.', 'as_small': 'Télécharger dans l’', 'gp_small': 'Disponible sur', 'soon': 'Bientôt',
 }
 
 T['de'] = {
@@ -191,6 +193,7 @@ T['de'] = {
  'leg_us': 'Punkt für uns', 'leg_them': 'Punkt für die', 'leg_undo': 'Zurück', 'leg_point': 'Punkt',
  'game': 'Spiel!', 'golden': 'Golden Point', 'nothing': 'Nichts zum Zurücknehmen',
  'words': {'0': 'null', '15': 'fünfzehn', '30': 'dreißig', '40': 'vierzig'}, 'q1': '„', 'q2': '“',
+ 'dl_h': 'Hol dir die App', 'dl_p': 'Halte die Kamera auf den QR-Code oder tippe auf deinen Store.', 'as_small': 'Laden im', 'gp_small': 'Jetzt bei', 'soon': 'Bald',
 }
 
 T['it'] = {
@@ -242,6 +245,7 @@ T['it'] = {
  'leg_us': 'Punto per noi', 'leg_them': 'Punto per loro', 'leg_undo': 'Annulla', 'leg_point': 'Punto',
  'game': 'Game!', 'golden': 'Punto d’oro', 'nothing': 'Niente da annullare',
  'words': {'0': 'zero', '15': 'quindici', '30': 'trenta', '40': 'quaranta'}, 'q1': '«', 'q2': '»',
+ 'dl_h': 'Scarica l’app', 'dl_p': 'Inquadra il QR code con la fotocamera o tocca il tuo store.', 'as_small': 'Scarica su', 'gp_small': 'Disponibile su', 'soon': 'Presto',
 }
 
 T['pt'] = {
@@ -293,6 +297,7 @@ T['pt'] = {
  'leg_us': 'Ponto para nós', 'leg_them': 'Ponto para eles', 'leg_undo': 'Anular', 'leg_point': 'Ponto',
  'game': 'Jogo!', 'golden': 'Ponto de ouro', 'nothing': 'Nada para anular',
  'words': {'0': 'zero', '15': 'quinze', '30': 'trinta', '40': 'quarenta'}, 'q1': '«', 'q2': '»',
+ 'dl_h': 'Descarrega a app', 'dl_p': 'Aponta a câmara ao código QR ou toca na tua loja.', 'as_small': 'Descarregar na', 'gp_small': 'Disponível no', 'soon': 'Em breve',
 }
 
 T['nl'] = {
@@ -344,6 +349,7 @@ T['nl'] = {
  'leg_us': 'Punt voor ons', 'leg_them': 'Punt voor hen', 'leg_undo': 'Terug', 'leg_point': 'Punt',
  'game': 'Game!', 'golden': 'Golden point', 'nothing': 'Niets om terug te zetten',
  'words': {'0': 'nul', '15': 'vijftien', '30': 'dertig', '40': 'veertig'},
+ 'dl_h': 'Download de app', 'dl_p': 'Richt je camera op de QR-code of tik op je store.', 'as_small': 'Download in de', 'gp_small': 'Ontdek het op', 'soon': 'Binnenkort',
 }
 
 T['sv'] = {
@@ -395,6 +401,7 @@ T['sv'] = {
  'leg_us': 'Poäng till oss', 'leg_them': 'Poäng till dem', 'leg_undo': 'Ångra', 'leg_point': 'Poäng',
  'game': 'Gem!', 'golden': 'Golden point', 'nothing': 'Inget att ångra',
  'words': {'0': 'noll', '15': 'femton', '30': 'trettio', '40': 'fyrtio'}, 'q1': '”', 'q2': '”',
+ 'dl_h': 'Ladda ner appen', 'dl_p': 'Rikta kameran mot QR-koden eller tryck på din butik.', 'as_small': 'Hämta i', 'gp_small': 'Ladda ned på', 'soon': 'Snart',
 }
 
 T['da'] = {
@@ -446,6 +453,7 @@ T['da'] = {
  'leg_us': 'Point til os', 'leg_them': 'Point til dem', 'leg_undo': 'Fortryd', 'leg_point': 'Point',
  'game': 'Parti!', 'golden': 'Golden point', 'nothing': 'Intet at fortryde',
  'words': {'0': 'nul', '15': 'femten', '30': 'tredive', '40': 'fyrre'}, 'q1': '»', 'q2': '«',
+ 'dl_h': 'Hent appen', 'dl_p': 'Peg kameraet mod QR-koden, eller tryk på din butik.', 'as_small': 'Hent i', 'gp_small': 'Hent den på', 'soon': 'Snart',
 }
 
 T['ru'] = {
@@ -497,6 +505,7 @@ T['ru'] = {
  'leg_us': 'Очко нам', 'leg_them': 'Очко им', 'leg_undo': 'Отмена', 'leg_point': 'Очко',
  'game': 'Гейм!', 'golden': 'Золотой мяч', 'nothing': 'Нечего отменять',
  'words': {'0': 'ноль', '15': 'пятнадцать', '30': 'тридцать', '40': 'сорок'}, 'q1': '«', 'q2': '»',
+ 'dl_h': 'Скачай приложение', 'dl_p': 'Наведи камеру на QR-код или нажми на свой магазин.', 'as_small': 'Загрузите в', 'gp_small': 'Доступно в', 'soon': 'Скоро',
 }
 
 T['ar'] = {
@@ -548,4 +557,5 @@ T['ar'] = {
  'leg_us': 'نقطة لنا', 'leg_them': 'نقطة لهم', 'leg_undo': 'تراجع', 'leg_point': 'نقطة',
  'game': 'شوط!', 'golden': 'النقطة الذهبية', 'nothing': 'لا شيء للتراجع عنه',
  'words': {'0': 'صفر', '15': 'خمسة عشر', '30': 'ثلاثون', '40': 'أربعون'}, 'q1': '«', 'q2': '»', 'sep': '، ',
+ 'dl_h': 'حمّل التطبيق', 'dl_p': 'وجّه الكاميرا نحو رمز QR أو اضغط على متجرك.', 'as_small': 'حمّله من', 'gp_small': 'احصل عليه من', 'soon': 'قريبًا',
 }
