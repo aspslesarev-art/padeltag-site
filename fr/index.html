@@ -29,7 +29,10 @@ body{margin:0;background:#FFFFFF}
 a{color:#15201A}a:hover{color:#3B4A40}
 @keyframes ptfloat{0%,100%{transform:translateY(0) rotate(-16deg)}50%{transform:translateY(-14px) rotate(-13deg)}}
 @keyframes ptring{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.5);opacity:0}}
-.pt-float{animation:ptfloat 5s ease-in-out infinite}
+.pt-float{animation:ptfloat 5s ease-in-out infinite;transition:filter .12s ease}
+.pt-float.down{filter:brightness(1.25) drop-shadow(0 18px 18px rgba(21,32,26,0.35))!important}
+.pt-float:focus-visible{outline:3px solid #15201A;outline-offset:8px;border-radius:40px}
+.pt-pop{transform:scale(1.18)}
 .pt-ring{animation:ptring 1.8s ease-out infinite}
 .pt-ring2{animation-delay:.6s}
 .pt-tag{cursor:pointer;transition:transform .15s ease}
@@ -117,15 +120,15 @@ img{max-width:100%}
 <div class="pt-ring pt-ring2" style="position: absolute; inset: 0; border-radius: 50%; border: 3px solid #15201A"></div>
 </div>
 <!-- the tag -->
-<img class="pt-float" src="/tag.png?v=25307c78" alt="Bouton PadelTag" style="position: absolute; left: 12%; top: 24%; width: 72%; filter: drop-shadow(0 30px 30px rgba(21,32,26,0.35)) drop-shadow(0 6px 8px rgba(21,32,26,0.25))">
+<img class="pt-float" id="pt-hero-tag" role="button" tabindex="0" src="/tag.png?v=25307c78" alt="Bouton PadelTag" style="cursor: pointer; position: absolute; left: 12%; top: 24%; width: 72%; filter: drop-shadow(0 30px 30px rgba(21,32,26,0.35)) drop-shadow(0 6px 8px rgba(21,32,26,0.25))">
 <!-- stickers -->
 <div style="position: absolute; left: 0; top: 10%; background: #FFFFFF; border-radius: 18px; padding: 10px 16px; font-weight: 700; font-size: 17px; box-shadow: 0 10px 30px rgba(21,32,26,0.12); transform: rotate(-4deg)">1 clic = point</div>
 <div style="position: absolute; right: 0; top: 74%; background: #15201A; color: #FFFFFF; border-radius: 18px; padding: 10px 16px; font-weight: 700; font-size: 17px; box-shadow: 0 10px 30px rgba(21,32,26,0.2); transform: rotate(3deg)">2 clics = annuler</div>
 <!-- mini phone -->
 <div style="position: absolute; right: 2%; top: 2%; width: 116px; height: 220px; border-radius: 24px; background: #15201A; padding: 6px; box-sizing: border-box; box-shadow: 0 20px 40px rgba(21,32,26,0.25); transform: rotate(6deg)">
 <div style="width: 100%; height: 100%; border-radius: 19px; background: #FFFFFF; padding: 20px 6px 6px; box-sizing: border-box; display: flex; flex-direction: column; gap: 4px">
-<div style="flex: 1; border-radius: 12px; background: #D4F03C; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 40px; letter-spacing: -0.04em">40</div>
-<div style="flex: 1; border-radius: 12px; background: #FFC2B0; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 40px; letter-spacing: -0.04em">30</div>
+<div style="flex: 1; border-radius: 12px; background: #D4F03C; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 40px; letter-spacing: -0.04em; transition: transform .12s ease" id="pt-hero-0">40</div>
+<div style="flex: 1; border-radius: 12px; background: #FFC2B0; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 40px; letter-spacing: -0.04em; transition: transform .12s ease" id="pt-hero-1">30</div>
 </div>
 </div>
 </div>
@@ -405,6 +408,6 @@ img{max-width:100%}
 </div>
 
 <script>window.PT_T={"score_btn": "Bouton de score", "click_aria": "Cliquer sur : ", "leg_us": "Point pour nous", "leg_them": "Point pour eux", "leg_undo": "Annuler", "leg_point": "Point", "game": "Jeu !", "golden": "Point décisif", "nothing": "Rien à annuler", "words": {"0": "zéro", "15": "quinze", "30": "trente", "40": "quarante"}, "q1": "« ", "q2": " »", "sep": ", ", "us": "Nous", "them": "Eux", "said_init": "Clique sur un bouton"};</script>
-<script src="/demo.js?v=5fe946a5"></script>
+<script src="/demo.js?v=18c5f878"></script>
 </body>
 </html>

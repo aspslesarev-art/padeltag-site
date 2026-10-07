@@ -164,6 +164,39 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    // Тег в начале страницы тоже живой: 1 нажатие — очко «нам» на маленьком телефоне, 2 — отмена.
+    var ht = $('pt-hero-tag');
+    if (ht) {
+      var hp = [3, 2], hh = [], hn = 0, htm;
+      var show = function (t) {
+        for (var i = 0; i < 2; i++) $('pt-hero-' + i).textContent = label(hp[i]);
+        var el = $('pt-hero-' + t); el.classList.add('pt-pop');
+        setTimeout(function () { el.classList.remove('pt-pop'); }, 160);
+      };
+      var heroPress = function () {
+        tick();
+        ht.classList.add('down'); setTimeout(function () { ht.classList.remove('down'); }, 140);
+        hn += 1; clearTimeout(htm);
+        if (hn >= 2) {
+          hn = 0;
+          if (hh.length) { hp = hh.pop(); show(0); speak('undo'); }
+          return;
+        }
+        htm = setTimeout(function () {
+          hn = 0; hh.push(hp.slice());
+          hp[0] += 1;
+          if (hp[0] >= 4) { hp = [0, 0]; speak('game'); }
+          else {
+            var a = label(hp[0]), b = label(hp[1]);
+            speak(a === '40' && b === '40' ? 'golden' : 'p_' + a + '_' + b);
+          }
+          show(0);
+        }, 450);
+      };
+      ht.addEventListener('pointerenter', function () { audio(); }); // голос начнёт грузиться ещё до нажатия
+      ht.addEventListener('click', heroPress);
+      ht.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); heroPress(); } });
+    }
     var btns = document.querySelectorAll('.pt-mode');
     for (var i = 0; i < btns.length; i++) btns[i].addEventListener('click', function () { setMode(+this.getAttribute('data-mode')); });
     $('pt-reset').addEventListener('click', function () { setMode(s.mode); });
