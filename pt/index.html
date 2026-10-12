@@ -195,7 +195,7 @@ img{max-width:100%}
 .pa-tags[hidden]{display:none}
 @keyframes pain{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 .pa-tags.pa-in{animation:pain .32s cubic-bezier(.2,.8,.2,1)}
-@media (max-width:959px){.pa-tags{margin:16px 0 0;width:100%;max-width:400px}}
+@media (max-width:959px){.pa-tags,[dir=rtl] .pa-tags{margin:16px 0 0;width:100%;max-width:400px}}
 .pa-tag{border:none;background:#FFFFFF;border-radius:24px;padding:12px 4px 10px;display:flex;flex-direction:column;align-items:center;gap:8px;font-family:inherit;color:#15201A;cursor:pointer;min-height:48px;transition:transform .12s ease,opacity .2s ease}
 .pa-tag:hover{transform:translateY(-3px)}
 .pa-tags.idle .pa-tag{opacity:.55}
@@ -367,13 +367,13 @@ img{max-width:100%}
 <span style="width: 8px; height: 8px; border-radius: 50%; background: #8FB31C; display: inline-block"></span>Um botão inteligente para padel
 </div>
 <h1 style="margin: 0; font-weight: 900; font-size: clamp(50px, 6.6vw, 92px); line-height: 0.98; letter-spacing: -0.035em">Chega de discutir <span style="font-style: italic; background: #D4F03C; padding: 0 12px; border-radius: 16px; display: inline-block; white-space: nowrap; transform: rotate(-2deg)">pontos.</span></h1>
-<p style="margin: 28px 0 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 520px">Cada ponto é contado por ti e guardado nas tuas estatísticas. O teu nível real - de jogos reais, não do que as pessoas dizem. Contar é grátis para sempre.</p>
+<p style="margin: 28px 0 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 520px">Um botão na camisola. Ganhaste o ponto - carrega. O telemóvel conta, diz o resultado em voz alta e guarda cada jogo.</p>
 
 <div class="pt-cta">
 <a href="#try" class="pt-btn" style="background: #15201A; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center">Experimentar agora</a>
 <a href="#app" class="pt-btn" style="background: #F1F5E8; color: #15201A; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center">Descarregar a app</a>
 </div>
-<p style="margin: 16px 0 0; font-size: 15px; color: #4D5A52">Scoring is free forever.</p>
+<p style="margin: 16px 0 0; font-size: 15px; color: #4D5A52">O resultado é grátis para sempre.</p>
 </div>
 
 <div class="pt-hero-pic">
@@ -389,15 +389,15 @@ img{max-width:100%}
 <!-- PAINS -->
 <section id="pains" style="padding: 8px 24px 0">
 <div style="max-width: 1160px; margin: 0 auto">
-<h2 style="margin: 0 0 16px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Sound familiar?</h2>
-<p style="margin: 0 0 48px; font-size: 19px; line-height: 1.55; color: #4D5A52; max-width: 68ch">Real quotes from padel group chats. We read 46,000 messages.</p>
+<h2 style="margin: 0 0 16px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Soa familiar?</h2>
+<p style="margin: 0 0 48px; font-size: 19px; line-height: 1.55; color: #4D5A52; max-width: 68ch">Frases reais de grupos de padel. Lemos 46 000 mensagens.</p>
 <div class="pt-pains">
-<figure class="pt-pain"><blockquote>&quot;Lunda 2.3 - how much is that in Playtomic?&quot;</blockquote><figcaption>Every app rates your level its own way.</figcaption></figure>
-<figure class="pt-pain"><blockquote>&quot;2.5 and almost no matches&quot; - and they win 6-⁠0.</blockquote><figcaption>Stronger players show up in your level.</figcaption></figure>
-<figure class="pt-pain"><blockquote>&quot;Just once, count it right.&quot;</blockquote><figcaption>Tournaments are counted by hand - and the prize goes to the wrong pair.</figcaption></figure>
-<figure class="pt-pain"><blockquote>&quot;Played 2 games - was it counted right?&quot;</blockquote><figcaption>Nobody knows where to find themselves in the table.</figcaption></figure>
-<figure class="pt-pain"><blockquote>&quot;15 different apps and WhatsApp groups, no common standard.&quot;</blockquote><figcaption>Every club has its own app.</figcaption></figure>
-<figure class="pt-pain pt-pain-ans"><blockquote>PadelTag counts every point and remembers every match.</blockquote><figcaption>Score, partner, opponents, tournament table - in one place. Nothing to argue about.</figcaption></figure>
+<figure class="pt-pain"><blockquote>«Lunda 2,3 - quanto é no Playtomic?»</blockquote><figcaption>Cada app calcula o nível à sua maneira.</figcaption></figure>
+<figure class="pt-pain"><blockquote>«2,5 e quase sem jogos» - e ganham 6-⁠0.</blockquote><figcaption>Aos torneios do teu nível chegam jogadores mais fortes.</figcaption></figure>
+<figure class="pt-pain"><blockquote>«Ao menos uma vez contem bem»</blockquote><figcaption>Os torneios são contados à mão - e o prémio vai para a dupla errada.</figcaption></figure>
+<figure class="pt-pain"><blockquote>«Joguei 2 jogos - está bem contado?»</blockquote><figcaption>Ninguém sabe onde se encontrar na tabela.</figcaption></figure>
+<figure class="pt-pain"><blockquote>«15 apps e grupos de WhatsApp diferentes, nenhum padrão»</blockquote><figcaption>Cada clube tem a sua app.</figcaption></figure>
+<figure class="pt-pain pt-pain-ans"><blockquote>O PadelTag conta cada ponto e guarda cada jogo.</blockquote><figcaption>Resultado, parceiro, adversários, tabela do torneio - num só sítio. Nada para discutir.</figcaption></figure>
 </div>
 </div>
 </section>
@@ -488,19 +488,19 @@ img{max-width:100%}
 <!-- APP: живое приложение -->
 <section id="try" class="pa" style="padding: 104px 24px; background: #F7F9F2">
 <div style="max-width: 1160px; margin: 0 auto">
-<h2 style="margin: 0 0 16px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Try the app right here.</h2>
-<p style="margin: 0 0 56px; font-size: 19px; line-height: 1.55; color: #4D5A52; max-width: 60ch">The whole path from Play to your own stats - in a minute. Tap the phone and the buttons.</p>
+<h2 style="margin: 0 0 16px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Experimenta a app aqui mesmo.</h2>
+<p style="margin: 0 0 56px; font-size: 19px; line-height: 1.55; color: #4D5A52; max-width: 60ch">Todo o caminho de Jogar até às tuas estatísticas - num minuto. Toca no telemóvel e nos botões.</p>
 <div class="pa-wrap">
 <div class="pa-side">
 <div class="pa-count" id="pa-count" aria-hidden="true"></div>
 <ol class="pa-steps">
-<li><button class="pa-step on" data-step="1"><span class="pa-sn">1</span><span><b>Tap Play</b><span>One button at the bottom of the screen. No sign-⁠up needed.</span></span></button></li>
-<li><button class="pa-step" data-step="2"><span class="pa-sn">2</span><span><b>Who&#x27;s playing</b><span>Click your button - the app knows it&#x27;s you. Drag a card to swap partners.</span></span></button><div class="pa-tags" id="pa-tags" role="group" aria-label="Who&#x27;s playing" hidden></div></li>
-<li><button class="pa-step" data-step="3"><span class="pa-sn">3</span><span><b>Play and click</b><span>Won the point - click your button. The phone says the score out loud. Two quick clicks - undo.</span></span></button></li>
-<li><button class="pa-step" data-step="4"><span class="pa-sn">4</span><span><b>Finish the match</b><span>Someone wins - the match ends by itself. Or tap Finish. It all goes to your history.</span></span></button></li>
-<li><button class="pa-step" data-step="5"><span class="pa-sn">5</span><span><b>See your numbers</b><span>Who you played with, who won how many points, win rate and your full history.</span></span></button></li>
+<li><button class="pa-step on" data-step="1"><span class="pa-sn">1</span><span><b>Toca em Jogar</b><span>Um botão no fundo do ecrã. Sem registo.</span></span></button></li>
+<li><button class="pa-step" data-step="2"><span class="pa-sn">2</span><span><b>Quem joga</b><span>Carrega no teu botão - a app sabe que és tu. Arrasta um cartão para trocar as duplas.</span></span></button><div class="pa-tags" id="pa-tags" role="group" aria-label="Quem joga" hidden></div></li>
+<li><button class="pa-step" data-step="3"><span class="pa-sn">3</span><span><b>Joga e carrega</b><span>Ganhaste o ponto - carrega no teu botão. O telemóvel diz o resultado em voz alta. Dois toques rápidos - anular.</span></span></button></li>
+<li><button class="pa-step" data-step="4"><span class="pa-sn">4</span><span><b>Termina o jogo</b><span>Alguém ganha - o jogo termina sozinho. Ou toca em Terminar. Tudo vai para o teu histórico.</span></span></button></li>
+<li><button class="pa-step" data-step="5"><span class="pa-sn">5</span><span><b>Vê os teus números</b><span>Com quem jogaste, quantos pontos fez cada um, a tua % de vitórias e todo o histórico.</span></span></button></li>
 </ol>
-<button class="pa-restart" id="pa-restart">Start over</button>
+<button class="pa-restart" id="pa-restart">Recomeçar</button>
 </div>
 <div class="pa-stage">
 <div class="pa-phone"><div class="pa-screen"><div class="pa-app" id="pa-app" data-screen="home"></div></div></div>
@@ -515,12 +515,12 @@ img{max-width:100%}
 <!-- FAQ -->
 <section id="faq" style="padding: 104px 24px">
 <div style="max-width: 1160px; margin: 0 auto">
-<h2 style="margin: 0 0 40px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Questions</h2>
+<h2 style="margin: 0 0 40px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Perguntas</h2>
 <div class="pt-faq">
-<details><summary>Is it free?</summary><p>Score, voice and every mode are free forever. Only match history, stats and tournaments are paid - with 14 days free.</p></details>
-<details><summary>Which button do I need?</summary><p>Any one-⁠button iTag key finder - usually $7-⁠14. Pick your country below and we will show you a store.</p></details>
-<details><summary>Do I need internet?</summary><p>Not for scoring - the phone counts on its own. Internet is needed to save the match to your history and to open a tournament table by link.</p></details>
-<details><summary>Which phone works?</summary><p>iPhone for now. Android is coming soon.</p></details>
+<details><summary>É pago?</summary><p>Resultado, voz e todos os modos - grátis para sempre. Pagos são só o histórico, as estatísticas e os torneios - com 14 dias grátis.</p></details>
+<details><summary>Que botão preciso?</summary><p>Qualquer porta-⁠chaves iTag com um botão - normalmente $7-⁠14. Escolhe o teu país abaixo e mostramos uma loja.</p></details>
+<details><summary>Preciso de internet?</summary><p>Para o resultado não - o telemóvel conta sozinho. A internet serve para guardar o jogo no histórico e abrir a tabela do torneio por link.</p></details>
+<details><summary>Que telemóvel serve?</summary><p>Por agora iPhone. Android chega em breve.</p></details>
 </div>
 </div>
 </section>
@@ -568,7 +568,7 @@ img{max-width:100%}
 
 </div>
 
-<script>window.PT_T={"score_btn": "Botão de pontos", "click_aria": "Carregar no botão: ", "leg_us": "Ponto para nós", "leg_them": "Ponto para eles", "leg_undo": "Anular", "leg_point": "Ponto", "game": "Jogo!", "golden": "Ponto de ouro", "nothing": "Nada para anular", "words": {"0": "zero", "15": "quinze", "30": "trinta", "40": "quarenta"}, "q1": "«", "q2": "»", "sep": ", ", "app": {"mine": "My numbers", "recent": "Recent", "onphone": "On phone", "win": "Winner", "vs": "Against", "play": "Play", "play_sub": "Demo · 1 game", "fast": "Quick", "close": "Close", "who": "Who's playing?", "team1": "Team 1", "team2": "Team 2", "press_tag": "Click your button", "tag_ok": "Button ready", "drag_hint": "Drag a card - players swap places.", "start": "Start · buttons: {n}", "start0": "Start without buttons", "set_chip": "1 game", "games": "Games", "tiebreak": "Tiebreak", "undo": "Undo", "end": "Finish", "point_for": "Point: {n}", "end_t": "Finish the match?", "now": "Score now: ", "who_won": "Who won?", "end_note": "The match goes to history and stats.", "abandon": "No result", "abandon_d": "Score resets, not saved to history", "cont": "Keep playing", "saved": "Saved to your history", "again": "Play again", "home": "Home", "p_all": "All time", "p_30": "30 days", "p_7": "7 days", "matches": "matches", "wins": "wins", "points": "points per match", "best": "best partner", "demo": "Sample data. In the app - your real matches.", "just": "Just now", "d1": "Yesterday", "d2": "3 days ago", "d3": "Last week", "step_of": "Step {n} of {all}", "last": "Last match", "partner": "Partner", "rivals": "Opponents", "loss": "Lost", "pts_by": "Points by player", "pts_none": "Points per player show up when you play with buttons.", "finish": "Finish match", "history": "History", "wins_n": "wins: {n}", "tips": {"home": "Tap Play on the phone.", "lobby": "Click a player's button - the app knows them.", "lobby_ok": "All buttons ready. Tap Start.", "score": "Button: 1 click - point, 2 quick clicks - undo.", "end": "Pick who won.", "win": "Tap Finish match - your numbers open.", "numbers": "That is all. Get the app and play for real."}}, "us": "Nós", "them": "Eles", "said_init": "Carrega num botão", "players": ["João", "Maria", "Miguel", "Ana"]};</script>
+<script>window.PT_T={"score_btn": "Botão de pontos", "click_aria": "Carregar no botão: ", "leg_us": "Ponto para nós", "leg_them": "Ponto para eles", "leg_undo": "Anular", "leg_point": "Ponto", "game": "Jogo!", "golden": "Ponto de ouro", "nothing": "Nada para anular", "words": {"0": "zero", "15": "quinze", "30": "trinta", "40": "quarenta"}, "q1": "«", "q2": "»", "sep": ", ", "app": {"mine": "Os meus números", "recent": "Recentes", "onphone": "No telemóvel", "win": "Vitória", "vs": "Contra", "play": "Jogar", "play_sub": "Demo · 1 jogo", "fast": "Rápido", "close": "Fechar", "who": "Quem joga?", "team1": "Equipa 1", "team2": "Equipa 2", "press_tag": "Carrega no teu botão", "tag_ok": "Botão pronto", "drag_hint": "Arrasta um cartão - os jogadores trocam de lugar.", "start": "Começar · botões: {n}", "start0": "Começar sem botões", "set_chip": "1 jogo", "games": "Jogos", "tiebreak": "Tie-break", "undo": "Anular", "end": "Terminar", "point_for": "Ponto: {n}", "end_t": "Terminar o jogo?", "now": "Resultado: ", "who_won": "Quem ganhou?", "end_note": "O jogo vai para o histórico e as estatísticas.", "abandon": "Sem resultado", "abandon_d": "O resultado apaga-se e não vai para o histórico", "cont": "Continuar a jogar", "saved": "Guardado no teu histórico", "again": "Jogar outra vez", "home": "Início", "p_all": "Sempre", "p_30": "30 dias", "p_7": "7 dias", "matches": "jogos", "wins": "vitórias", "points": "pontos por jogo", "best": "melhor parceiro", "demo": "Dados de exemplo. Na app - os teus jogos reais.", "just": "Agora mesmo", "d1": "Ontem", "d2": "Há 3 dias", "d3": "Semana passada", "step_of": "Passo {n} de {all}", "last": "Último jogo", "partner": "Parceiro", "rivals": "Adversários", "loss": "Derrota", "pts_by": "Pontos por jogador", "pts_none": "Os pontos de cada jogador aparecem quando jogam com botões.", "finish": "Terminar jogo", "history": "Histórico", "wins_n": "vitórias: {n}", "tips": {"home": "Toca em Jogar no telemóvel.", "lobby": "Carrega no botão de um jogador - a app reconhece-o.", "lobby_ok": "Todos os botões prontos. Toca em Começar.", "score": "Botão: 1 toque - ponto, 2 rápidos - anular.", "end": "Escolhe quem ganhou.", "win": "Toca em Terminar jogo - abrem-se os teus números.", "numbers": "É isto. Descarrega a app e joga a sério."}}, "us": "Nós", "them": "Eles", "said_init": "Carrega num botão", "players": ["João", "Maria", "Miguel", "Ana"]};</script>
 <script>
 (function(){
   // Где купить кнопку: страна → магазин. Названия стран — на языке страницы.
@@ -590,6 +590,6 @@ img{max-width:100%}
 })();
 </script>
 
-<script src="/app.js?v=e8839d86"></script>
+<script src="/app.js?v=5eb74fcd"></script>
 </body>
 </html>

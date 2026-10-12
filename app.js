@@ -180,7 +180,8 @@
 
   // ---------- «Кто играет?»: карточки и перетаскивание пальцем ----------
   var GAP = 8, CW = (W - 40 - GAP) / 2, CH = 150, drag = null;
-  function slotPos(s) { return { x: (s < 2 ? 0 : 1) * (CW + GAP), y: (s % 2) * (CH + GAP) }; }
+  var RTL = document.documentElement.dir === 'rtl'; // справа налево команда 1 стоит справа, как подписи над карточками
+  function slotPos(s) { var col = s < 2 ? 0 : 1; if (RTL) col = 1 - col; return { x: col * (CW + GAP), y: (s % 2) * (CH + GAP) }; }
   function layoutCards() {
     var grid = $('pa-grid'); if (!grid) return;
     var cards = grid.querySelectorAll('.pa-card');
