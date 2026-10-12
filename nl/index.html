@@ -190,7 +190,9 @@ img{max-width:100%}
 .pa-tip{margin:0;min-height:48px;max-width:340px;text-align:center;font-size:17px;line-height:1.4;font-weight:600}
 @keyframes panudge{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 .pa-tip.nudge{animation:panudge .3s ease}
-.pa-tags{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;width:min(400px,100%)}
+.pa-tags{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;width:min(400px,100%);margin:12px 0 8px 72px}
+[dir=rtl] .pa-tags{margin:12px 72px 8px 0}
+@media (max-width:959px){.pa-tags{margin:16px 0 0;width:100%;max-width:400px}}
 .pa-tag{border:none;background:#FFFFFF;border-radius:24px;padding:12px 4px 10px;display:flex;flex-direction:column;align-items:center;gap:8px;font-family:inherit;color:#15201A;cursor:pointer;min-height:48px;transition:transform .12s ease,opacity .2s ease}
 .pa-tag:hover{transform:translateY(-3px)}
 .pa-tags.idle .pa-tag{opacity:.55}
@@ -472,13 +474,13 @@ img{max-width:100%}
 <section id="try" class="pa" style="padding: 104px 24px; background: #F7F9F2">
 <div style="max-width: 1160px; margin: 0 auto">
 <h2 style="margin: 0 0 16px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Try the app right here.</h2>
-<p style="margin: 0 0 56px; font-size: 19px; line-height: 1.55; color: #4D5A52; max-width: 60ch">The whole path from Play to your own stats - in a minute. Tap the phone and the buttons below it.</p>
+<p style="margin: 0 0 56px; font-size: 19px; line-height: 1.55; color: #4D5A52; max-width: 60ch">The whole path from Play to your own stats - in a minute. Tap the phone and the buttons.</p>
 <div class="pa-wrap">
 <div class="pa-side">
 <div class="pa-count" id="pa-count" aria-hidden="true"></div>
 <ol class="pa-steps">
 <li><button class="pa-step on" data-step="1"><span class="pa-sn">1</span><span><b>Tap Play</b><span>One button at the bottom of the screen. No sign-⁠up needed.</span></span></button></li>
-<li><button class="pa-step" data-step="2"><span class="pa-sn">2</span><span><b>Who&#x27;s playing</b><span>Click your button - the app knows it&#x27;s you. Drag a card to swap partners.</span></span></button></li>
+<li><button class="pa-step" data-step="2"><span class="pa-sn">2</span><span><b>Who&#x27;s playing</b><span>Click your button - the app knows it&#x27;s you. Drag a card to swap partners.</span></span></button><div class="pa-tags" id="pa-tags" role="group" aria-label="Who&#x27;s playing"></div></li>
 <li><button class="pa-step" data-step="3"><span class="pa-sn">3</span><span><b>Play and click</b><span>Won the point - click your button. The phone says the score out loud. Two quick clicks - undo.</span></span></button></li>
 <li><button class="pa-step" data-step="4"><span class="pa-sn">4</span><span><b>Finish the match</b><span>Pick who won. The match goes to your history.</span></span></button></li>
 <li><button class="pa-step" data-step="5"><span class="pa-sn">5</span><span><b>See your numbers</b><span>Matches, wins and points - from real games, not guesswork.</span></span></button></li>
@@ -488,7 +490,6 @@ img{max-width:100%}
 <div class="pa-stage">
 <div class="pa-phone"><div class="pa-screen"><div class="pa-app" id="pa-app" data-screen="home"></div></div></div>
 <p class="pa-tip" id="pa-tip" aria-live="polite"></p>
-<div class="pa-tags" id="pa-tags"></div>
 </div>
 </div>
 </div>
@@ -552,7 +553,7 @@ img{max-width:100%}
 
 </div>
 
-<script>window.PT_T={"score_btn": "Scoreknop", "click_aria": "Klik op knop: ", "leg_us": "Punt voor ons", "leg_them": "Punt voor hen", "leg_undo": "Terug", "leg_point": "Punt", "game": "Game!", "golden": "Golden point", "nothing": "Niets om terug te zetten", "words": {"0": "nul", "15": "vijftien", "30": "dertig", "40": "veertig"}, "q1": "\"", "q2": "\"", "sep": ", ", "app": {"mine": "My numbers", "recent": "Recent", "onphone": "On phone", "win": "Winner", "vs": "Against", "play": "Play", "play_sub": "Quick · 1 set to 4", "fast": "Quick", "close": "Close", "who": "Who's playing?", "team1": "Team 1", "team2": "Team 2", "press_tag": "Click your button", "tag_ok": "Button ready", "drag_hint": "Drag a card - players swap places.", "start": "Start · buttons: {n}", "start0": "Start without buttons", "set_chip": "1 set to 4", "games": "Games", "tiebreak": "Tiebreak", "undo": "Undo", "end": "Finish", "point_for": "Point: {n}", "end_t": "Finish the match?", "now": "Score now: ", "who_won": "Who won?", "end_note": "The match goes to history and stats.", "abandon": "No result", "abandon_d": "Score resets, not saved to history", "cont": "Keep playing", "saved": "Saved to your history", "again": "Play again", "home": "Home", "p_all": "All time", "p_30": "30 days", "p_7": "7 days", "matches": "matches", "wins": "wins", "points": "points per match", "best": "best partner", "demo": "Sample data. In the app - your real matches.", "just": "Just now", "d1": "Yesterday", "d2": "3 days ago", "d3": "Last week", "step_of": "Step {n} of {all}", "tips": {"home": "Tap Play on the phone.", "lobby": "Click a button below the phone - the app knows that player.", "lobby_ok": "All buttons ready. Tap Start.", "score": "Button: 1 click - point, 2 quick clicks - undo.", "end": "Pick who won.", "win": "Saved. Your numbers are on the home screen.", "numbers": "That is all. Get the app and play for real."}}, "us": "Wij", "them": "Zij", "said_init": "Klik op een knop", "players": ["Daan", "Emma", "Noah", "Julia"]};</script>
+<script>window.PT_T={"score_btn": "Scoreknop", "click_aria": "Klik op knop: ", "leg_us": "Punt voor ons", "leg_them": "Punt voor hen", "leg_undo": "Terug", "leg_point": "Punt", "game": "Game!", "golden": "Golden point", "nothing": "Niets om terug te zetten", "words": {"0": "nul", "15": "vijftien", "30": "dertig", "40": "veertig"}, "q1": "\"", "q2": "\"", "sep": ", ", "app": {"mine": "My numbers", "recent": "Recent", "onphone": "On phone", "win": "Winner", "vs": "Against", "play": "Play", "play_sub": "Quick · 1 set to 4", "fast": "Quick", "close": "Close", "who": "Who's playing?", "team1": "Team 1", "team2": "Team 2", "press_tag": "Click your button", "tag_ok": "Button ready", "drag_hint": "Drag a card - players swap places.", "start": "Start · buttons: {n}", "start0": "Start without buttons", "set_chip": "1 set to 4", "games": "Games", "tiebreak": "Tiebreak", "undo": "Undo", "end": "Finish", "point_for": "Point: {n}", "end_t": "Finish the match?", "now": "Score now: ", "who_won": "Who won?", "end_note": "The match goes to history and stats.", "abandon": "No result", "abandon_d": "Score resets, not saved to history", "cont": "Keep playing", "saved": "Saved to your history", "again": "Play again", "home": "Home", "p_all": "All time", "p_30": "30 days", "p_7": "7 days", "matches": "matches", "wins": "wins", "points": "points per match", "best": "best partner", "demo": "Sample data. In the app - your real matches.", "just": "Just now", "d1": "Yesterday", "d2": "3 days ago", "d3": "Last week", "step_of": "Step {n} of {all}", "tips": {"home": "Tap Play on the phone.", "lobby": "Click a player's button - the app knows them.", "lobby_ok": "All buttons ready. Tap Start.", "score": "Button: 1 click - point, 2 quick clicks - undo.", "end": "Pick who won.", "win": "Saved. Your numbers are on the home screen.", "numbers": "That is all. Get the app and play for real."}}, "us": "Wij", "them": "Zij", "said_init": "Klik op een knop", "players": ["Daan", "Emma", "Noah", "Julia"]};</script>
 <script>
 (function(){
   // Где купить кнопку: страна → магазин. Названия стран — на языке страницы.
@@ -574,6 +575,6 @@ img{max-width:100%}
 })();
 </script>
 
-<script src="/app.js?v=0c4e21bd"></script>
+<script src="/app.js?v=f49dcab6"></script>
 </body>
 </html>

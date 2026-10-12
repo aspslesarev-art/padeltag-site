@@ -418,6 +418,11 @@
     app.addEventListener('pointercancel', cardUp);
     var steps = document.querySelectorAll('.pa-step');
     for (var i = 0; i < steps.length; i++) steps[i].addEventListener('click', function () { audio(); goStep(+this.getAttribute('data-step')); });
+    // Теги стоят под шагом «Кто играет». На узком экране — сразу под текстом шага, над телефоном.
+    var li2 = document.querySelector('.pa-step[data-step="2"]'), tags = $('pa-tags'), side = document.querySelector('.pa-steps');
+    var wide = window.matchMedia('(min-width: 960px)');
+    function placeTags() { if (!tags || !li2) return; if (wide.matches) li2.parentNode.appendChild(tags); else side.parentNode.insertBefore(tags, side.nextSibling); }
+    placeTags(); if (wide.addEventListener) wide.addEventListener('change', placeTags);
     var rs = $('pa-restart');
     if (rs) rs.addEventListener('click', function () { st.slot = [0, 1, 2, 3]; st.linked = [0, 0, 0, 0]; st.m = null; show('home'); });
     show('home');
