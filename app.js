@@ -50,9 +50,9 @@
     screen: 'home', slot: [0, 1, 2, 3], linked: [0, 0, 0, 0], bat: [85, 62, 91, 74], m: null, sheet: false, seen: 1,
     // Пример прошлых матчей. Я — игрок 0.
     history: [
-      { a: [0, 1], b: [2, 3], g: [4, 2], win: 0, pts: 12, when: t('d1') },
-      { a: [0, 2], b: [1, 3], g: [2, 4], win: 1, pts: 8, when: t('d2') },
-      { a: [0, 3], b: [1, 2], g: [5, 4], win: 0, pts: 13, when: t('d3') }
+      { a: [0, 1], b: [2, 3], g: [4, 2], win: 0, pp: [12, 9, 8, 7], when: t('d1') },
+      { a: [0, 2], b: [1, 3], g: [2, 4], win: 1, pp: [8, 11, 6, 10], when: t('d2') },
+      { a: [0, 3], b: [1, 2], g: [5, 4], win: 0, pp: [13, 10, 11, 9], when: t('d3') }
     ]
   };
   function slotOf(p) { return st.slot.indexOf(p); }
@@ -129,7 +129,7 @@
         '<div class="pa-wcard" style="background:' + TEAM[h.win] + '"><span class="pa-wcup">' + ICON.cup + '</span><span class="pa-wl">' + esc(t('win')) + '</span>' +
         '<b class="pa-wn">' + pair(h.win === 0 ? h.a : h.b) + '</b><span class="pa-ws">' + h.g[0] + ':' + h.g[1] + '</span></div>' +
         '<div class="pa-saved">' + ICON.check + esc(t('saved')) + '</div>' +
-        '<div class="pa-wbtns"><button class="pa-wb main" data-go="score">' + esc(t('again')) + '</button><button class="pa-wb" data-go="home">' + esc(t('home')) + '</button></div>' +
+        '<div class="pa-wbtns"><button class="pa-wb main" data-go="numbers">' + esc(t('finish')) + '</button><button class="pa-wb" data-go="score">' + esc(t('again')) + '</button></div>' +
         '</div>';
     } else if (screen === 'numbers') {
       html = status() + '<div class="pa-num">' + numbersHtml() + '</div>';
@@ -144,25 +144,37 @@
 
   function numbersHtml() {
     var me = 0, n = st.history.length, wins = 0, pts = 0, mate = {};
+    function side(h) { var mine = h.a.indexOf(me) >= 0 ? 0 : 1, my = mine === 0 ? h.a : h.b; return { mine: mine, partner: my[0] === me ? my[1] : my[0], rivals: mine === 0 ? h.b : h.a }; }
     st.history.forEach(function (h) {
-      var mine = h.a.indexOf(me) >= 0 ? 0 : 1, my = mine === 0 ? h.a : h.b;
-      var partner = my[0] === me ? my[1] : my[0];
-      if (h.win === mine) { wins++; mate[partner] = (mate[partner] || 0) + 1; }
-      pts += h.pts;
+      var sd = side(h);
+      if (h.win === sd.mine) { wins++; mate[sd.partner] = (mate[sd.partner] || 0) + 1; }
+      pts += h.pp ? h.pp[me] : h.pts;
     });
     var best = null; for (var k in mate) if (best === null || mate[k] > mate[best]) best = k;
     var pct = n ? Math.round(wins * 100 / n) : 0;
+    // Последний матч: с кем, против кого, сколько очков взял каждый (их считают теги).
+    var h = st.history[0], sd = side(h), won = h.win === sd.mine, sum = h.pp ? h.pp.reduce(function (a, b) { return a + b; }, 0) : 0;
+    var max = h.pp ? Math.max.apply(null, h.pp) || 1 : 1;
+    var bars = sum ? h.a.concat(h.b).map(function (p, i) {
+      var tm = i < 2 ? 0 : 1;
+      return '<div class="pa-pr"><span class="pa-prn' + (p === me ? ' me' : '') + '">' + esc(P[p]) + '</span><span class="pa-prb"><i style="width:' + Math.round(h.pp[p] * 100 / max) + '%;background:' + (tm === 0 ? '#B9D62A' : '#FF9F80') + '"></i></span><b>' + h.pp[p] + '</b></div>';
+    }).join('') : '<p class="pa-demo" style="margin:0">' + esc(t('pts_none')) + '</p>';
     return '<button class="pa-back" data-go="home" aria-label="' + esc(t('home')) + '">' + ICON.back + '</button>' +
       '<div class="pa-h1 xl">' + esc(t('mine')) + '</div>' +
-      '<div class="pa-seg"><span class="on">' + esc(t('p_all')) + '</span><span>' + esc(t('p_30')) + '</span><span>' + esc(t('p_7')) + '</span></div>' +
+      '<div class="pa-last' + (h.fresh ? ' fresh' : '') + '">' +
+      '<div class="pa-lt"><span>' + esc(t('last')) + ' · ' + esc(h.when) + '</span><span class="pa-res' + (won ? ' w' : '') + '">' + esc(won ? t('win') : t('loss')) + ' ' + h.g[sd.mine] + ':' + h.g[1 - sd.mine] + '</span></div>' +
+      '<div class="pa-lr"><span>' + esc(t('partner')) + '</span><b>' + esc(P[sd.partner]) + '</b></div>' +
+      '<div class="pa-lr"><span>' + esc(t('rivals')) + '</span><b>' + pair(sd.rivals) + '</b></div>' +
+      '<div class="pa-k" style="margin:12px 0 6px">' + esc(t('pts_by')) + '</div>' + bars +
+      '</div>' +
       '<div class="pa-tiles">' +
       '<div class="pa-tile" style="background:#D4F03C"><b>' + n + '</b><span>' + esc(t('matches')) + '</span></div>' +
-      '<div class="pa-tile" style="background:#1F4FA3;color:#FFFFFF"><b>' + wins + ' · ' + pct + '%</b><span>' + esc(t('wins')) + '</span></div>' +
+      '<div class="pa-tile" style="background:#1F4FA3;color:#FFFFFF"><b>' + pct + '%</b><span>' + esc(fmt(t('wins_n'), { n: wins })) + '</span></div>' +
       '<div class="pa-tile" style="background:#F1F5E8"><b>' + (n ? Math.round(pts / n) : 0) + '</b><span>' + esc(t('points')) + '</span></div>' +
       '<div class="pa-tile" style="background:#FFC2B0"><b class="sm">' + (best === null ? '-' : esc(P[best])) + '</b><span>' + esc(t('best')) + '</span></div>' +
       '</div>' +
-      '<div class="pa-sec"><span>' + esc(t('recent')) + '</span></div>' +
-      '<div class="pa-list">' + st.history.slice(0, 2).map(function (h) { return matchCard(h); }).join('') + '</div>' +
+      '<div class="pa-sec"><span>' + esc(t('history')) + '</span></div>' +
+      '<div class="pa-list">' + st.history.slice(1, 4).map(function (x) { return matchCard(x); }).join('') + '</div>' +
       '<p class="pa-demo">' + esc(t('demo')) + '</p>';
   }
 
@@ -289,12 +301,12 @@
     said(q(T.leg_undo || 'Undo')); speak('undo'); renderScore();
   }
   function finish(tm) {
-    var m = st.m, pp = m.pp[0];
+    var m = st.m;
     var g = m.games.slice();
     if (m.winner === null) { // закончили раньше: победитель по выбору, в счёт идут сыгранные геймы
       m.winner = tm;
     }
-    st.history.unshift({ a: teamPlayers(0), b: teamPlayers(1), g: g, win: tm, pts: pp, when: t('just'), fresh: true });
+    st.history.unshift({ a: teamPlayers(0), b: teamPlayers(1), g: g, win: tm, pp: m.pp.slice(), when: t('just'), fresh: true });
     show('win');
   }
   function openEnd() {
