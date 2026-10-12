@@ -15,6 +15,7 @@ SITE = 'https://padeltag.app'
 STORE = {'ios': '', 'android': ''}
 import hashlib
 TAG_V = hashlib.md5((root / 'tag.png').read_bytes()).hexdigest()[:8]
+APP_V = hashlib.md5((root / 'app.js').read_bytes()).hexdigest()[:8]
 DEMO_V = hashlib.md5((root / 'demo.js').read_bytes()).hexdigest()[:8]  # новая версия скрипта — браузер не возьмёт старую из кэша
 
 hreflang = '\n'.join(f'<link rel="alternate" hreflang="{c}" href="{SITE}{p}">' for c, _, p, _ in LANGS)
@@ -101,6 +102,8 @@ for code, _, path, direction in LANGS:
         if k == 'langopts': return opts
         if k.startswith('X_'):  # подстановки страницы аудитории
             x = k[2:]
+            if x == 'free':  # «бесплатно навсегда» — только где это правда целиком: главная и новичок
+                return '<p style="margin: 16px 0 0; font-size: 15px; color: #4D5A52">' + html.escape(tr['hero_free']) + '</p>' if page in ('', 'new') else ''
             if x.startswith('cur_'): return 'aria-current="page"' if x[4:] == page else ''
             if x == 'mode': return '1' if page == 'new' else '4'
             if x == 'try_p': k = page + '_try_p' if page else 'try_p'
@@ -121,6 +124,7 @@ for code, _, path, direction in LANGS:
     out = re.sub(r'\{\{(\w+)\}\}', fill, out)
     assert '{{' not in out
     out = out.replace('/tag.png"', '/tag.png?v=' + TAG_V + '"')
+    out = out.replace('src="/app.js"', 'src="/app.js?v=' + APP_V + '"')
     out = out.replace('src="/demo.js"', 'src="/demo.js?v=' + DEMO_V + '"')
     dest = root / pp.strip('/') / 'index.html' if pp != '/' else root / 'index.html'
     dest.parent.mkdir(parents=True, exist_ok=True)

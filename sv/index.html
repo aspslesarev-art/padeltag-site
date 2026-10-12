@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PadelTag - Padel blir aldrig som förr</title>
-<meta name="description" content="PadelTag är en knapp du fäster på tröjan. Vinner du bollen - klicka. Mobilen räknar och säger ställningen högt.">
-<meta property="og:title" content="PadelTag - Padel blir aldrig som förr">
-<meta property="og:description" content="Fäst den. Klicka för poäng. Mobilen räknar och ropar ut ställningen.">
+<title>PadelTag - Inga fler bråk om poängen</title>
+<meta name="description" content="Fäst en knapp på tröjan. Klicka för poäng. Mobilen räknar, säger ställningen och sparar din riktiga statistik.">
+<meta property="og:title" content="PadelTag - Inga fler bråk om poängen">
+<meta property="og:description" content="Fäst en knapp på tröjan. Klicka för poäng. Mobilen räknar, säger ställningen och sparar din riktiga statistik.">
 <meta property="og:image" content="https://padeltag.app/tag.png?v=25307c78">
 <link rel="icon" type="image/png" href="/tag.png?v=25307c78">
 <link rel="canonical" href="https://padeltag.app/sv/">
@@ -77,7 +77,37 @@ img{max-width:100%}
 @media (max-width:640px){.pt-qr{display:none!important}#app>div{padding:32px 24px!important}}
 /* Для кого: три карточки, строки «без / с PadelTag» стоят на одной высоте во всех трёх. */
 .pt-aud{border-radius:36px;padding:28px;display:flex;flex-direction:column;gap:16px;min-width:0}
-.pt-aud-pic{height:180px;border-radius:26px;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.pt-less-phone{width:min(260px,70%);justify-self:center;background:#15201A;padding:8px;border-radius:38px;box-shadow:0 1px 2px rgb(0 0 0 / .06),0 12px 32px rgb(21 32 26 / .18)}
+@media (min-width:860px){.pt-less{grid-template-columns:minmax(0,1fr) 260px}.pt-less-phone{width:100%}}
+.pt-hero{max-width:1160px;margin:0 auto;display:grid;gap:48px;align-items:center}
+@media (min-width:960px){.pt-hero{grid-template-columns:minmax(0,1fr) minmax(0,520px)}}
+.pt-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+@media (max-width:640px){.pt-cta a{flex:1 1 100%}}
+.pt-hero-pic{position:relative;width:100%;max-width:520px;aspect-ratio:1/1;justify-self:center}
+.pt-hero-st{position:absolute;border-radius:18px;padding:10px 16px;font-weight:700;font-size:17px;box-shadow:0 1px 2px rgb(0 0 0 / .06),0 10px 30px rgb(21 32 26 / .16)}
+.pt-hero-phone{position:absolute;right:-8px;top:-16px;width:104px;height:196px;border-radius:24px;background:#15201A;padding:6px;box-sizing:border-box;box-shadow:0 20px 40px rgb(21 32 26 / .25);transform:rotate(6deg)}
+.pt-hero-scr{width:100%;height:100%;border-radius:19px;background:#FFFFFF;padding:20px 6px 6px;box-sizing:border-box;display:flex;flex-direction:column;gap:4px}
+.pt-hero-scr div{flex:1;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:36px;letter-spacing:-0.04em}
+@media (max-width:640px){.pt-hero-st{font-size:15px;padding:8px 12px}.pt-hero-phone{width:84px;height:158px;right:-4px}.pt-hero-scr div{font-size:28px}}
+@media (max-width:860px){.pt-try-phone{order:-1;flex-basis:100%!important}.pt-try-phone>div{height:372px!important;width:230px!important;border-radius:40px!important}.pt-try-phone>div>div{padding-top:38px!important;border-radius:31px!important}.pt-score{font-size:56px}.pt-try-tags{gap:16px!important}.pt-card{padding:14px 12px 12px;gap:8px;border-radius:24px}.pt-glow{height:76px}.pt-glow img{width:110px}.pt-name{font-size:17px}}
+#top + section{padding-top:8px!important}
+.pt-pains{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.pt-pain{margin:0;background:#F7F9F2;border-radius:26px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.pt-pain blockquote{margin:0;font-weight:700;font-size:20px;line-height:1.3;letter-spacing:-0.01em}
+.pt-pain figcaption{font-size:15px;line-height:1.5;color:#4D5A52}
+.pt-pain-ans{background:#D4F03C}
+.pt-pain-ans figcaption{color:#2B3313}
+.pt-faq{display:flex;flex-direction:column;border-top:1px solid #E3E9D6;max-width:860px}
+.pt-faq details{border-bottom:1px solid #E3E9D6}
+.pt-faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-weight:700;font-size:20px;line-height:1.3}
+.pt-faq summary::-webkit-details-marker{display:none}
+.pt-faq summary::after{content:"+";font-weight:400;font-size:28px;line-height:1;transition:transform 120ms cubic-bezier(.2,.8,.2,1)}
+.pt-faq details[open] summary::after{transform:rotate(45deg)}
+.pt-faq summary:focus-visible{outline:2px solid #15201A;outline-offset:4px;border-radius:4px}
+.pt-faq p{margin:0 0 20px;font-size:17px;line-height:1.6;color:#3B4A40;max-width:68ch}
+@media (prefers-reduced-motion:reduce){.pt-faq summary::after{transition:none}}
+.pt-photo{width:100%;height:100%;object-fit:cover;display:block}
+.pt-aud-pic{height:220px;overflow:hidden;position:relative;border-radius:26px;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
 .pt-aud-pill{width:56px;height:56px;border-radius:50%;background:#FFFFFF;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:21px;letter-spacing:-0.02em}
 .pt-aud-bar{width:14px;border-radius:4px;background:#E3E9D6;display:block}
 .pt-aud-court{background:#FFFFFF;color:#15201A;border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
@@ -133,6 +163,165 @@ img{max-width:100%}
 .pt-ben p{margin:0;color:#4D5A52;font-size:17px}
 @media (max-width:640px){.pt-go a{width:100%;justify-content:center}.pt-tabs{display:flex;width:100%}.pt-tabs a{flex:1 1 0;min-width:0;justify-content:center;text-align:center;font-size:14px;padding:6px 8px;line-height:1.15;min-height:44px}}
 .pt-lang:focus-visible{outline:3px solid #15201A;outline-offset:4px}
+/* Живое приложение (#try на главной). Экран собран в точках iPhone 390×844 и масштабируется под рамку. */
+.pa-wrap{display:grid;gap:48px;align-items:start}
+@media (min-width:960px){.pa-wrap{grid-template-columns:minmax(0,1fr) 400px;gap:64px}}
+.pa-side{min-width:0}
+.pa-count{display:none;font-size:15px;font-weight:600;color:#4D5A52;margin-bottom:8px}
+.pa-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.pa-step{width:100%;display:flex;gap:16px;align-items:flex-start;text-align:left;border:none;background:transparent;border-radius:24px;padding:16px 20px;font-family:inherit;color:#15201A;cursor:pointer;transition:background .2s ease}
+[dir=rtl] .pa-step{text-align:right}
+.pa-step:hover{background:#EEF2E4}
+.pa-step:focus-visible,.pa-restart:focus-visible,.pa-tag:focus-visible{outline:3px solid #15201A;outline-offset:3px}
+.pa-step b{display:block;font-size:21px;font-weight:700;line-height:1.25}
+.pa-step b+span{display:block;margin-top:4px;font-size:17px;line-height:1.5;color:#4D5A52}
+.pa-sn{flex:0 0 36px;height:36px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;transition:background .2s ease}
+.pa-step.on{background:#FFFFFF;box-shadow:0 1px 2px rgb(21 32 26 / .04),0 8px 24px rgb(21 32 26 / .06)}
+.pa-step.on .pa-sn{background:#D4F03C}
+.pa-step.done .pa-sn{background:#15201A;color:#FFFFFF}
+.pa-restart{margin-top:16px;border:none;background:transparent;font-family:inherit;font-size:16px;font-weight:600;color:#4D5A52;text-decoration:underline;text-underline-offset:4px;cursor:pointer;padding:12px 20px;min-height:44px}
+.pa-stage{display:flex;flex-direction:column;align-items:center;gap:16px;min-width:0}
+.pa-phone{width:min(340px,100%);background:#15201A;border-radius:54px;padding:10px;box-shadow:0 1px 2px rgb(21 32 26 / .06),0 30px 60px rgb(21 32 26 / .18)}
+.pa-screen{position:relative;overflow:hidden;border-radius:44px;background:#FFFFFF;height:690px}
+.pa-app{position:absolute;left:0;top:0;width:390px;height:844px;transform-origin:0 0;overflow:hidden;background:#FFFFFF;color:#15201A;font-size:15px;line-height:1.3;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+.pa-app button{font-family:inherit;color:inherit;cursor:pointer;border:none;background:none;padding:0}
+.pa-app[data-screen=score],.pa-app[data-screen=win]{background:#1F4FA3}
+.pa-app[data-screen=lobby]{background:#C9CEC4}
+.pa-tip{margin:0;min-height:48px;max-width:340px;text-align:center;font-size:17px;line-height:1.4;font-weight:600}
+@keyframes panudge{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.pa-tip.nudge{animation:panudge .3s ease}
+.pa-tags{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;width:min(400px,100%)}
+.pa-tag{border:none;background:#FFFFFF;border-radius:24px;padding:12px 4px 10px;display:flex;flex-direction:column;align-items:center;gap:8px;font-family:inherit;color:#15201A;cursor:pointer;min-height:48px;transition:transform .12s ease,opacity .2s ease}
+.pa-tag:hover{transform:translateY(-3px)}
+.pa-tags.idle .pa-tag{opacity:.55}
+.pa-tag-i{position:relative;width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.pa-tag-i img{width:58px;height:auto;filter:drop-shadow(0 6px 6px rgba(21,32,26,.25));transition:transform .12s ease}
+.pa-tag.down .pa-tag-i img{transform:scale(.88) translateY(3px)}
+.pa-tag-n{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pa-tag-n i{flex:0 0 8px;height:8px;border-radius:50%}
+.pa-tag.hint .pa-tag-i::after{content:"";position:absolute;inset:0;border-radius:50%;border:3px solid #15201A;animation:pthint 2.4s cubic-bezier(.2,.8,.2,1) var(--hl,0s) infinite;opacity:0;pointer-events:none}
+@media (max-width:959px){
+  .pa-steps li{display:none}.pa-steps li:has(.on){display:block}
+  .pa-count{display:block}
+  .pa-step{padding:0;background:transparent!important;box-shadow:none!important;cursor:default}.pa-sn{display:none}
+  .pa-restart{display:none}
+  .pa-wrap{gap:24px}
+  .pa-steps{min-height:84px}
+}
+@media (max-width:640px){.pa-steps{min-height:104px}.pa-tip{font-size:15px;min-height:42px}.pa-stage{gap:12px}.pa-phone{width:min(268px,72vw);border-radius:46px;padding:8px}.pa-screen{border-radius:38px}.pa-tag-i{width:52px;height:52px}.pa-tag-i img{width:46px}.pa-tag{border-radius:20px}.pa-tag-n{font-size:13px}}
+@media (prefers-reduced-motion:reduce){.pa-app *{transition:none!important;animation:none!important}.pa-tag.hint .pa-tag-i::after{animation:none;opacity:.35}}
+
+/* — внутри экрана, всё в точках — */
+.pa-status{height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 32px 0 44px;font-size:17px;font-weight:600;position:relative}
+.pa-status.dark{color:#FFFFFF}
+.pa-island{position:absolute;left:50%;top:11px;width:124px;height:36px;margin-left:-62px;border-radius:20px;background:#15201A}
+.pa-sig{display:flex;align-items:flex-end;gap:2px}.pa-sig b{width:4px;background:currentColor;border-radius:1px}.pa-sig b:nth-child(1){height:5px}.pa-sig b:nth-child(2){height:7px}.pa-sig b:nth-child(3){height:9px}.pa-sig b:nth-child(4){height:11px}
+.pa-sig em{width:24px;height:11px;border:1.5px solid currentColor;border-radius:4px;margin-left:6px;position:relative}.pa-sig em::after{content:"";position:absolute;inset:1.5px 6px 1.5px 1.5px;background:currentColor;border-radius:1.5px}
+.pa-home{position:absolute;inset:54px 0 0;padding:12px 16px 0;display:flex;flex-direction:column;gap:14px}
+.pa-head{display:flex;align-items:center;gap:10px;height:44px}
+.pa-logo{flex:1;display:flex;align-items:center;gap:10px;font-size:21px;font-weight:700}
+.pa-logo i{width:22px;height:22px;border-radius:50%;background:#D4F03C;box-shadow:inset 0 0 0 6px #D4F03C,inset 0 0 0 11px #15201A}
+.pa-round{width:42px;height:42px;border-radius:50%;background:#F1F5E8;display:flex;align-items:center;justify-content:center}
+.pa-round.light{background:#FFFFFF;color:#15201A}
+.pa-me{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:#F1F5E8!important;border-radius:24px!important;padding:14px 16px!important}
+.pa-av,.pa-cav{width:44px;height:44px;border-radius:50%;background:#15201A;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700;flex:0 0 auto}
+.pa-me .pa-av{background:#D4F03C;color:#15201A}
+.pa-me-t{flex:1;display:flex;flex-direction:column;gap:2px}.pa-me-t b{font-size:19px;font-weight:700}.pa-me-t span{font-size:15px;color:#4D5A52}
+.pa-sec{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#4D5A52;padding:4px 4px 0}
+.pa-list{display:flex;flex-direction:column;gap:10px}
+.pa-mc{border-radius:20px;padding:14px 16px;box-shadow:inset 0 0 0 1px #E3E8DC;display:flex;flex-direction:column;gap:4px}
+@keyframes pafresh{from{box-shadow:inset 0 0 0 3px #D4F03C;background:#F7FBE4}to{box-shadow:inset 0 0 0 1px #E3E8DC;background:#FFFFFF}}
+.pa-mc.fresh{animation:pafresh 2.4s ease-out}
+.pa-mc-top{display:flex;align-items:center;gap:10px}.pa-mc-top b{font-size:19px;font-weight:700}
+.pa-mc-when{margin-left:auto;font-size:13px;color:#4D5A52}
+.pa-mc-w{font-size:16px;font-weight:600}.pa-mc-l{font-size:14px;color:#4D5A52}
+.pa-pill{display:inline-flex;align-items:center;background:#F1F5E8;border-radius:999px;padding:4px 10px;font-size:13px;font-weight:600}
+.pa-pill.big{font-size:15px;padding:8px 14px}
+.pa-pill.light{background:#F1F5E8;font-size:15px;padding:8px 14px}
+.pa-play{position:absolute!important;left:16px;right:16px;bottom:34px;height:74px;border-radius:999px!important;background:#D4F03C!important;display:flex;align-items:center;justify-content:center;gap:14px;text-align:left}
+.pa-play-i{width:42px;height:42px;border-radius:50%;background:#15201A;color:#D4F03C;display:flex;align-items:center;justify-content:center}
+.pa-play b{display:block;font-size:24px;font-weight:700;line-height:1.1}.pa-play small{font-size:13px;color:#3B4A40}
+@keyframes pabreathe{0%,100%{box-shadow:0 0 0 0 rgb(212 240 60 / .7)}50%{box-shadow:0 0 0 10px rgb(212 240 60 / 0)}}
+.pa-app[data-screen=home] .pa-play{animation:pabreathe 2.2s ease-in-out infinite}
+
+.pa-dim{position:absolute;inset:0;background:rgb(21 32 26 / .3)}
+.pa-sheet{position:absolute;left:0;right:0;bottom:0;background:#FFFFFF;border-radius:32px 32px 0 0;padding:8px 20px 34px}
+.pa-lobby{top:62px}
+.pa-grab{width:40px;height:5px;border-radius:3px;background:#D8DDD2;margin:0 auto 12px}
+.pa-lhead{display:flex;align-items:center;justify-content:space-between;height:44px}
+.pa-x{width:40px;height:40px;border-radius:50%;background:#F1F5E8!important;display:flex;align-items:center;justify-content:center}
+.pa-h1{font-size:32px;font-weight:700;letter-spacing:-0.01em;margin:10px 0 14px}
+.pa-h1.xl{font-size:36px;margin:8px 0 16px}
+.pa-tl{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.pa-grid{position:relative;height:308px}
+.pa-card{position:absolute;left:0;top:0;width:171px;height:150px;border-radius:24px;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;touch-action:none;cursor:grab;transition:transform .3s cubic-bezier(.2,.8,.2,1),background-color .2s ease,box-shadow .2s ease}
+.pa-card .pa-cav{position:absolute;left:14px;top:14px;width:40px;height:40px;font-size:17px}
+.pa-card.lift{transition:background-color .2s ease,box-shadow .2s ease;z-index:3;cursor:grabbing;box-shadow:0 2px 4px rgb(21 32 26 / .08),0 16px 32px rgb(21 32 26 / .22)}
+.pa-app.dragging .pa-card:not(.lift){z-index:1}
+.pa-grip{position:absolute;right:14px;top:16px;width:10px;height:16px;background:radial-gradient(circle,#15201A 1.4px,transparent 1.6px) 0 0/5px 5.5px;opacity:.35}
+.pa-bat{position:absolute;left:62px;top:24px;width:24px;height:12px;border:1.5px solid #15201A;border-radius:3px;padding:1.5px}.pa-bat i{display:block;height:100%;background:#15201A;border-radius:1px}
+.pa-batn{position:absolute;left:92px;top:21px;font-size:13px;font-weight:600}
+.pa-card.linked .pa-grip{top:20px}
+.pa-cn{font-size:20px;font-weight:700}
+.pa-cs{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#3B4A40}
+.pa-cs i{width:8px;height:8px;border-radius:50%;background:#15201A;animation:pthint 1.6s ease-out infinite}
+.pa-cs.ok{color:#15201A}
+@keyframes paping{0%{box-shadow:0 0 0 0 rgb(21 32 26 / .5)}100%{box-shadow:0 0 0 14px rgb(21 32 26 / 0)}}
+.pa-card.ping{animation:paping .6s ease-out}
+.pa-note{font-size:14px;line-height:1.4;color:#4D5A52;margin:14px 4px 0}
+.pa-start{position:absolute!important;left:20px;right:20px;bottom:34px;height:62px;border-radius:999px!important;background:#15201A!important;color:#FFFFFF!important;font-size:19px;font-weight:600}
+
+.pa-score{position:absolute;inset:54px 0 0;padding:6px 16px 34px;display:flex;flex-direction:column;gap:12px}
+.pa-bar{display:flex;align-items:center;gap:10px;height:44px}
+.pa-time{margin-left:auto;color:#FFFFFF;font-size:19px;font-weight:600;font-variant-numeric:tabular-nums}
+.pa-half{flex:1;border-radius:36px!important;position:relative;display:flex;flex-direction:column;align-items:stretch;padding:16px 20px!important;transition:transform .15s ease}
+.pa-half:active{transform:scale(.985)}
+@keyframes paflash{0%{box-shadow:inset 0 0 0 0 #15201A}30%{box-shadow:inset 0 0 0 5px #15201A}100%{box-shadow:inset 0 0 0 0 #15201A}}
+.pa-half.flash{animation:paflash .5s ease-out}
+.pa-names{display:flex;justify-content:space-between;font-size:17px;font-weight:600}
+.pa-names b{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;border-radius:7px;background:#15201A;color:#FFFFFF;font-size:14px;margin-right:8px;padding:0 5px}
+.pa-big{flex:1;display:flex;align-items:center;justify-content:center;font-size:150px;font-weight:900;letter-spacing:-0.04em;line-height:1;font-variant-numeric:tabular-nums}
+.pa-foot{display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.pa-foot b{font-size:30px;font-weight:800;letter-spacing:0;margin-left:6px;vertical-align:-4px}
+.pa-tb{visibility:hidden;background:#15201A;color:#FFFFFF;border-radius:999px;padding:4px 10px;font-size:12px}.pa-tb.on{visibility:visible}
+.pa-said{position:absolute;left:50%;top:0;transform:translate(-50%,0) scale(.9);background:#15201A;color:#FFFFFF;border-radius:999px;padding:10px 20px;font-size:19px;font-weight:600;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s cubic-bezier(.2,.8,.2,1);z-index:2}
+.pa-said.on{opacity:1;transform:translate(-50%,0) scale(1)}
+.pa-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pa-btns button{height:62px;border-radius:999px;background:#F1F5E8;font-size:19px;font-weight:600}
+.pa-end{padding-top:8px}
+.pa-h2{font-size:28px;font-weight:700;margin:4px 0 2px}
+.pa-sub{font-size:15px;color:#4D5A52;margin-bottom:16px}
+.pa-k{font-size:14px;font-weight:600;margin-bottom:8px}
+.pa-wbtn{width:100%;display:flex!important;align-items:center;justify-content:space-between;text-align:left;border-radius:20px!important;padding:12px 18px!important;margin-bottom:8px;min-height:62px}
+.pa-wbtn small{display:block;font-size:12px;font-weight:600}.pa-wbtn b{font-size:19px;font-weight:700}
+.pa-end .pa-note{margin:6px 0 16px}
+.pa-abandon{width:100%;border-radius:20px!important;box-shadow:inset 0 0 0 1.5px #E3E8DC;padding:10px!important;display:flex!important;flex-direction:column;align-items:center;gap:2px}
+.pa-abandon b{color:#D93A1E;font-size:17px;font-weight:600}.pa-abandon small{font-size:12px;color:#4D5A52}
+.pa-cont{width:100%;height:52px;margin-top:8px;font-size:17px;font-weight:600}
+@keyframes paup{from{transform:translateY(100%)}to{transform:none}}
+@keyframes pafade{from{opacity:0}to{opacity:1}}
+.pa-end{animation:paup .32s cubic-bezier(.2,.8,.2,1)}
+.pa-dim.on{animation:pafade .2s ease}
+
+.pa-win{position:absolute;inset:54px 0 0;padding:24px 16px 34px;display:flex;flex-direction:column;gap:16px}
+@keyframes papop{from{transform:scale(.9);opacity:0}to{transform:none;opacity:1}}
+.pa-wcard{flex:1;border-radius:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:24px;animation:papop .4s cubic-bezier(.2,.8,.2,1)}
+.pa-wcup{width:72px;height:72px;border-radius:50%;background:#15201A;color:#FFFFFF;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.pa-wcup svg{width:34px;height:34px}
+.pa-wl{font-size:19px;font-weight:600}.pa-wn{font-size:30px;font-weight:700;line-height:1.15}.pa-ws{font-size:88px;font-weight:900;letter-spacing:-0.04em;line-height:1.05;margin-top:8px}
+.pa-saved{display:flex;align-items:center;justify-content:center;gap:8px;color:#FFFFFF;font-size:17px;font-weight:600}
+.pa-wbtns{display:grid;gap:10px}
+.pa-wb{height:62px;border-radius:999px!important;background:#F1F5E8!important;font-size:19px;font-weight:600}
+.pa-wb.main{background:#D4F03C!important}
+
+.pa-num{position:absolute;inset:54px 0 0;padding:8px 16px 0;display:flex;flex-direction:column}
+.pa-back{width:42px;height:42px;border-radius:50%;background:#F1F5E8!important;display:flex!important;align-items:center;justify-content:center}
+.pa-seg{display:flex;gap:6px;margin-bottom:14px}.pa-seg span{border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600;background:#F1F5E8}.pa-seg span.on{background:#15201A;color:#FFFFFF}
+.pa-tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.pa-tile{border-radius:24px;padding:16px;min-height:104px;display:flex;flex-direction:column;justify-content:space-between}
+.pa-tile b{font-size:34px;font-weight:800;letter-spacing:-0.02em;line-height:1.1}.pa-tile b.sm{font-size:24px;font-weight:700}.pa-tile span{font-size:14px;font-weight:600}
+.pa-num .pa-list{margin-top:10px}
+.pa-demo{margin:14px 4px 0;font-size:13px;color:#4D5A52}
 </style>
 </head>
 <body>
@@ -153,50 +342,73 @@ img{max-width:100%}
 </header>
 
 <!-- HERO -->
-<section id="top" style="padding: 40px 24px 80px">
-<div style="max-width: 1160px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 40px">
-<div style="flex: 1 1 460px; min-width: 0">
+<section id="top" style="padding: 40px 24px 96px">
+<div class="pt-hero">
+<div style="min-width: 0">
 
 <div style="display: inline-flex; align-items: center; gap: 8px; background: #F1F5E8; border-radius: 999px; padding: 8px 16px; font-size: 15px; font-weight: 500; margin-bottom: 28px">
 <span style="width: 8px; height: 8px; border-radius: 50%; background: #8FB31C; display: inline-block"></span>En smart knapp för padel
 </div>
-<h1 style="margin: 0; font-weight: 900; font-size: clamp(50px, 6.6vw, 92px); line-height: 0.98; letter-spacing: -0.035em">Padel blir aldrig <span style="font-style: italic; background: #D4F03C; padding: 0 12px; border-radius: 16px; display: inline-block; white-space: nowrap; transform: rotate(-2deg)">som förr.</span></h1>
-<p style="margin: 28px 0 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 500px">Inga fler bråk om ställningen. Varje poäng hamnar i din statistik: du ser vad som funkar och blir bättre snabbare. Poängräkningen är gratis för alltid.</p>
-<div style="margin-top: 36px; font-weight: 800; font-size: 21px">Vem är du?</div>
-<div class="pt-go">
-<a href="/sv/new/" class="pt-btn">Jag är nybörjare</a><a href="/sv/pro/" class="pt-btn">Jag spelar ofta</a><a href="/sv/club/" class="pt-btn">Jag ordnar turneringar</a>
+<h1 style="margin: 0; font-weight: 900; font-size: clamp(50px, 6.6vw, 92px); line-height: 0.98; letter-spacing: -0.035em">Inga fler bråk <span style="font-style: italic; background: #D4F03C; padding: 0 12px; border-radius: 16px; display: inline-block; white-space: nowrap; transform: rotate(-2deg)">om poängen.</span></h1>
+<p style="margin: 28px 0 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 520px">Varje poäng räknas åt dig och sparas i din statistik. Din riktiga nivå - från riktiga matcher, inte från vad folk säger. Poängräkningen är gratis för alltid.</p>
+
+<div class="pt-cta">
+<a href="#try" class="pt-btn" style="background: #15201A; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center">Testa nu</a>
+<a href="#app" class="pt-btn" style="background: #F1F5E8; color: #15201A; text-decoration: none; font-weight: 600; font-size: 19px; padding: 16px 32px; border-radius: 999px; min-height: 60px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center">Hämta appen</a>
+</div>
+<p style="margin: 16px 0 0; font-size: 15px; color: #4D5A52">Scoring is free forever.</p>
 </div>
 
-</div>
-
-<div style="flex: 1 1 480px; min-width: 0; display: flex; justify-content: center">
-<div style="position: relative; width: 520px; max-width: 100%; aspect-ratio: 1 / 1">
-<!-- padel ball -->
-<div style="position: absolute; inset: 6%; border-radius: 50%; background: #D4F03C; overflow: hidden">
-<svg viewBox="0 0 100 100" width="100%" height="100%" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0"><path d="M -5 30 C 30 40, 30 60, -5 72" stroke="#FFFFFF" stroke-width="2.4" fill="none" opacity="0.9"></path><path d="M 105 28 C 70 40, 70 60, 105 70" stroke="#FFFFFF" stroke-width="2.4" fill="none" opacity="0.9"></path></svg>
-</div>
-<!-- click rings -->
-<div style="position: absolute; left: 58%; top: 40%; width: 120px; height: 120px; margin: -60px 0 0 -60px; pointer-events: none">
-<div class="pt-ring" style="position: absolute; inset: 0; border-radius: 50%; border: 3px solid #15201A"></div>
-<div class="pt-ring pt-ring2" style="position: absolute; inset: 0; border-radius: 50%; border: 3px solid #15201A"></div>
-</div>
-<!-- the tag -->
-<img class="pt-float" id="pt-hero-tag" role="button" tabindex="0" src="/tag.png?v=25307c78" alt="PadelTag-⁠knapp" style="cursor: pointer; position: absolute; left: 12%; top: 24%; width: 72%; filter: drop-shadow(0 30px 30px rgba(21,32,26,0.35)) drop-shadow(0 6px 8px rgba(21,32,26,0.25))">
-<!-- stickers -->
-<div style="position: absolute; left: 0; top: 10%; background: #FFFFFF; border-radius: 18px; padding: 10px 16px; font-weight: 700; font-size: 17px; box-shadow: 0 10px 30px rgba(21,32,26,0.12); transform: rotate(-4deg)">1 klick = poäng</div>
-<div style="position: absolute; right: 0; top: 74%; background: #15201A; color: #FFFFFF; border-radius: 18px; padding: 10px 16px; font-weight: 700; font-size: 17px; box-shadow: 0 10px 30px rgba(21,32,26,0.2); transform: rotate(3deg)">2 klick = ångra</div>
-<!-- mini phone -->
-<div style="position: absolute; right: 2%; top: 2%; width: 116px; height: 220px; border-radius: 24px; background: #15201A; padding: 6px; box-sizing: border-box; box-shadow: 0 20px 40px rgba(21,32,26,0.25); transform: rotate(6deg)">
-<div style="width: 100%; height: 100%; border-radius: 19px; background: #FFFFFF; padding: 20px 6px 6px; box-sizing: border-box; display: flex; flex-direction: column; gap: 4px">
-<div style="flex: 1; border-radius: 12px; background: #D4F03C; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 40px; letter-spacing: -0.04em; transition: transform .12s ease" id="pt-hero-0">40</div>
-<div style="flex: 1; border-radius: 12px; background: #FFC2B0; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 40px; letter-spacing: -0.04em; transition: transform .12s ease" id="pt-hero-1">30</div>
-</div>
-</div>
-</div>
+<div class="pt-hero-pic">
+<img src="/img/hero-640.webp" srcset="/img/hero-640.webp 640w, /img/hero-896.webp 896w" sizes="(min-width: 1024px) 520px, 92vw" width="896" height="896" alt="PadelTag-⁠knapp" fetchpriority="high" decoding="async" style="display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 36px">
+<div class="pt-hero-st" style="left: -12px; top: 8%; background: #FFFFFF; transform: rotate(-4deg)">1 klick = poäng</div>
+<div class="pt-hero-st" style="right: -12px; bottom: 10%; background: #15201A; color: #FFFFFF; transform: rotate(3deg)">2 klick = ångra</div>
+<div class="pt-hero-phone" aria-hidden="true"><div class="pt-hero-scr"><div style="background: #D4F03C">40</div><div style="background: #FFC2B0">30</div></div></div>
 </div>
 </div>
 </section>
 
+
+<!-- PAINS -->
+<section id="pains" style="padding: 8px 24px 0">
+<div style="max-width: 1160px; margin: 0 auto">
+<h2 style="margin: 0 0 16px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Sound familiar?</h2>
+<p style="margin: 0 0 48px; font-size: 19px; line-height: 1.55; color: #4D5A52; max-width: 68ch">Real quotes from padel group chats. We read 46,000 messages.</p>
+<div class="pt-pains">
+<figure class="pt-pain"><blockquote>&quot;Lunda 2.3 - how much is that in Playtomic?&quot;</blockquote><figcaption>Every app rates your level its own way.</figcaption></figure>
+<figure class="pt-pain"><blockquote>&quot;2.5 and almost no matches&quot; - and they win 6-⁠0.</blockquote><figcaption>Stronger players show up in your level.</figcaption></figure>
+<figure class="pt-pain"><blockquote>&quot;Just once, count it right.&quot;</blockquote><figcaption>Tournaments are counted by hand - and the prize goes to the wrong pair.</figcaption></figure>
+<figure class="pt-pain"><blockquote>&quot;Played 2 games - was it counted right?&quot;</blockquote><figcaption>Nobody knows where to find themselves in the table.</figcaption></figure>
+<figure class="pt-pain"><blockquote>&quot;15 different apps and WhatsApp groups, no common standard.&quot;</blockquote><figcaption>Every club has its own app.</figcaption></figure>
+<figure class="pt-pain pt-pain-ans"><blockquote>PadelTag counts every point and remembers every match.</blockquote><figcaption>Score, partner, opponents, tournament table - in one place. Nothing to argue about.</figcaption></figure>
+</div>
+</div>
+</section>
+
+<!-- HOW -->
+<section style="padding: 104px 24px 104px">
+<div style="max-width: 1160px; margin: 0 auto">
+<h2 style="margin: 0 0 56px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em; max-width: 720px">Fäst. Vinn. Tryck.</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px">
+
+<div style="background: #F7F9F2; border-radius: 36px; padding: 28px; display: flex; flex-direction: column; gap: 20px">
+<div style="height: 240px; border-radius: 26px; overflow: hidden; position: relative; background: #E3E9D6"><img class="pt-photo" src="/img/step-clip-640.webp" srcset="/img/step-clip-640.webp 640w, /img/step-clip-1200.webp 1100w" sizes="(min-width: 1024px) 360px, (min-width: 680px) 46vw, 92vw" alt="" loading="lazy" decoding="async"></div>
+<div><span style="font-weight: 800; color: #8FB31C">1</span><div style="font-weight: 800; font-size: 26px; line-height: 1.2">Fäst den på tröjan</div><div style="color: #4D5A52; margin-top: 6px">Lätt och liten. Du glömmer att den sitter där.</div></div>
+</div>
+
+<div style="background: #F7F9F2; border-radius: 36px; padding: 28px; display: flex; flex-direction: column; gap: 20px">
+<div style="height: 240px; border-radius: 26px; overflow: hidden; position: relative; background: #E3E9D6"><img class="pt-photo" src="/img/step-click-640.webp" srcset="/img/step-click-640.webp 640w, /img/step-click-1200.webp 1024w" sizes="(min-width: 1024px) 360px, (min-width: 680px) 46vw, 92vw" alt="" loading="lazy" decoding="async" style="object-position: center 40%"></div>
+<div><span style="font-weight: 800; color: #8FB31C">2</span><div style="font-weight: 800; font-size: 26px; line-height: 1.2">Vann bollen? Tryck</div><div style="color: #4D5A52; margin-top: 6px">Stor knapp. Du träffar utan att titta.</div></div>
+</div>
+
+<div style="background: #F7F9F2; border-radius: 36px; padding: 28px; display: flex; flex-direction: column; gap: 20px">
+<div style="height: 240px; border-radius: 26px; overflow: hidden; position: relative; background: #E3E9D6"><img class="pt-photo" src="/img/step-score-640.webp" srcset="/img/step-score-640.webp 640w, /img/step-score-1200.webp 1100w" sizes="(min-width: 1024px) 360px, (min-width: 680px) 46vw, 92vw" alt="" loading="lazy" decoding="async"></div>
+<div><span style="font-weight: 800; color: #8FB31C">3</span><div style="font-weight: 800; font-size: 26px; line-height: 1.2">Allt hamnar i historiken</div><div style="color: #4D5A52; margin-top: 6px">Telefonen säger ställningen och sparar matchen i din historik.</div></div>
+</div>
+
+</div>
+</div>
+</section>
 
 <!-- WHO -->
 <section id="who" style="padding: 8px 24px 0">
@@ -205,48 +417,34 @@ img{max-width:100%}
 <div class="pt-aud-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
 
 <div class="pt-aud" data-a="new" style="background: #F7F9F2">
-<div class="pt-aud-pic" style="background: #D4F03C; flex-direction: column; gap: 14px">
-<div style="display: flex; gap: 8px" aria-hidden="true"><span class="pt-aud-pill">15</span><span class="pt-aud-pill">30</span><span class="pt-aud-pill" style="background: #15201A; color: #FFFFFF">40</span></div>
-<div style="background: #FFFFFF; border-radius: 18px 18px 18px 4px; padding: 10px 16px; font-weight: 700; font-size: 17px">”Trettio, femton”</div>
-</div>
+<div class="pt-aud-pic"><img class="pt-photo" src="/img/who-new-640.webp" srcset="/img/who-new-640.webp 640w, /img/who-new-1200.webp 1100w" sizes="(min-width: 1024px) 360px, (min-width: 680px) 46vw, 92vw" alt="" loading="lazy" decoding="async"></div>
 <span class="pt-aud-who">Nybörjare</span>
-<h3 class="pt-aud-t"><span class="pt-ph">Vet du inte hur man räknar?</span> <span class="pt-ph">Tröjan räknar åt dig.</span></h3>
+<h3 class="pt-aud-t"><span class="pt-ph">Kan du inte poängreglerna?</span> <span class="pt-ph">Klicka bara.</span></h3>
 <div class="pt-aud-rows">
-<div><div class="pt-aud-k">Utan PadelTag</div><div class="pt-aud-was">Du blandar ihop 15-⁠30-⁠40, drar dig för att fråga och tappar fokus.</div></div>
-<div><div class="pt-aud-k"><i></i>Med PadelTag</div><div class="pt-aud-now">Klick - poäng, telefonen säger ställningen högt. Golden point och tiebreak räknas också automatiskt.</div></div>
+<div><div class="pt-aud-k">Utan PadelTag</div><div class="pt-aud-was">Du blandar ihop 15-⁠30-⁠40 och vågar inte fråga.</div></div>
+<div><div class="pt-aud-k"><i></i>Med PadelTag</div><div class="pt-aud-now">Klick - mobilen säger ställningen högt. Golden point och tiebreak ingår.</div></div>
 <a class="pt-more" href="/sv/new/">Läs mer <span aria-hidden="true">→</span></a>
 </div>
 </div>
 
 <div class="pt-aud" data-a="pro" style="background: #F7F9F2">
-<div class="pt-aud-pic" style="background: #FFFFFF; align-items: stretch; justify-content: space-between; flex-direction: column; padding: 20px 22px" aria-hidden="true">
-<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px">
-<div><div style="font-weight: 900; font-size: 48px; line-height: 1; letter-spacing: -0.03em">64%</div><div style="font-size: 14px; font-weight: 600; color: #4D5A52; margin-top: 4px">vinster</div></div>
-<div style="display: flex; align-items: flex-end; gap: 6px; height: 64px"><span class="pt-aud-bar" style="height: 30%"></span><span class="pt-aud-bar" style="height: 45%"></span><span class="pt-aud-bar" style="height: 40%"></span><span class="pt-aud-bar" style="height: 64%"></span><span class="pt-aud-bar" style="height: 100%; background: #D4F03C"></span></div>
-</div>
-<div style="display: flex; align-items: center; gap: 10px; background: #F7F9F2; border-radius: 14px; padding: 8px 12px; font-size: 14px"><span style="width: 28px; height: 28px; flex: none; border-radius: 50%; background: #FFC2B0; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px">A</span><span style="flex: 1; min-width: 0">Partner</span><b>Alice</b></div>
-</div>
+<div class="pt-aud-pic"><img class="pt-photo" src="/img/who-pro-640.webp" srcset="/img/who-pro-640.webp 640w, /img/who-pro-1200.webp 1100w" sizes="(min-width: 1024px) 360px, (min-width: 680px) 46vw, 92vw" alt="" loading="lazy" decoding="async"></div>
 <span class="pt-aud-who">Erfaren spelare</span>
-<h3 class="pt-aud-t"><span class="pt-ph">Se hur du utvecklas -</span> <span class="pt-ph">match för match.</span></h3>
+<h3 class="pt-aud-t"><span class="pt-ph">Din nivå, bevisad av dina matcher.</span></h3>
 <div class="pt-aud-rows">
-<div><div class="pt-aud-k">Utan PadelTag</div><div class="pt-aud-was">Du spelar ofta men ser ingen utveckling och vet inte vad som funkar.</div></div>
-<div><div class="pt-aud-k"><i></i>Med PadelTag</div><div class="pt-aud-now">Varje match i historiken: resultat, partner, motståndare, dina poäng. Matcher, vinster, vinstprocent och poäng - direkt på startskärmen.</div></div>
+<div><div class="pt-aud-k">Utan PadelTag</div><div class="pt-aud-was">Playtomic säger en sak, Lunda en annan. Ingen vet vem som egentligen är starkast.</div></div>
+<div><div class="pt-aud-k"><i></i>Med PadelTag</div><div class="pt-aud-now">Varje match sparas med resultat, partner och motståndare. Vinstprocent och poäng på en skärm. Visa den - ingen diskussion.</div></div>
 <a class="pt-more" href="/sv/pro/">Läs mer <span aria-hidden="true">→</span></a>
 </div>
 </div>
 
 <div class="pt-aud pt-aud-club" data-a="club" style="background: #1F4FA3; color: #FFFFFF">
-<div class="pt-aud-pic" style="background: #173D80; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 16px" aria-hidden="true">
-<div class="pt-aud-court"><span><i></i>Bana 1</span><b>16 : 12</b></div>
-<div class="pt-aud-court"><span><i></i>Bana 2</span><b>9 : 14</b></div>
-<div class="pt-aud-court"><span><i></i>Bana 3</span><b>11 : 11</b></div>
-<div class="pt-aud-court"><span><i></i>Bana 4</span><b>18 : 6</b></div>
-</div>
+<div class="pt-aud-pic"><img class="pt-photo" src="/img/who-club-640.webp" srcset="/img/who-club-640.webp 640w, /img/who-club-1200.webp 1100w" sizes="(min-width: 1024px) 360px, (min-width: 680px) 46vw, 92vw" alt="" loading="lazy" decoding="async"></div>
 <span class="pt-aud-who">Turneringar och klubbar</span>
-<h3 class="pt-aud-t"><span class="pt-ph">Poängen från alla banor live -</span> <span class="pt-ph">på en skärm.</span></h3>
+<h3 class="pt-aud-t"><span class="pt-ph">Americano utan kalkylark.</span></h3>
 <div class="pt-aud-rows">
-<div><div class="pt-aud-k">Utan PadelTag</div><div class="pt-aud-was">Papperslappar, bråk om poängen, resultat som förs över för hand.</div></div>
-<div><div class="pt-aud-k"><i></i>Med PadelTag</div><div class="pt-aud-now">Americano och mexicano: par och banor ordnas automatiskt, poängen från varje bana går direkt in i tabellen. Öppnas via länk på vilken skärm som helst.</div></div>
+<div><div class="pt-aud-k">Utan PadelTag</div><div class="pt-aud-was">Papper, tabeller för hand, fel vinnare, räkna om när internet går ner.</div></div>
+<div><div class="pt-aud-k"><i></i>Med PadelTag</div><div class="pt-aud-now">Par och banor fixas åt dig. Varje banas resultat går live in i en tabell. Öppna den via länk på vilken skärm som helst.</div></div>
 <a class="pt-more" href="/sv/club/">Läs mer <span aria-hidden="true">→</span></a>
 </div>
 </div>
@@ -254,89 +452,59 @@ img{max-width:100%}
 </div>
 </div>
 </section>
-
-
-<!-- HOW -->
-<section style="padding: 104px 24px">
+<!-- ONE LESS -->
+<section id="less" style="padding: 104px 24px">
 <div style="max-width: 1160px; margin: 0 auto">
-<h2 style="margin: 0 0 56px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em; max-width: 720px">Fäst. Vinn. Tryck.</h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px">
-
-<div style="background: #F7F9F2; border-radius: 36px; padding: 28px; display: flex; flex-direction: column; gap: 20px">
-<div style="height: 200px; border-radius: 26px; background: #D4F03C; display: flex; align-items: center; justify-content: center; overflow: hidden">
-<img src="/tag.png?v=25307c78" alt="" style="width: 70%; transform: rotate(-10deg); filter: drop-shadow(0 16px 16px rgba(21,32,26,0.3))">
+<div class="pt-less" style="background: #F7F9F2; border-radius: 36px; padding: clamp(28px, 5vw, 64px); display: grid; gap: 40px; align-items: center">
+<div>
+<h2 style="margin: 0 0 24px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em; max-width: 760px">Inte en app till. En mindre.</h2>
+<p style="margin: 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 68ch">PadelTag ersätter protokollet, tabellen i gruppchatten och statistiken för hand. Boka där du bokar - vi bara räknar och kommer ihåg.</p>
 </div>
-<div><span style="font-weight: 800; color: #8FB31C">1</span><div style="font-weight: 800; font-size: 26px; line-height: 1.2">Fäst den på tröjan</div><div style="color: #4D5A52; margin-top: 6px">Lätt och liten. Du glömmer att den sitter där.</div></div>
-</div>
-
-<div style="background: #F7F9F2; border-radius: 36px; padding: 28px; display: flex; flex-direction: column; gap: 20px">
-<div style="height: 200px; border-radius: 26px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden">
-<div style="position: absolute; left: 58%; top: 50%; width: 90px; height: 90px; margin: -45px 0 0 -45px">
-<div class="pt-ring" style="position: absolute; inset: 0; border-radius: 50%; border: 3px solid #8FB31C"></div>
-<div class="pt-ring pt-ring2" style="position: absolute; inset: 0; border-radius: 50%; border: 3px solid #8FB31C"></div>
-</div>
-<img src="/tag.png?v=25307c78" alt="" style="width: 62%; filter: drop-shadow(0 16px 16px rgba(21,32,26,0.25))">
-</div>
-<div><span style="font-weight: 800; color: #8FB31C">2</span><div style="font-weight: 800; font-size: 26px; line-height: 1.2">Vann bollen? Tryck</div><div style="color: #4D5A52; margin-top: 6px">Stor knapp. Du träffar utan att titta.</div></div>
-</div>
-
-<div style="background: #F7F9F2; border-radius: 36px; padding: 28px; display: flex; flex-direction: column; gap: 20px">
-<div style="height: 200px; border-radius: 26px; background: #FFC2B0; display: flex; align-items: center; justify-content: center; gap: 14px">
-<div style="width: 92px; height: 170px; border-radius: 20px; background: #15201A; padding: 5px; box-sizing: border-box"><div style="width: 100%; height: 100%; border-radius: 15px; background: #FFFFFF; padding: 16px 5px 5px; box-sizing: border-box; display: flex; flex-direction: column; gap: 4px"><div style="flex: 1; border-radius: 10px; background: #D4F03C; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 30px">15</div><div style="flex: 1; border-radius: 10px; background: #FFE3DA; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 30px">0</div></div></div>
-<div style="background: #FFFFFF; border-radius: 18px 18px 18px 4px; padding: 10px 14px; font-weight: 700; font-size: 17px; align-self: flex-start; margin-top: 30px">”Femton, noll”</div>
-</div>
-<div><span style="font-weight: 800; color: #8FB31C">3</span><div style="font-weight: 800; font-size: 26px; line-height: 1.2">Allt hamnar i historiken</div><div style="color: #4D5A52; margin-top: 6px">Telefonen säger ställningen och sparar matchen i din historik.</div></div>
-</div>
-
+<div class="pt-less-phone" aria-hidden="true"><img src="/img/app-score-sv.webp" alt="" width="560" height="1148" loading="lazy" decoding="async" style="display: block; width: 100%; height: auto; border-radius: 30px"></div>
 </div>
 </div>
 </section>
 
-<!-- TRY -->
-<section id="try" data-mode="4" style="padding: 104px 24px; background: #F7F9F2">
+
+
+
+<!-- APP: живое приложение -->
+<section id="try" class="pa" style="padding: 104px 24px; background: #F7F9F2">
 <div style="max-width: 1160px; margin: 0 auto">
-<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 48px">
-<div>
-<h2 style="margin: 0 0 10px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Testa direkt här.</h2>
-<p style="margin: 0; color: #4D5A52">Klicka på en PadelTag nedan och se hur poängen räknas.</p>
+<h2 style="margin: 0 0 16px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Try the app right here.</h2>
+<p style="margin: 0 0 56px; font-size: 19px; line-height: 1.55; color: #4D5A52; max-width: 60ch">The whole path from Play to your own stats - in a minute. Tap the phone and the buttons below it.</p>
+<div class="pa-wrap">
+<div class="pa-side">
+<div class="pa-count" id="pa-count" aria-hidden="true"></div>
+<ol class="pa-steps">
+<li><button class="pa-step on" data-step="1"><span class="pa-sn">1</span><span><b>Tap Play</b><span>One button at the bottom of the screen. No sign-⁠up needed.</span></span></button></li>
+<li><button class="pa-step" data-step="2"><span class="pa-sn">2</span><span><b>Who&#x27;s playing</b><span>Click your button - the app knows it&#x27;s you. Drag a card to swap partners.</span></span></button></li>
+<li><button class="pa-step" data-step="3"><span class="pa-sn">3</span><span><b>Play and click</b><span>Won the point - click your button. The phone says the score out loud. Two quick clicks - undo.</span></span></button></li>
+<li><button class="pa-step" data-step="4"><span class="pa-sn">4</span><span><b>Finish the match</b><span>Pick who won. The match goes to your history.</span></span></button></li>
+<li><button class="pa-step" data-step="5"><span class="pa-sn">5</span><span><b>See your numbers</b><span>Matches, wins and points - from real games, not guesswork.</span></span></button></li>
+</ol>
+<button class="pa-restart" id="pa-restart">Start over</button>
+</div>
+<div class="pa-stage">
+<div class="pa-phone"><div class="pa-screen"><div class="pa-app" id="pa-app" data-screen="home"></div></div></div>
+<p class="pa-tip" id="pa-tip" aria-live="polite"></p>
+<div class="pa-tags" id="pa-tags"></div>
 </div>
 </div>
+</div>
+</section>
 
-<div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: center; justify-content: center">
-<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
-<div style="display: flex; flex-direction: column; align-items: center; gap: 16px">
-<div id="pt-modes" style="display: inline-flex; align-self: center; gap: 6px; background: #FFFFFF; border-radius: 999px; padding: 6px; flex-wrap: wrap" role="group" aria-label="Hur många knappar">
-<button class="pt-btn pt-mode" data-mode="1" aria-pressed="false">1 knapp</button>
-<button class="pt-btn pt-mode" data-mode="2" aria-pressed="false">2 knappar</button>
-<button class="pt-btn pt-mode" data-mode="4" aria-pressed="true">4 knappar</button>
-</div>
-<div id="pt-legend" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; align-content: flex-start; width: 100%"></div>
-</div>
-<div id="pt-tags" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); align-content: center; gap: 16px"></div>
-</div>
 
-<div style="flex: 0 1 300px; min-width: 0">
-<div style="width: 290px; max-width: 100%; height: 580px; border-radius: 50px; background: #15201A; padding: 11px; box-sizing: border-box; box-shadow: 0 30px 60px rgba(21,32,26,0.18); margin: 0 auto">
-<div style="width: 100%; height: 100%; border-radius: 40px; background: #FFFFFF; padding: 44px 12px 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px; position: relative">
-<div style="position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 80px; height: 24px; border-radius: 999px; background: #15201A"></div>
-<div style="display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 15px; font-weight: 600; min-height: 28px" aria-live="polite">
-<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg>
-<span id="pt-said">Klicka på en knapp</span>
-</div>
-<div class="pt-panel" id="pt-panel-0" style="background: #D4F03C">
-<div style="font-size: 15px; font-weight: 600">Vi</div>
-<div class="pt-score" id="pt-score-0">0</div>
-<div class="pt-players" id="pt-players-0"></div>
-</div>
-<div class="pt-panel" id="pt-panel-1" style="background: #FFC2B0">
-<div style="font-size: 15px; font-weight: 600">De</div>
-<div class="pt-score" id="pt-score-1">0</div>
-<div class="pt-players" id="pt-players-1"></div>
-</div>
-<button class="pt-btn" id="pt-reset" style="min-height: 44px; border-radius: 999px; background: #F1F5E8; color: #15201A; border: none; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer">Ny match</button>
-</div>
-</div>
-</div>
+
+<!-- FAQ -->
+<section id="faq" style="padding: 104px 24px">
+<div style="max-width: 1160px; margin: 0 auto">
+<h2 style="margin: 0 0 40px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Questions</h2>
+<div class="pt-faq">
+<details><summary>Is it free?</summary><p>Score, voice and every mode are free forever. Only match history, stats and tournaments are paid - with 14 days free.</p></details>
+<details><summary>Which button do I need?</summary><p>Any one-⁠button iTag key finder - usually $7-⁠14. Pick your country below and we will show you a store.</p></details>
+<details><summary>Do I need internet?</summary><p>Not for scoring - the phone counts on its own. Internet is needed to save the match to your history and to open a tournament table by link.</p></details>
+<details><summary>Which phone works?</summary><p>iPhone for now. Android is coming soon.</p></details>
 </div>
 </div>
 </section>
@@ -384,7 +552,7 @@ img{max-width:100%}
 
 </div>
 
-<script>window.PT_T={"score_btn": "Poängknapp", "click_aria": "Klicka på knapp: ", "leg_us": "Poäng till oss", "leg_them": "Poäng till dem", "leg_undo": "Ångra", "leg_point": "Poäng", "game": "Gem!", "golden": "Golden point", "nothing": "Inget att ångra", "words": {"0": "noll", "15": "femton", "30": "trettio", "40": "fyrtio"}, "q1": "”", "q2": "”", "sep": ", ", "us": "Vi", "them": "De", "said_init": "Klicka på en knapp", "players": ["William", "Alice", "Hugo", "Maja"]};</script>
+<script>window.PT_T={"score_btn": "Poängknapp", "click_aria": "Klicka på knapp: ", "leg_us": "Poäng till oss", "leg_them": "Poäng till dem", "leg_undo": "Ångra", "leg_point": "Poäng", "game": "Gem!", "golden": "Golden point", "nothing": "Inget att ångra", "words": {"0": "noll", "15": "femton", "30": "trettio", "40": "fyrtio"}, "q1": "”", "q2": "”", "sep": ", ", "app": {"mine": "My numbers", "recent": "Recent", "onphone": "On phone", "win": "Winner", "vs": "Against", "play": "Play", "play_sub": "Quick · 1 set to 4", "fast": "Quick", "close": "Close", "who": "Who's playing?", "team1": "Team 1", "team2": "Team 2", "press_tag": "Click your button", "tag_ok": "Button ready", "drag_hint": "Drag a card - players swap places.", "start": "Start · buttons: {n}", "start0": "Start without buttons", "set_chip": "1 set to 4", "games": "Games", "tiebreak": "Tiebreak", "undo": "Undo", "end": "Finish", "point_for": "Point: {n}", "end_t": "Finish the match?", "now": "Score now: ", "who_won": "Who won?", "end_note": "The match goes to history and stats.", "abandon": "No result", "abandon_d": "Score resets, not saved to history", "cont": "Keep playing", "saved": "Saved to your history", "again": "Play again", "home": "Home", "p_all": "All time", "p_30": "30 days", "p_7": "7 days", "matches": "matches", "wins": "wins", "points": "points per match", "best": "best partner", "demo": "Sample data. In the app - your real matches.", "just": "Just now", "d1": "Yesterday", "d2": "3 days ago", "d3": "Last week", "step_of": "Step {n} of {all}", "tips": {"home": "Tap Play on the phone.", "lobby": "Click a button below the phone - the app knows that player.", "lobby_ok": "All buttons ready. Tap Start.", "score": "Button: 1 click - point, 2 quick clicks - undo.", "end": "Pick who won.", "win": "Saved. Your numbers are on the home screen.", "numbers": "That is all. Get the app and play for real."}}, "us": "Vi", "them": "De", "said_init": "Klicka på en knapp", "players": ["William", "Alice", "Hugo", "Maja"]};</script>
 <script>
 (function(){
   // Где купить кнопку: страна → магазин. Названия стран — на языке страницы.
@@ -406,6 +574,6 @@ img{max-width:100%}
 })();
 </script>
 
-<script src="/demo.js?v=7a464af6"></script>
+<script src="/app.js?v=0c4e21bd"></script>
 </body>
 </html>
