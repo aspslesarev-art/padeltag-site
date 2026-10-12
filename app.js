@@ -368,7 +368,24 @@
     var k = st.screen === 'score' && st.sheet ? 'end' : st.screen === 'lobby' && st.linked.indexOf(0) < 0 ? 'lobby_ok' : st.screen;
     el.textContent = A.tips ? A.tips[k] || '' : '';
   }
+  // Теги открываются под тем шагом, где их жмут: «Кто играет» (привязать) и «Играй» (очки).
+  // На остальных шагах их нет. На узком экране — под текстом шага, над телефоном.
+  var wide = window.matchMedia('(min-width: 960px)'), tagsAt = null;
+  function placeTags() {
+    var tags = $('pa-tags'); if (!tags) return;
+    var n = st.screen === 'lobby' ? 2 : st.screen === 'score' && !st.sheet ? 3 : 0;
+    var at = n ? (wide.matches ? 'li' + n : 'side' + n) : 'none';
+    if (at === tagsAt) return;
+    tagsAt = at;
+    if (!n) { tags.hidden = true; return; }
+    var dest = wide.matches ? document.querySelector('.pa-step[data-step="' + n + '"]').parentNode : null;
+    if (dest) dest.appendChild(tags);
+    else { var ol = document.querySelector('.pa-steps'); ol.parentNode.insertBefore(tags, ol.nextSibling); }
+    tags.hidden = false;
+    tags.classList.remove('pa-in'); void tags.offsetWidth; tags.classList.add('pa-in');
+  }
   function renderSteps() {
+    placeTags();
     var cur = st.screen === 'score' && st.sheet ? 4 : STEP[st.screen];
     var li = document.querySelectorAll('.pa-step');
     for (var i = 0; i < li.length; i++) {
@@ -418,11 +435,7 @@
     app.addEventListener('pointercancel', cardUp);
     var steps = document.querySelectorAll('.pa-step');
     for (var i = 0; i < steps.length; i++) steps[i].addEventListener('click', function () { audio(); goStep(+this.getAttribute('data-step')); });
-    // Теги стоят под шагом «Кто играет». На узком экране — сразу под текстом шага, над телефоном.
-    var li2 = document.querySelector('.pa-step[data-step="2"]'), tags = $('pa-tags'), side = document.querySelector('.pa-steps');
-    var wide = window.matchMedia('(min-width: 960px)');
-    function placeTags() { if (!tags || !li2) return; if (wide.matches) li2.parentNode.appendChild(tags); else side.parentNode.insertBefore(tags, side.nextSibling); }
-    placeTags(); if (wide.addEventListener) wide.addEventListener('change', placeTags);
+    if (wide.addEventListener) wide.addEventListener('change', function () { tagsAt = null; placeTags(); });
     var rs = $('pa-restart');
     if (rs) rs.addEventListener('click', function () { st.slot = [0, 1, 2, 3]; st.linked = [0, 0, 0, 0]; st.m = null; show('home'); });
     show('home');

@@ -192,6 +192,9 @@ img{max-width:100%}
 .pa-tip.nudge{animation:panudge .3s ease}
 .pa-tags{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;width:min(400px,100%);margin:12px 0 8px 72px}
 [dir=rtl] .pa-tags{margin:12px 72px 8px 0}
+.pa-tags[hidden]{display:none}
+@keyframes pain{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.pa-tags.pa-in{animation:pain .32s cubic-bezier(.2,.8,.2,1)}
 @media (max-width:959px){.pa-tags{margin:16px 0 0;width:100%;max-width:400px}}
 .pa-tag{border:none;background:#FFFFFF;border-radius:24px;padding:12px 4px 10px;display:flex;flex-direction:column;align-items:center;gap:8px;font-family:inherit;color:#15201A;cursor:pointer;min-height:48px;transition:transform .12s ease,opacity .2s ease}
 .pa-tag:hover{transform:translateY(-3px)}
@@ -480,7 +483,7 @@ img{max-width:100%}
 <div class="pa-count" id="pa-count" aria-hidden="true"></div>
 <ol class="pa-steps">
 <li><button class="pa-step on" data-step="1"><span class="pa-sn">1</span><span><b>Нажми «Играть»</b><span>Одна кнопка внизу экрана. Регистрация не нужна.</span></span></button></li>
-<li><button class="pa-step" data-step="2"><span class="pa-sn">2</span><span><b>Кто играет</b><span>Нажми свой тег - приложение поймёт, что это ты. Потяни карточку, чтобы поменять пары.</span></span></button><div class="pa-tags" id="pa-tags" role="group" aria-label="Кто играет"></div></li>
+<li><button class="pa-step" data-step="2"><span class="pa-sn">2</span><span><b>Кто играет</b><span>Нажми свой тег - приложение поймёт, что это ты. Потяни карточку, чтобы поменять пары.</span></span></button><div class="pa-tags" id="pa-tags" role="group" aria-label="Кто играет" hidden></div></li>
 <li><button class="pa-step" data-step="3"><span class="pa-sn">3</span><span><b>Играй и нажимай</b><span>Выиграл очко - нажми свой тег. Телефон вслух скажет счёт. Два быстрых нажатия - отмена.</span></span></button></li>
 <li><button class="pa-step" data-step="4"><span class="pa-sn">4</span><span><b>Заверши матч</b><span>Выбери, кто победил. Матч уходит в историю.</span></span></button></li>
 <li><button class="pa-step" data-step="5"><span class="pa-sn">5</span><span><b>Смотри свои цифры</b><span>Матчи, победы и очки - по настоящим играм, а не на глаз.</span></span></button></li>
@@ -575,6 +578,6 @@ img{max-width:100%}
 })();
 </script>
 
-<script src="/app.js?v=f49dcab6"></script>
+<script src="/app.js?v=76b34113"></script>
 </body>
 </html>

@@ -192,6 +192,9 @@ img{max-width:100%}
 .pa-tip.nudge{animation:panudge .3s ease}
 .pa-tags{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;width:min(400px,100%);margin:12px 0 8px 72px}
 [dir=rtl] .pa-tags{margin:12px 72px 8px 0}
+.pa-tags[hidden]{display:none}
+@keyframes pain{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.pa-tags.pa-in{animation:pain .32s cubic-bezier(.2,.8,.2,1)}
 @media (max-width:959px){.pa-tags{margin:16px 0 0;width:100%;max-width:400px}}
 .pa-tag{border:none;background:#FFFFFF;border-radius:24px;padding:12px 4px 10px;display:flex;flex-direction:column;align-items:center;gap:8px;font-family:inherit;color:#15201A;cursor:pointer;min-height:48px;transition:transform .12s ease,opacity .2s ease}
 .pa-tag:hover{transform:translateY(-3px)}
