@@ -270,9 +270,7 @@
     var won = m.tb ? (a >= 7 && a - b >= 2) : a >= 4; // золотое очко: при 40:40 следующее решает гейм
     if (won) {
       m.pts = [0, 0]; m.games[tm]++;
-      var g = m.games[tm], h = m.games[1 - tm];
-      if (m.tb || (g >= 4 && g - h >= 2)) m.winner = tm;
-      m.tb = m.winner === null && g === 4 && h === 4; // 4:4 — тай-брейк
+      m.winner = tm; // на сайте матч идёт до одного гейма — чтобы дойти до победы за минуту
       said(q(T.game || 'Game!')); speak('game');
     } else if (m.tb) {
       said(a + ' - ' + b);

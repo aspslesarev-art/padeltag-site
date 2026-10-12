@@ -229,7 +229,7 @@
  "st3_t": "Play and click",
  "st3_d": "Won the point - click your button. The phone says the score out loud. Two quick clicks - undo.",
  "st4_t": "Finish the match",
- "st4_d": "Pick who won. The match goes to your history.",
+ "st4_d": "Someone wins - the match ends by itself. Or tap Finish. It all goes to your history.",
  "st5_t": "See your numbers",
  "st5_d": "Matches, wins and points - from real games, not guesswork.",
  "app_restart": "Start over"
