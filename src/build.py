@@ -24,9 +24,9 @@ hreflang += f'\n<link rel="alternate" hreflang="x-default" href="{SITE}/">'
 paths = {c: p for c, _, p, _ in LANGS}
 # Root only: first visit -> page in the browser language. A choice in the menu wins.
 autolang = ('<script>(function(){try{var L=' + json.dumps(paths, ensure_ascii=False) +
-            ',s=localStorage.getItem("pt-lang");if(s){if(s!=="en"&&L[s])location.replace(L[s]);return}'
+            ',s=localStorage.getItem("pt-lang");if(s){if(s!=="en"&&L[s])location.replace(L[s]+location.search);return}'
             'var n=navigator.languages||[navigator.language];for(var i=0;i<n.length;i++){var c=(n[i]||"").slice(0,2).toLowerCase();'
-            'if(c==="en")return;if(L[c]){location.replace(L[c]+location.hash);return}}}catch(e){}})();</script>\n')
+            'if(c==="en")return;if(L[c]){location.replace(L[c]+location.search+location.hash);return}}}catch(e){}})();</script>\n')
 
 NB, NNB = '\u00a0', '\u202f'  # неразрывный пробел и узкий неразрывный (французская пунктуация)
 # Служебные слова из трёх букв, которые не оставляем в конце строки (одно-двухбуквенные — всегда).

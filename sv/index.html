@@ -628,5 +628,8 @@ img{max-width:100%}
 </script>
 
 <script src="/app.js?v=5eb74fcd"></script>
+<script>(function(){try{var q=new URLSearchParams(location.search).get('from'),f=q,v;try{if(q)sessionStorage.setItem('pt-from',q);else f=sessionStorage.getItem('pt-from')||'';v=localStorage.getItem('pt-v');if(!v){v=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('pt-v',v)}}catch(e){v=v||Math.random().toString(36).slice(2)+'x0'}
+function hit(e){new Image().src='https://api.padeltag.app/hit?e='+e+'&f='+encodeURIComponent(f||'')+'&v='+v+'&p='+encodeURIComponent(location.pathname)}
+hit('visit');var once={};document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('[data-go="lobby"],#pt-shop,#pt-ios,#pt-android'),e=!t?'':t.id==='pt-shop'?'shop':t.id?'store':'demo';if(e&&!once[e]){once[e]=1;hit(e)}},true)}catch(e){}})();</script>
 </body>
 </html>
