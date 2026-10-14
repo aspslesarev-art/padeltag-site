@@ -2,6 +2,7 @@
 # Run: python3 src/build.py
 import html, json, pathlib, re
 from i18n import LANGS, EN_JS, T, NAMES
+from i18n_oct14 import OCT14
 
 here = pathlib.Path(__file__).parent
 root = here.parent
@@ -91,6 +92,8 @@ for code, _, path, direction in LANGS:
     hl += f'\n<link rel="alternate" hreflang="x-default" href="{SITE}{page_path("/", page)}">'
     opts = ''.join(f'<option value="{c}" data-href="{page_path(p, page)}"{" selected" if c == code else ""}>{n}</option>' for c, n, p, _ in LANGS)
     out = cut(tpl, page)
+    # Блоки 14.10 — только на языках, где они уже переведены.
+    out = re.sub(r'<!--new14-->(.*?)<!--/new14-->', (lambda m: m.group(1)) if code == 'en' or code in OCT14 else '', out, flags=re.S)
     def fill(m):
         k = m.group(1)
         if k == 'lang': return code

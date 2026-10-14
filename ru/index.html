@@ -339,6 +339,38 @@ img{max-width:100%}
 .pa-num .pa-list{margin-top:10px}
 .pa-demo{margin:14px 4px 0;font-size:13px;color:#4D5A52}
 .pt-step-tag{width:62%;max-width:210px;height:auto;filter:drop-shadow(0 14px 14px rgba(21,32,26,.3));transform:rotate(-16deg)}
+.pt-what{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.pt-what a.pt-ben{text-decoration:none;color:inherit;transition:transform .12s cubic-bezier(.2,.8,.2,1)}
+.pt-what a.pt-ben:hover{transform:translateY(-2px)}
+.pt-what a.pt-ben:focus-visible{outline:3px solid #15201A;outline-offset:4px}
+.pt-what .pt-ben-more{margin-top:auto;padding-top:4px;font-weight:700;font-size:17px;text-decoration:underline;text-underline-offset:4px}
+.pt-vid{display:grid;gap:48px;align-items:center}
+@media (min-width:900px){.pt-vid{grid-template-columns:minmax(0,1fr) 340px;gap:64px}}
+.pt-vid-l{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px 32px}
+.pt-vid-l li{display:flex;gap:16px;align-items:flex-start}
+.pt-vid-l .pt-ben-i{flex:none;width:44px;height:44px;border-radius:14px}
+.pt-vid-l div>b{display:block;font-weight:700;font-size:19px;line-height:1.3}
+.pt-vid-l div>span{display:block;color:#4D5A52;font-size:17px;line-height:1.5;margin-top:4px}
+.pt-reel{position:relative;width:min(300px,78vw);justify-self:center;aspect-ratio:9/19;background:#15201A;padding:8px;border-radius:44px;box-sizing:border-box;box-shadow:0 1px 2px rgb(0 0 0 / .06),0 16px 40px rgb(21 32 26 / .22)}
+.pt-reel-scr{position:relative;width:100%;height:100%;border-radius:36px;overflow:hidden;background:#1F4FA3}
+.pt-reel-scr img{width:100%;height:100%;object-fit:cover;object-position:9% 50%;display:block}
+.pt-reel-scr::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(to top,rgb(21 32 26 / .55),rgb(21 32 26 / 0));pointer-events:none}
+.pt-reel-logo{position:absolute;top:16px;right:12px;z-index:2;display:inline-flex;align-items:center;gap:6px;background:rgb(21 32 26 / .6);color:#FFFFFF;border-radius:999px;padding:6px 12px 6px 8px;font-weight:700;font-size:14px;letter-spacing:-0.01em}
+.pt-reel-logo i{width:16px;height:16px;border-radius:50%;background:#D4F03C;display:inline-flex;align-items:center;justify-content:center}
+.pt-reel-logo i::after{content:"";width:6px;height:6px;border-radius:50%;background:#15201A}
+.pt-reel-card{position:absolute;left:12px;right:12px;bottom:16px;z-index:2;display:flex;align-items:center;gap:8px;background:rgb(21 32 26 / .85);border-radius:999px;padding:6px 6px 6px 6px;color:#FFFFFF;direction:ltr}
+.pt-reel-av{flex:none;width:36px;height:36px;border-radius:50%;background:#D4F03C;color:#15201A;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px}
+.pt-reel-who{min-width:0;flex:1;display:flex;flex-direction:column;line-height:1.15}
+.pt-reel-who b{font-weight:700;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pt-reel-who span{font-weight:600;font-size:13px;color:#D4F03C}
+.pt-reel-sc{flex:none;background:#D4F03C;color:#15201A;border-radius:999px;padding:0 12px;height:36px;display:flex;align-items:center;font-weight:700;font-size:15px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pt-reel-card.b{opacity:0}.pt-reel-card.b .pt-reel-who span{color:#FF8C6B}
+.pt-reel-rec{position:absolute;top:16px;left:12px;z-index:2;display:inline-flex;align-items:center;gap:6px;background:rgb(21 32 26 / .6);color:#FFFFFF;border-radius:999px;padding:6px 10px;font-weight:600;font-size:13px;font-variant-numeric:tabular-nums}
+.pt-reel-rec i{width:8px;height:8px;border-radius:50%;background:#FF8C6B;animation:ptlive 1.6s ease-in-out infinite}
+@keyframes ptreela{0%,42%{opacity:1}50%,92%{opacity:0}100%{opacity:1}}
+@keyframes ptreelb{0%,42%{opacity:0}50%,92%{opacity:1}100%{opacity:0}}
+.pt-reel-card.a{animation:ptreela 8s cubic-bezier(.2,.8,.2,1) infinite}.pt-reel-card.b{animation:ptreelb 8s cubic-bezier(.2,.8,.2,1) infinite}
+@media (prefers-reduced-motion:reduce){.pt-reel-card.a,.pt-reel-card.b,.pt-reel-rec i{animation:none}}
 </style>
 </head>
 <body>
@@ -386,6 +418,22 @@ img{max-width:100%}
 </section>
 
 
+
+<!-- WHAT: что это и зачем -->
+<section id="what" style="padding: 0 24px 104px">
+<div style="max-width: 1160px; margin: 0 auto">
+<h2 style="margin: 0 0 16px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Что такое PadelTag</h2>
+<p style="margin: 0 0 48px; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 60ch">Приложение для iPhone и кнопка на футболке. Взял очко - нажал. Телефон сам считает по правилам падела, говорит счёт вслух, сохраняет матч и снимает лучшие розыгрыши.</p>
+<div class="pt-what">
+<div class="pt-ben"><span class="pt-ben-i" style="background: #D4F03C"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5Z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg></span><h3>Чтобы не спорить о счёте</h3><p>Счёт по правилам: золотое очко, больше-⁠меньше, тай-⁠брейк. Нажал не то - два быстрых нажатия, и очко вернулось.</p></div>
+<div class="pt-ben"><span class="pt-ben-i" style="background: #FFC2B0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10"></path><path d="M10 20V4"></path><path d="M16 20v-7"></path><path d="M22 20H2"></path></svg></span><h3>Чтобы видеть свой рост</h3><p>Каждый матч в истории: напарник, соперники, твои очки и процент побед.</p></div>
+<a class="pt-ben" href="#video"><span class="pt-ben-i" style="background: #D4F03C"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 13 5 3V8l-5 3"></path><rect x="2" y="6" width="14" height="12" rx="2"></rect></svg></span><h3>Чтобы пересматривать очки</h3><p>Каждое очко - короткое видео. После матча ролик уже в «Фото».</p><span class="pt-ben-more">Как работает видео <span aria-hidden="true">↓</span></span></a>
+</div>
+</div>
+</section>
+
+
+
 <!-- PAINS -->
 <section id="pains" style="padding: 8px 24px 0">
 <div style="max-width: 1160px; margin: 0 auto">
@@ -426,6 +474,33 @@ img{max-width:100%}
 </div>
 </div>
 </section>
+
+<!-- VIDEO: съёмка розыгрышей -->
+<section id="video" style="padding: 0 24px 104px">
+<div style="max-width: 1160px; margin: 0 auto" class="pt-vid">
+<div style="min-width: 0">
+<div style="display: inline-flex; align-items: center; gap: 8px; background: #F1F5E8; border-radius: 999px; padding: 8px 16px; font-size: 15px; font-weight: 500; margin-bottom: 24px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF8C6B; display: inline-block"></span>Новое: видео</div>
+<h2 style="margin: 0 0 16px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Каждое очко - на видео.</h2>
+<p style="margin: 0; font-size: 22px; line-height: 1.45; color: #3B4A40; max-width: 60ch">Поставь телефон у сетки и включи камеру на табло. Нажал кнопку - последние 15 секунд розыгрыша сохранились клипом. Матч закончился - ролик сам в «Фото».</p>
+<ul class="pt-vid-l">
+<li><span class="pt-ben-i" style="background: #D4F03C"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M20 4 8.1 15.9"></path><path d="M14.5 14.5 20 20"></path><path d="M8.1 8.1 12 12"></path></svg></span><div><b>Ничего не нужно монтировать</b><span>Камера пишет всё время, а оставляет только моменты, где нажали кнопку.</span></div></li>
+<li><span class="pt-ben-i" style="background: #FFC2B0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><circle cx="12" cy="12" r="3"></circle></svg></span><div><b>Весь корт в кадре</b><span>Широкоугольная камера 0.5× - видно обе пары.</span></div></li>
+<li><span class="pt-ben-i" style="background: #FFC2B0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></span><div><b>Кто взял очко - прямо на видео</b><span>Фото и имя игрока, «очко» или «ошибка» и счёт матча.</span></div></li>
+<li><span class="pt-ben-i" style="background: #D4F03C"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15201A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"></rect><path d="M11 18h2"></path></svg></span><div><b>Сразу для сторис</b><span>Телефон стоя - вертикальное видео, боком - горизонтальное. Видео остаётся на твоём телефоне.</span></div></li>
+</ul>
+</div>
+<div class="pt-reel" role="img" aria-label="Кадр ролика: имя игрока, очко и счёт поверх видео">
+<div class="pt-reel-scr">
+<img src="/img/step-score-640.webp" srcset="/img/step-score-640.webp 640w, /img/step-score-1200.webp 1100w" sizes="300px" alt="" loading="lazy" decoding="async">
+<span class="pt-reel-rec" aria-hidden="true"><i></i>0:15</span>
+<span class="pt-reel-logo" aria-hidden="true"><i></i>PadelTag</span>
+<div class="pt-reel-card a" aria-hidden="true"><span class="pt-reel-av">А</span><span class="pt-reel-who"><b>Антон</b><span>очко</span></span><span class="pt-reel-sc">3:2&nbsp;&nbsp;40:30</span></div>
+<div class="pt-reel-card b" aria-hidden="true"><span class="pt-reel-av">И</span><span class="pt-reel-who"><b>Иван</b><span>ошибка</span></span><span class="pt-reel-sc">4:2</span></div>
+</div>
+</div>
+</div>
+</section>
+
 
 <!-- WHO -->
 <section id="who" style="padding: 8px 24px 0">
@@ -521,6 +596,7 @@ img{max-width:100%}
 <details><summary>Какая кнопка нужна?</summary><p>Любой брелок iTag с одной кнопкой - обычно $7-⁠14. Выбери страну ниже - покажем магазин.</p></details>
 <details><summary>Нужен ли интернет?</summary><p>Для счёта нет - телефон считает сам. Интернет нужен, чтобы сохранить матч в историю и открыть таблицу турнира по ссылке.</p></details>
 <details><summary>Какой телефон подойдёт?</summary><p>Пока iPhone. Версия для Android - скоро.</p></details>
+<details><summary>Как снять матч на видео?</summary><p>Поставь iPhone у сетки, чтобы был виден корт, и нажми камеру на табло. Клипы режутся по нажатиям кнопок. Видео хранится на телефоне и никуда не отправляется.</p></details>
 </div>
 </div>
 </section>

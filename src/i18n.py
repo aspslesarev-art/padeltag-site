@@ -1610,3 +1610,7 @@ T['ru'].update({'app_h': 'Попробуй приложение прямо зд�
 from i18n_oct12 import OCT12
 for _c, _d in OCT12.items():
     T[_c].update(_d)
+
+from i18n_oct14 import OCT14
+for _c, _d in OCT14.items():
+    T[_c].update(_d)
