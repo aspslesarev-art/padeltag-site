@@ -585,9 +585,9 @@ img{max-width:100%}
 <script>
 (function(){
   // Где купить кнопку: страна (сама по IP) → конкретный проверенный брелок iTag.
-  // На Amazon классических iTag почти нет (там трекеры «Локатора» - с приложением не работают), поэтому везде AliExpress, кроме ID и RU.
+  // На Amazon классических iTag почти нет (там трекеры «Локатора» - с приложением не работают), поэтому местный магазин только где нашёлся проверенный iTag с отправкой внутри страны (14.11), остальные - AliExpress.
   var ALI=['AliExpress','https://www.aliexpress.com/item/1005009113760798.html'];
-  var S={ID:['Tokopedia','https://www.tokopedia.com/kingoo/smart-tag-bluetooth-tracker-gps-anti-lost-alarm-wireless-key-finder-alat-pelacak-barang-hp-kunci-hitam-3b5ea'],RU:['Ozon','https://www.ozon.ru/product/2866206363/']};
+  var S={ID:['Tokopedia','https://www.tokopedia.com/kingoo/smart-tag-bluetooth-tracker-gps-anti-lost-alarm-wireless-key-finder-alat-pelacak-barang-hp-kunci-hitam-3b5ea'],RU:['Ozon','https://www.ozon.ru/product/2866206363/'],US:['eBay','https://www.ebay.com/itm/276007628057'],CA:['eBay','https://www.ebay.com/itm/363553504762'],ZA:['Takealot','https://www.takealot.com/pet-tracking-and-anti-loss-alarm/PLID101387684']};
   var LIST='US CA MX BR AR CL GB IE DE AT CH FR BE NL LU ES PT IT SE NO DK FI PL CZ AE SA QA KW BH OM EG TR IN JP KR SG MY TH PH VN AU NZ ZA ID RU'.split(' ');
   var sel=document.getElementById('pt-country'),a=document.getElementById('pt-shop'),nm=document.getElementById('pt-shop-name');
   if(!sel)return;
