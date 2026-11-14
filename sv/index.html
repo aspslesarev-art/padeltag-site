@@ -554,7 +554,7 @@ img{max-width:100%}
 <h2 style="margin: 0 0 40px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Frågor</h2>
 <div class="pt-faq">
 <details><summary>Kostar det?</summary><p>Ställning, röst och alla lägen - gratis för alltid. Betalt är bara historik, statistik och turneringar - med 14 dagar gratis.</p></details>
-<details><summary>Vilken knapp behövs?</summary><p>Vilken iTag-nyckelhittare som helst med en knapp - oftast $7-⁠14. Välj ditt land nedan så visar vi en butik.</p></details>
+<details><summary>Vilken knapp behövs?</summary><p>Vilken iTag-nyckelhittare som helst med en knapp - oftast $2-⁠5. Välj ditt land nedan så visar vi en butik.</p></details>
 <details><summary>Behövs internet?</summary><p>Inte för ställningen - telefonen räknar själv. Internet behövs för att spara matchen i historiken och öppna turneringstabellen via länk.</p></details>
 <details><summary>Vilken telefon funkar?</summary><p>iPhone tills vidare. Android kommer snart.</p></details>
 
@@ -567,7 +567,7 @@ img{max-width:100%}
 <div style="max-width: 1160px; margin: 0 auto; background: #F7F9F2; border-radius: 40px; padding: 48px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px 48px">
 <div style="flex: 1 1 420px; min-width: 0">
 <h2 style="margin: 0 0 16px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Knappen köper du nära dig.</h2>
-<p style="margin: 0 0 28px; color: #4D5A52; max-width: 560px">En iTag-nyckelhittare med en knapp räcker - oftast $7–⁠14 styck. Välj land så visar vi en butik.</p>
+<p style="margin: 0 0 28px; color: #4D5A52; max-width: 560px">En iTag-nyckelhittare med en knapp räcker - oftast $2–⁠5 styck. Välj land så visar vi en butik.</p>
 <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center">
 <label class="pt-sr" for="pt-country">Land</label>
 <select id="pt-country" data-other="Annat land" class="pt-lang" style="background-color: #FFFFFF; min-height: 60px; font-size: 17px"></select>
@@ -608,22 +608,35 @@ img{max-width:100%}
 <script>window.PT_T={"score_btn": "Poängknapp", "click_aria": "Klicka på knapp: ", "leg_us": "Poäng till oss", "leg_them": "Poäng till dem", "leg_undo": "Ångra", "leg_point": "Poäng", "game": "Gem!", "golden": "Golden point", "nothing": "Inget att ångra", "words": {"0": "noll", "15": "femton", "30": "trettio", "40": "fyrtio"}, "q1": "”", "q2": "”", "sep": ", ", "app": {"mine": "Mina siffror", "recent": "Senaste", "onphone": "På telefonen", "win": "Vinst", "vs": "Mot", "play": "Spela", "play_sub": "Demo · 1 gem", "fast": "Snabb", "close": "Stäng", "who": "Vem spelar?", "team1": "Lag 1", "team2": "Lag 2", "press_tag": "Tryck på din knapp", "tag_ok": "Knapp klar", "drag_hint": "Dra ett kort - spelarna byter plats.", "start": "Starta · knappar: {n}", "start0": "Starta utan knappar", "set_chip": "1 gem", "games": "Gem", "tiebreak": "Tiebreak", "undo": "Ångra", "end": "Avsluta", "point_for": "Poäng: {n}", "end_t": "Avsluta matchen?", "now": "Ställning: ", "who_won": "Vem vann?", "end_note": "Matchen hamnar i historik och statistik.", "abandon": "Inget resultat", "abandon_d": "Ställningen nollas, sparas inte", "cont": "Fortsätt spela", "saved": "Sparad i din historik", "again": "Spela igen", "home": "Hem", "p_all": "Alltid", "p_30": "30 dagar", "p_7": "7 dagar", "matches": "matcher", "wins": "vinster", "points": "poäng per match", "best": "bästa partner", "demo": "Exempeldata. I appen - dina riktiga matcher.", "just": "Nyss", "d1": "Igår", "d2": "3 dagar sedan", "d3": "Förra veckan", "step_of": "Steg {n} av {all}", "last": "Senaste matchen", "partner": "Partner", "rivals": "Motståndare", "loss": "Förlust", "pts_by": "Poäng per spelare", "pts_none": "Varje spelares poäng syns när ni spelar med knappar.", "finish": "Avsluta matchen", "history": "Historik", "wins_n": "vinster: {n}", "tips": {"home": "Tryck på Spela på telefonen.", "lobby": "Tryck på en spelares knapp - appen känner igen spelaren.", "lobby_ok": "Alla knappar klara. Tryck på Starta.", "score": "Knapp: 1 tryck - poäng, 2 snabba - ångra.", "end": "Välj vem som vann.", "win": "Tryck på Avsluta matchen - dina siffror öppnas.", "numbers": "Det var allt. Skaffa appen och spela på riktigt."}}, "us": "Vi", "them": "De", "said_init": "Klicka på en knapp", "players": ["William", "Alice", "Hugo", "Maja"]};</script>
 <script>
 (function(){
-  // Где купить кнопку: страна → магазин. Названия стран — на языке страницы.
-  var S={US:['Amazon','https://www.amazon.com/s?k=itag+anti+lost'],CA:['Amazon','https://www.amazon.ca/s?k=itag+anti+lost'],GB:['Amazon','https://www.amazon.co.uk/s?k=itag+anti+lost'],AU:['Amazon','https://www.amazon.com.au/s?k=itag+anti+lost'],DE:['Amazon','https://www.amazon.de/s?k=itag+anti+lost'],AT:['Amazon','https://www.amazon.de/s?k=itag+anti+lost'],CH:['Amazon','https://www.amazon.de/s?k=itag+anti+lost'],FR:['Amazon','https://www.amazon.fr/s?k=itag+anti+lost'],BE:['Amazon','https://www.amazon.com.be/s?k=itag+anti+lost'],NL:['Amazon','https://www.amazon.nl/s?k=itag+anti+lost'],ES:['Amazon','https://www.amazon.es/s?k=itag+anti+lost'],PT:['Amazon','https://www.amazon.es/s?k=itag+anti+lost'],IT:['Amazon','https://www.amazon.it/s?k=itag+anti+lost'],SE:['Amazon','https://www.amazon.se/s?k=itag+anti+lost'],DK:['Amazon','https://www.amazon.de/s?k=itag+anti+lost'],PL:['Amazon','https://www.amazon.pl/s?k=itag+anti+lost'],AE:['Amazon','https://www.amazon.ae/s?k=itag+anti+lost'],SA:['Amazon','https://www.amazon.sa/s?k=itag+anti+lost'],EG:['Amazon','https://www.amazon.eg/s?k=itag+anti+lost'],MX:['Amazon','https://www.amazon.com.mx/s?k=itag+anti+lost'],BR:['Amazon','https://www.amazon.com.br/s?k=itag+anti+lost'],IN:['Amazon','https://www.amazon.in/s?k=itag+anti+lost'],JP:['Amazon','https://www.amazon.co.jp/s?k=itag+anti+lost'],SG:['Amazon','https://www.amazon.sg/s?k=itag+anti+lost'],RU:['Ozon','https://www.ozon.ru/search/?text=itag+%D0%B1%D1%80%D0%B5%D0%BB%D0%BE%D0%BA'],ID:['Shopee','https://shopee.co.id/search?keyword=itag'],TH:['Shopee','https://shopee.co.th/search?keyword=itag']};
-  var other=['AliExpress','https://www.aliexpress.com/w/wholesale-itag-anti-lost.html'];
+  // Где купить кнопку: страна (сама по IP) → конкретный проверенный брелок iTag.
+  // На Amazon классических iTag почти нет (там трекеры «Локатора» - с приложением не работают), поэтому везде AliExpress, кроме ID и RU.
+  var ALI=['AliExpress','https://www.aliexpress.com/item/1005009113760798.html'];
+  var S={ID:['Tokopedia','https://www.tokopedia.com/kingoo/smart-tag-bluetooth-tracker-gps-anti-lost-alarm-wireless-key-finder-alat-pelacak-barang-hp-kunci-hitam-3b5ea'],RU:['Ozon','https://www.ozon.ru/product/2866206363/']};
+  var LIST='US CA MX BR AR CL GB IE DE AT CH FR BE NL LU ES PT IT SE NO DK FI PL CZ AE SA QA KW BH OM EG TR IN JP KR SG MY TH PH VN AU NZ ZA ID RU'.split(' ');
   var sel=document.getElementById('pt-country'),a=document.getElementById('pt-shop'),nm=document.getElementById('pt-shop-name');
   if(!sel)return;
   var L=document.documentElement.lang,dn=null;try{dn=new Intl.DisplayNames([L],{type:'region'})}catch(e){}
-  var codes=Object.keys(S).map(function(c){return [c,dn?dn.of(c):c]}).sort(function(x,y){return x[1].localeCompare(y[1],L)});
-  codes.push(['XX',sel.dataset.other]);
-  sel.innerHTML=codes.map(function(c){return '<option value="'+c[0]+'">'+c[1]+'</option>'}).join('');
+  function ok(c){return /^[A-Z]{2}$/.test(c||'')&&c!=='XX'&&c!=='T1'}
+  function fill(extra){
+    var cs=LIST.slice();if(ok(extra)&&cs.indexOf(extra)<0)cs.push(extra);
+    var o=cs.map(function(c){var n=c;try{n=dn?dn.of(c):c}catch(e){}return [c,n]}).sort(function(x,y){return x[1].localeCompare(y[1],L)});
+    sel.innerHTML=o.map(function(c){return '<option value="'+c[0]+'">'+c[1]+'</option>'}).join('');
+  }
+  function set(c){if(!ok(c))return;fill(c);sel.value=c;upd()}
+  function upd(){var s=S[sel.value]||ALI;a.href=s[1];nm.textContent=s[0]}
   var byLang={en:'US',es:'ES',fr:'FR',de:'DE',it:'IT',pt:'PT',nl:'NL',sv:'SE',da:'DK',ru:'RU',ar:'AE'},guess=null;
-  try{var n=navigator.languages||[navigator.language];for(var i=0;i<n.length;i++){var r=(n[i]||'').split('-')[1];if(r&&S[r.toUpperCase()]){guess=r.toUpperCase();break}}}catch(e){}
+  try{var n=navigator.languages||[navigator.language];for(var i=0;i<n.length;i++){var r=((n[i]||'').split('-')[1]||'').toUpperCase();if(ok(r)){guess=r;break}}}catch(e){}
   var saved=null;try{saved=localStorage.getItem('pt-country')}catch(e){}
-  sel.value=saved&&(S[saved]||saved==='XX')?saved:(guess||byLang[L]||'XX');
-  function upd(){var s=S[sel.value]||other;a.href=s[1];nm.textContent=s[0]}
+  set(ok(saved)?saved:(guess||byLang[L]||'US'));
   sel.addEventListener('change',function(){try{localStorage.setItem('pt-country',sel.value)}catch(e){}upd()});
-  upd();
+  // Страна по IP - если человек сам не выбирал. Сначала Cloudflare, запасной - country.is.
+  if(!ok(saved)&&window.fetch){
+    var t=function(u,f){return fetch(u,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(f)};
+    t('https://www.cloudflare.com/cdn-cgi/trace',function(x){var m=x.match(/^loc=([A-Z]{2})$/m);if(!m)throw 0;return m[1]})
+      .catch(function(){return t('https://api.country.is/',function(x){return JSON.parse(x).country})})
+      .then(function(c){try{if(!ok(localStorage.getItem('pt-country')))set(c)}catch(e){set(c)}})
+      .catch(function(){});
+  }
 })();
 </script>
 

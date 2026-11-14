@@ -517,7 +517,7 @@ img{max-width:100%}
 <div style="max-width: 1160px; margin: 0 auto; background: #F7F9F2; border-radius: 40px; padding: 48px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px 48px">
 <div style="flex: 1 1 420px; min-width: 0">
 <h2 style="margin: 0 0 16px; font-weight: 900; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; letter-spacing: -0.03em">Den Knopf gibt’s um die Ecke.</h2>
-<p style="margin: 0 0 28px; color: #4D5A52; max-width: 560px">Ein iTag-Schlüsselfinder mit einem Knopf reicht - meist $7–⁠14 pro Stück. Wähl dein Land, wir zeigen dir einen Shop.</p>
+<p style="margin: 0 0 28px; color: #4D5A52; max-width: 560px">Ein iTag-Schlüsselfinder mit einem Knopf reicht - meist $2–⁠5 pro Stück. Wähl dein Land, wir zeigen dir einen Shop.</p>
 <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center">
 <label class="pt-sr" for="pt-country">Land</label>
 <select id="pt-country" data-other="Anderes Land" class="pt-lang" style="background-color: #FFFFFF; min-height: 60px; font-size: 17px"></select>
@@ -558,22 +558,35 @@ img{max-width:100%}
 <script>window.PT_T={"score_btn": "Punkte-⁠Knopf", "click_aria": "Knopf klicken: ", "leg_us": "Punkt für uns", "leg_them": "Punkt für die", "leg_undo": "Zurück", "leg_point": "Punkt", "game": "Spiel!", "golden": "Golden Point", "nothing": "Nichts zum Zurücknehmen", "words": {"0": "null", "15": "fünfzehn", "30": "dreißig", "40": "vierzig"}, "q1": "„", "q2": "“", "sep": ", ", "app": {"mine": "Meine Zahlen", "recent": "Zuletzt", "onphone": "Auf dem Handy", "win": "Sieg", "vs": "Gegen", "play": "Spielen", "play_sub": "Demo · 1 Spiel", "fast": "Schnell", "close": "Schließen", "who": "Wer spielt?", "team1": "Team 1", "team2": "Team 2", "press_tag": "Drück deinen Knopf", "tag_ok": "Knopf bereit", "drag_hint": "Zieh eine Karte - die Spieler tauschen die Plätze.", "start": "Start · Knöpfe: {n}", "start0": "Start ohne Knöpfe", "set_chip": "1 Spiel", "games": "Spiele", "tiebreak": "Tiebreak", "undo": "Zurück", "end": "Beenden", "point_for": "Punkt: {n}", "end_t": "Match beenden?", "now": "Stand: ", "who_won": "Wer hat gewonnen?", "end_note": "Das Match kommt in Verlauf und Statistik.", "abandon": "Ohne Ergebnis", "abandon_d": "Stand wird gelöscht, nicht im Verlauf", "cont": "Weiterspielen", "saved": "Im Verlauf gespeichert", "again": "Noch mal", "home": "Start", "p_all": "Gesamt", "p_30": "30 Tage", "p_7": "7 Tage", "matches": "Matches", "wins": "Siege", "points": "Punkte pro Match", "best": "bester Partner", "demo": "Beispieldaten. In der App - deine echten Matches.", "just": "Gerade eben", "d1": "Gestern", "d2": "Vor 3 Tagen", "d3": "Letzte Woche", "step_of": "Schritt {n} von {all}", "last": "Letztes Match", "partner": "Partner", "rivals": "Gegner", "loss": "Niederlage", "pts_by": "Punkte pro Spieler", "pts_none": "Die Punkte jedes Spielers siehst du, wenn ihr mit Knöpfen spielt.", "finish": "Match beenden", "history": "Verlauf", "wins_n": "Siege: {n}", "tips": {"home": "Tippe auf dem Handy auf Spielen.", "lobby": "Drück den Knopf eines Spielers - die App erkennt ihn.", "lobby_ok": "Alle Knöpfe bereit. Tippe auf Start.", "score": "Knopf: 1 Druck - Punkt, 2 schnelle - zurück.", "end": "Wähle, wer gewonnen hat.", "win": "Tippe auf Match beenden - deine Zahlen öffnen sich.", "numbers": "Das war’s. Hol dir die App und spiel richtig."}}, "us": "Wir", "them": "Die", "said_init": "Klick auf einen Knopf", "players": ["Noah", "Emilia", "Paul", "Mia"]};</script>
 <script>
 (function(){
-  // Где купить кнопку: страна → магазин. Названия стран — на языке страницы.
-  var S={US:['Amazon','https://www.amazon.com/s?k=itag+anti+lost'],CA:['Amazon','https://www.amazon.ca/s?k=itag+anti+lost'],GB:['Amazon','https://www.amazon.co.uk/s?k=itag+anti+lost'],AU:['Amazon','https://www.amazon.com.au/s?k=itag+anti+lost'],DE:['Amazon','https://www.amazon.de/s?k=itag+anti+lost'],AT:['Amazon','https://www.amazon.de/s?k=itag+anti+lost'],CH:['Amazon','https://www.amazon.de/s?k=itag+anti+lost'],FR:['Amazon','https://www.amazon.fr/s?k=itag+anti+lost'],BE:['Amazon','https://www.amazon.com.be/s?k=itag+anti+lost'],NL:['Amazon','https://www.amazon.nl/s?k=itag+anti+lost'],ES:['Amazon','https://www.amazon.es/s?k=itag+anti+lost'],PT:['Amazon','https://www.amazon.es/s?k=itag+anti+lost'],IT:['Amazon','https://www.amazon.it/s?k=itag+anti+lost'],SE:['Amazon','https://www.amazon.se/s?k=itag+anti+lost'],DK:['Amazon','https://www.amazon.de/s?k=itag+anti+lost'],PL:['Amazon','https://www.amazon.pl/s?k=itag+anti+lost'],AE:['Amazon','https://www.amazon.ae/s?k=itag+anti+lost'],SA:['Amazon','https://www.amazon.sa/s?k=itag+anti+lost'],EG:['Amazon','https://www.amazon.eg/s?k=itag+anti+lost'],MX:['Amazon','https://www.amazon.com.mx/s?k=itag+anti+lost'],BR:['Amazon','https://www.amazon.com.br/s?k=itag+anti+lost'],IN:['Amazon','https://www.amazon.in/s?k=itag+anti+lost'],JP:['Amazon','https://www.amazon.co.jp/s?k=itag+anti+lost'],SG:['Amazon','https://www.amazon.sg/s?k=itag+anti+lost'],RU:['Ozon','https://www.ozon.ru/search/?text=itag+%D0%B1%D1%80%D0%B5%D0%BB%D0%BE%D0%BA'],ID:['Shopee','https://shopee.co.id/search?keyword=itag'],TH:['Shopee','https://shopee.co.th/search?keyword=itag']};
-  var other=['AliExpress','https://www.aliexpress.com/w/wholesale-itag-anti-lost.html'];
+  // Где купить кнопку: страна (сама по IP) → конкретный проверенный брелок iTag.
+  // На Amazon классических iTag почти нет (там трекеры «Локатора» - с приложением не работают), поэтому везде AliExpress, кроме ID и RU.
+  var ALI=['AliExpress','https://www.aliexpress.com/item/1005009113760798.html'];
+  var S={ID:['Tokopedia','https://www.tokopedia.com/kingoo/smart-tag-bluetooth-tracker-gps-anti-lost-alarm-wireless-key-finder-alat-pelacak-barang-hp-kunci-hitam-3b5ea'],RU:['Ozon','https://www.ozon.ru/product/2866206363/']};
+  var LIST='US CA MX BR AR CL GB IE DE AT CH FR BE NL LU ES PT IT SE NO DK FI PL CZ AE SA QA KW BH OM EG TR IN JP KR SG MY TH PH VN AU NZ ZA ID RU'.split(' ');
   var sel=document.getElementById('pt-country'),a=document.getElementById('pt-shop'),nm=document.getElementById('pt-shop-name');
   if(!sel)return;
   var L=document.documentElement.lang,dn=null;try{dn=new Intl.DisplayNames([L],{type:'region'})}catch(e){}
-  var codes=Object.keys(S).map(function(c){return [c,dn?dn.of(c):c]}).sort(function(x,y){return x[1].localeCompare(y[1],L)});
-  codes.push(['XX',sel.dataset.other]);
-  sel.innerHTML=codes.map(function(c){return '<option value="'+c[0]+'">'+c[1]+'</option>'}).join('');
+  function ok(c){return /^[A-Z]{2}$/.test(c||'')&&c!=='XX'&&c!=='T1'}
+  function fill(extra){
+    var cs=LIST.slice();if(ok(extra)&&cs.indexOf(extra)<0)cs.push(extra);
+    var o=cs.map(function(c){var n=c;try{n=dn?dn.of(c):c}catch(e){}return [c,n]}).sort(function(x,y){return x[1].localeCompare(y[1],L)});
+    sel.innerHTML=o.map(function(c){return '<option value="'+c[0]+'">'+c[1]+'</option>'}).join('');
+  }
+  function set(c){if(!ok(c))return;fill(c);sel.value=c;upd()}
+  function upd(){var s=S[sel.value]||ALI;a.href=s[1];nm.textContent=s[0]}
   var byLang={en:'US',es:'ES',fr:'FR',de:'DE',it:'IT',pt:'PT',nl:'NL',sv:'SE',da:'DK',ru:'RU',ar:'AE'},guess=null;
-  try{var n=navigator.languages||[navigator.language];for(var i=0;i<n.length;i++){var r=(n[i]||'').split('-')[1];if(r&&S[r.toUpperCase()]){guess=r.toUpperCase();break}}}catch(e){}
+  try{var n=navigator.languages||[navigator.language];for(var i=0;i<n.length;i++){var r=((n[i]||'').split('-')[1]||'').toUpperCase();if(ok(r)){guess=r;break}}}catch(e){}
   var saved=null;try{saved=localStorage.getItem('pt-country')}catch(e){}
-  sel.value=saved&&(S[saved]||saved==='XX')?saved:(guess||byLang[L]||'XX');
-  function upd(){var s=S[sel.value]||other;a.href=s[1];nm.textContent=s[0]}
+  set(ok(saved)?saved:(guess||byLang[L]||'US'));
   sel.addEventListener('change',function(){try{localStorage.setItem('pt-country',sel.value)}catch(e){}upd()});
-  upd();
+  // Страна по IP - если человек сам не выбирал. Сначала Cloudflare, запасной - country.is.
+  if(!ok(saved)&&window.fetch){
+    var t=function(u,f){return fetch(u,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(f)};
+    t('https://www.cloudflare.com/cdn-cgi/trace',function(x){var m=x.match(/^loc=([A-Z]{2})$/m);if(!m)throw 0;return m[1]})
+      .catch(function(){return t('https://api.country.is/',function(x){return JSON.parse(x).country})})
+      .then(function(c){try{if(!ok(localStorage.getItem('pt-country')))set(c)}catch(e){set(c)}})
+      .catch(function(){});
+  }
 })();
 </script>
 
