@@ -13,7 +13,7 @@ JS_KEYS = list(EN_JS) + ['us', 'them', 'said_init', 'players']
 SITE = 'https://padeltag.app'
 # Ссылки на приложение в магазинах. Пусто — кнопка «Скоро» и не нажимается.
 # QR на сайте и упаковке ведёт на /app — он сам открывает нужный магазин, сам код не меняется.
-STORE = {'ios': '', 'android': ''}
+STORE = {'ios': 'https://apps.apple.com/app/id6820500485', 'android': ''}
 import hashlib
 TAG_V = hashlib.md5((root / 'tag.png').read_bytes()).hexdigest()[:8]
 APP_V = hashlib.md5((root / 'app.js').read_bytes()).hexdigest()[:8]
