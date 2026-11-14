@@ -562,17 +562,18 @@ img{max-width:100%}
   // На Amazon классических iTag почти нет (там трекеры «Локатора» - с приложением не работают), поэтому местный магазин только где нашёлся проверенный iTag с отправкой внутри страны (14.11), остальные - AliExpress.
   var ALI=['AliExpress','https://www.aliexpress.com/item/1005009113760798.html'];
   var S={ID:['Tokopedia','https://www.tokopedia.com/kingoo/smart-tag-bluetooth-tracker-gps-anti-lost-alarm-wireless-key-finder-alat-pelacak-barang-hp-kunci-hitam-3b5ea'],RU:['Ozon','https://www.ozon.ru/product/2866206363/'],US:['eBay','https://www.ebay.com/itm/276007628057'],CA:['eBay','https://www.ebay.com/itm/363553504762'],ZA:['Takealot','https://www.takealot.com/pet-tracking-and-anti-loss-alarm/PLID101387684']};
-  var LIST='US CA MX BR AR CL GB IE DE AT CH FR BE NL LU ES PT IT SE NO DK FI PL CZ AE SA QA KW BH OM EG TR IN JP KR SG MY TH PH VN AU NZ ZA ID RU'.split(' ');
+  var LIST=Object.keys(S); // только страны, где брелок точно есть в местном магазине; остальные - «Другая страна» → AliExpress
   var sel=document.getElementById('pt-country'),a=document.getElementById('pt-shop'),nm=document.getElementById('pt-shop-name');
   if(!sel)return;
   var L=document.documentElement.lang,dn=null;try{dn=new Intl.DisplayNames([L],{type:'region'})}catch(e){}
-  function ok(c){return /^[A-Z]{2}$/.test(c||'')&&c!=='XX'&&c!=='T1'}
-  function fill(extra){
-    var cs=LIST.slice();if(ok(extra)&&cs.indexOf(extra)<0)cs.push(extra);
-    var o=cs.map(function(c){var n=c;try{n=dn?dn.of(c):c}catch(e){}return [c,n]}).sort(function(x,y){return x[1].localeCompare(y[1],L)});
+  function ok(c){return /^[A-Z]{2}$/.test(c||'')&&c!=='T1'}
+  function fill(){
+    var o=LIST.map(function(c){var n=c;try{n=dn?dn.of(c):c}catch(e){}return [c,n]}).sort(function(x,y){return x[1].localeCompare(y[1],L)});
+    o.push(['XX',sel.dataset.other]);
     sel.innerHTML=o.map(function(c){return '<option value="'+c[0]+'">'+c[1]+'</option>'}).join('');
   }
-  function set(c){if(!ok(c))return;fill(c);sel.value=c;upd()}
+  fill();
+  function set(c){sel.value=S[c]?c:'XX';upd()}
   function upd(){var s=S[sel.value]||ALI;a.href=s[1];nm.textContent=s[0]}
   var byLang={en:'US',es:'ES',fr:'FR',de:'DE',it:'IT',pt:'PT',nl:'NL',sv:'SE',da:'DK',ru:'RU',ar:'AE'},guess=null;
   try{var n=navigator.languages||[navigator.language];for(var i=0;i<n.length;i++){var r=((n[i]||'').split('-')[1]||'').toUpperCase();if(ok(r)){guess=r;break}}}catch(e){}
