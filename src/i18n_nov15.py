@@ -3,6 +3,7 @@
 
 NOV15 = {
  'en': {
+  'sticker3': '2 clicks = error',
   'sticker2': '3 clicks = undo',
   'mo1_d': 'One person keeps score. 1 click - us, 2 - them, 3 - undo.',
   'ex2_t': 'Oops? Click three times',
@@ -14,6 +15,7 @@ NOV15 = {
   'tips_score': 'Button: 1 click - point, 2 - error, 3 - undo.',
  },
  'ru': {
+  'sticker3': '2 нажатия = ошибка',
   'sticker2': '3 нажатия = отмена',
   'mo1_d': 'Счёт ведёт один игрок. 1 нажатие - мы, 2 - они, 3 - отмена.',
   'ex2_t': 'Нажал не то? Нажми трижды',
@@ -25,6 +27,7 @@ NOV15 = {
   'tips_score': 'Тег: 1 нажатие - очко, 2 - ошибка, 3 - отмена.',
  },
  'es': {
+  'sticker3': '2 clics = error',
   'sticker2': '3 clics = deshacer',
   'mo1_d': 'Una persona lleva el marcador. 1 clic - nosotros, 2 - ellos, 3 - deshacer.',
   'ex2_t': '¿Te equivocaste? Triple clic',
@@ -35,6 +38,7 @@ NOV15 = {
   'tips_score': 'Botón: 1 pulsación - punto, 2 - error, 3 - deshacer.',
  },
  'fr': {
+  'sticker3': '2 clics = faute',
   'sticker2': '3 clics = annuler',
   'mo1_d': 'Une seule personne compte. 1 clic - nous, 2 - eux, 3 - annuler.',
   'ex2_t': 'Oups ? Triple clic',
@@ -45,6 +49,7 @@ NOV15 = {
   'tips_score': 'Bouton : 1 clic - point, 2 - faute, 3 - annuler.',
  },
  'de': {
+  'sticker3': '2 Klicks = Fehler',
   'sticker2': '3 Klicks = zurück',
   'mo1_d': 'Eine Person zählt. 1 Klick - wir, 2 - die, 3 - zurück.',
   'ex2_t': 'Ups? Dreimal klicken',
@@ -55,6 +60,7 @@ NOV15 = {
   'tips_score': 'Knopf: 1 Druck - Punkt, 2 - Fehler, 3 - zurück.',
  },
  'it': {
+  'sticker3': '2 clic = errore',
   'sticker2': '3 clic = annulla',
   'mo1_d': 'Una persona tiene il punteggio. 1 clic - noi, 2 - loro, 3 - annulla.',
   'ex2_t': 'Ops? Triplo clic',
@@ -65,6 +71,7 @@ NOV15 = {
   'tips_score': 'Bottone: 1 pressione - punto, 2 - errore, 3 - annulla.',
  },
  'pt': {
+  'sticker3': '2 cliques = erro',
   'sticker2': '3 cliques = anular',
   'mo1_d': 'Uma pessoa marca os pontos. 1 clique - nós, 2 - eles, 3 - anular.',
   'ex2_t': 'Ups? Clique triplo',
@@ -75,6 +82,7 @@ NOV15 = {
   'tips_score': 'Botão: 1 toque - ponto, 2 - erro, 3 - anular.',
  },
  'nl': {
+  'sticker3': '2 klikken = fout',
   'sticker2': '3 klikken = terug',
   'mo1_d': 'Eén persoon houdt de score bij. 1 klik - wij, 2 - zij, 3 - terug.',
   'ex2_t': 'Oeps? Klik drie keer',
@@ -85,6 +93,7 @@ NOV15 = {
   'tips_score': 'Knop: 1 keer - punt, 2 - fout, 3 - terug.',
  },
  'sv': {
+  'sticker3': '2 klick = fel',
   'sticker2': '3 klick = ångra',
   'mo1_d': 'En person räknar. 1 klick - vi, 2 - de, 3 - ångra.',
   'ex2_t': 'Oj? Klicka tre gånger',
@@ -95,6 +104,7 @@ NOV15 = {
   'tips_score': 'Knapp: 1 tryck - poäng, 2 - fel, 3 - ångra.',
  },
  'da': {
+  'sticker3': '2 klik = fejl',
   'sticker2': '3 klik = fortryd',
   'mo1_d': 'Én person tæller. 1 klik - os, 2 - dem, 3 - fortryd.',
   'ex2_t': 'Ups? Klik tre gange',
@@ -105,6 +115,7 @@ NOV15 = {
   'tips_score': 'Knap: 1 tryk - point, 2 - fejl, 3 - fortryd.',
  },
  'ar': {
+  'sticker3': 'ضغطتان = خطأ',
   'sticker2': '3 ضغطات = تراجع',
   'mo1_d': 'شخص واحد يسجّل النتيجة. ضغطة - لنا، ضغطتان - لهم، 3 ضغطات - تراجع.',
   'ex2_t': 'أخطأت؟ اضغط 3 مرات',
