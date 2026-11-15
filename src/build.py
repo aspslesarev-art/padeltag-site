@@ -9,7 +9,15 @@ root = here.parent
 tpl = (here / 'template.html').read_text()
 en = json.loads((here / 'en.json').read_text())
 en.update(EN_JS)
-JS_KEYS = list(EN_JS) + ['us', 'them', 'said_init', 'players']
+# 15.11: 1 - очко, 2 - ошибка, 3 - отмена (как в приложении).
+from i18n_nov15 import NOV15
+import copy
+for _c, _d in NOV15.items():
+    _t = en if _c == 'en' else T[_c]
+    _d = dict(_d); _tip = _d.pop('tips_score')
+    _t.update(_d)
+    _t['app'] = copy.deepcopy(_t['app']); _t['app']['tips']['score'] = _tip
+JS_KEYS = list(EN_JS) + ['leg_err', 'us', 'them', 'said_init', 'players']
 SITE = 'https://padeltag.app'
 # Ссылки на приложение в магазинах. Пусто — кнопка «Скоро» и не нажимается.
 # QR на сайте и упаковке ведёт на /app — он сам открывает нужный магазин, сам код не меняется.

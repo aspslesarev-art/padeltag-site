@@ -361,9 +361,11 @@
     }
     if (st.screen === 'score' && !st.sheet && st.m.winner === null) {
       var n = (clicks[p] || 0) + 1; clicks[p] = n; clearTimeout(timers[p]);
-      if (n >= 2) { clicks[p] = 0; undo(); return; }
+      // Как в приложении: 1 - очко, 2 - ошибка (очко соперникам), 3 - отмена.
+      if (n >= 3) { clicks[p] = 0; undo(); return; }
       timers[p] = setTimeout(function () {
-        clicks[p] = 0; point(teamOf(p), p);
+        var k = clicks[p]; clicks[p] = 0;
+        if (k === 2) point(1 - teamOf(p), null); else point(teamOf(p), p);
         var hn = document.querySelectorAll('.pa-tag.hint'); for (var i = 0; i < hn.length; i++) hn[i].classList.remove('hint');
       }, 450);
       return;

@@ -100,7 +100,7 @@
     });
     var legend = s.mode === 1
       ? [[1, T.leg_us || 'Point for Us'], [2, T.leg_them || 'Point for Them'], [3, T.leg_undo || 'Undo']]
-      : [[1, T.leg_point || 'Point'], [2, T.leg_undo || 'Undo']];
+      : [[1, T.leg_point || 'Point'], [2, T.leg_err || 'Error'], [3, T.leg_undo || 'Undo']];
     var lg = $('pt-legend'); lg.innerHTML = '';
     legend.forEach(function (l) {
       var c = document.createElement('div'); c.className = 'pt-chip';
@@ -115,10 +115,12 @@
     var n = (clicks[slot] || 0) + 1;
     clicks[slot] = n;
     clearTimeout(timers[slot]);
-    if (n >= (mode === 1 ? 3 : 2)) { clicks[slot] = 0; undo(); return; }
+    // Как в приложении: 3 нажатия - отмена; 2 - ошибка (очко соперникам), в формате «1 тег» - очко им.
+    if (n >= 3) { clicks[slot] = 0; undo(); return; }
     timers[slot] = setTimeout(function () {
       var k = clicks[slot]; clicks[slot] = 0;
       if (mode === 1) point(k === 1 ? 0 : 1, null);
+      else if (k === 2) point(1 - Math.floor(slot / 2), null);
       else point(Math.floor(slot / 2), mode === 4 ? slot : null);
     }, 450);
   }
@@ -164,7 +166,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    // Тег в начале страницы тоже живой: 1 нажатие — очко «нам» на маленьком телефоне, 2 — отмена.
+    // Тег в начале страницы тоже живой: 1 нажатие — очко «нам», 2 — ошибка (очко «им»), 3 — отмена.
     var ht = $('pt-hero-tag');
     if (ht) {
       var hp = [3, 2], hh = [], hn = 0, htm;
@@ -177,20 +179,21 @@
         tick();
         ht.classList.add('down'); setTimeout(function () { ht.classList.remove('down'); }, 140);
         hn += 1; clearTimeout(htm);
-        if (hn >= 2) {
+        if (hn >= 3) {
           hn = 0;
           if (hh.length) { hp = hh.pop(); show(0); speak('undo'); }
           return;
         }
         htm = setTimeout(function () {
+          var w = hn === 2 ? 1 : 0; // кто взял очко
           hn = 0; hh.push(hp.slice());
-          hp[0] += 1;
-          if (hp[0] >= 4) { hp = [0, 0]; speak('game'); }
+          hp[w] += 1;
+          if (hp[w] >= 4) { hp = [0, 0]; speak('game'); }
           else {
-            var a = label(hp[0]), b = label(hp[1]);
+            var a = label(hp[w]), b = label(hp[1 - w]);
             speak(a === '40' && b === '40' ? 'golden' : 'p_' + a + '_' + b);
           }
-          show(0);
+          show(w);
         }, 450);
       };
       ht.addEventListener('pointerenter', function () { audio(); }); // голос начнёт грузиться ещё до нажатия
